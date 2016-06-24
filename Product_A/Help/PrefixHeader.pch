@@ -1,0 +1,21 @@
+//
+//  PrefixHeader.pch
+//  Product_A
+//
+//  Created by lanou on 16/6/24.
+//  Copyright © 2016年 H. All rights reserved.
+//
+
+#ifndef PrefixHeader_pch
+#define PrefixHeader_pch
+
+// Include any system framework and library headers here that should be included in all compilation units.
+// You will also need to set the Prefix Header build setting of one or more of your targets to reference this file.
+
+#import "UIView+TWFrame.h"
+#define PKCOLOR(R,G,B) [UIColor colorWithRed:(R) / 255.0 green:(G)/ 255.0 blue:(B) / 255.0 alpha:1]
+#define kMovieDistance (kScreenWidth / 5.0)
+
+#define kNaviH 40
+
+#endif /* PrefixHeader_pch */

@@ -7,10 +7,16 @@
 	objects = {
 
 /* Begin PBXBuildFile section */
+		795DCFCD1D1CD287000B1C12 /* RootViewController.m in Sources */ = {isa = PBXBuildFile; fileRef = 795DCFCC1D1CD287000B1C12 /* RootViewController.m */; };
+		795DCFD11D1CD3FA000B1C12 /* UIView+TWFrame.m in Sources */ = {isa = PBXBuildFile; fileRef = 795DCFD01D1CD3FA000B1C12 /* UIView+TWFrame.m */; };
+		795DCFD41D1CD8C2000B1C12 /* RightViewController.m in Sources */ = {isa = PBXBuildFile; fileRef = 795DCFD31D1CD8C2000B1C12 /* RightViewController.m */; };
+		795DCFE01D1CDBC3000B1C12 /* ReadViewController.m in Sources */ = {isa = PBXBuildFile; fileRef = 795DCFDF1D1CDBC3000B1C12 /* ReadViewController.m */; };
+		795DCFE31D1CDBD0000B1C12 /* SettingViewController.m in Sources */ = {isa = PBXBuildFile; fileRef = 795DCFE21D1CDBD0000B1C12 /* SettingViewController.m */; };
+		795DCFE61D1CDC7A000B1C12 /* CommunityViewController.m in Sources */ = {isa = PBXBuildFile; fileRef = 795DCFE51D1CDC7A000B1C12 /* CommunityViewController.m */; };
+		795DCFE91D1CDC85000B1C12 /* ProductViewController.m in Sources */ = {isa = PBXBuildFile; fileRef = 795DCFE81D1CDC85000B1C12 /* ProductViewController.m */; };
+		795DCFEC1D1CDC9F000B1C12 /* RadioViewController.m in Sources */ = {isa = PBXBuildFile; fileRef = 795DCFEB1D1CDC9F000B1C12 /* RadioViewController.m */; };
 		79630CD01D1CD0450099FF46 /* main.m in Sources */ = {isa = PBXBuildFile; fileRef = 79630CCF1D1CD0450099FF46 /* main.m */; };
 		79630CD31D1CD0450099FF46 /* AppDelegate.m in Sources */ = {isa = PBXBuildFile; fileRef = 79630CD21D1CD0450099FF46 /* AppDelegate.m */; };
-		79630CD61D1CD0450099FF46 /* ViewController.m in Sources */ = {isa = PBXBuildFile; fileRef = 79630CD51D1CD0450099FF46 /* ViewController.m */; };
-		79630CD91D1CD0450099FF46 /* Main.storyboard in Resources */ = {isa = PBXBuildFile; fileRef = 79630CD71D1CD0450099FF46 /* Main.storyboard */; };
 		79630CDB1D1CD0450099FF46 /* Assets.xcassets in Resources */ = {isa = PBXBuildFile; fileRef = 79630CDA1D1CD0450099FF46 /* Assets.xcassets */; };
 		79630CDE1D1CD0450099FF46 /* LaunchScreen.storyboard in Resources */ = {isa = PBXBuildFile; fileRef = 79630CDC1D1CD0450099FF46 /* LaunchScreen.storyboard */; };
 		79630CE91D1CD0450099FF46 /* Product_ATests.m in Sources */ = {isa = PBXBuildFile; fileRef = 79630CE81D1CD0450099FF46 /* Product_ATests.m */; };
@@ -35,13 +41,27 @@
 /* End PBXContainerItemProxy section */
 
 /* Begin PBXFileReference section */
+		795DCFCB1D1CD287000B1C12 /* RootViewController.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = RootViewController.h; sourceTree = "<group>"; };
+		795DCFCC1D1CD287000B1C12 /* RootViewController.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = RootViewController.m; sourceTree = "<group>"; };
+		795DCFCE1D1CD336000B1C12 /* PrefixHeader.pch */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.h; path = PrefixHeader.pch; sourceTree = "<group>"; };
+		795DCFCF1D1CD3FA000B1C12 /* UIView+TWFrame.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = "UIView+TWFrame.h"; sourceTree = "<group>"; };
+		795DCFD01D1CD3FA000B1C12 /* UIView+TWFrame.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = "UIView+TWFrame.m"; sourceTree = "<group>"; };
+		795DCFD21D1CD8C2000B1C12 /* RightViewController.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = RightViewController.h; sourceTree = "<group>"; };
+		795DCFD31D1CD8C2000B1C12 /* RightViewController.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = RightViewController.m; sourceTree = "<group>"; };
+		795DCFDE1D1CDBC3000B1C12 /* ReadViewController.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = ReadViewController.h; sourceTree = "<group>"; };
+		795DCFDF1D1CDBC3000B1C12 /* ReadViewController.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = ReadViewController.m; sourceTree = "<group>"; };
+		795DCFE11D1CDBD0000B1C12 /* SettingViewController.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = SettingViewController.h; sourceTree = "<group>"; };
+		795DCFE21D1CDBD0000B1C12 /* SettingViewController.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = SettingViewController.m; sourceTree = "<group>"; };
+		795DCFE41D1CDC7A000B1C12 /* CommunityViewController.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = CommunityViewController.h; sourceTree = "<group>"; };
+		795DCFE51D1CDC7A000B1C12 /* CommunityViewController.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = CommunityViewController.m; sourceTree = "<group>"; };
+		795DCFE71D1CDC85000B1C12 /* ProductViewController.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = ProductViewController.h; sourceTree = "<group>"; };
+		795DCFE81D1CDC85000B1C12 /* ProductViewController.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = ProductViewController.m; sourceTree = "<group>"; };
+		795DCFEA1D1CDC9F000B1C12 /* RadioViewController.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = RadioViewController.h; sourceTree = "<group>"; };
+		795DCFEB1D1CDC9F000B1C12 /* RadioViewController.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = RadioViewController.m; sourceTree = "<group>"; };
 		79630CCB1D1CD0440099FF46 /* Product_A.app */ = {isa = PBXFileReference; explicitFileType = wrapper.application; includeInIndex = 0; path = Product_A.app; sourceTree = BUILT_PRODUCTS_DIR; };
 		79630CCF1D1CD0450099FF46 /* main.m */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.objc; path = main.m; sourceTree = "<group>"; };
-		79630CD11D1CD0450099FF46 /* AppDelegate.h */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.h; path = AppDelegate.h; sourceTree = "<group>"; };
-		79630CD21D1CD0450099FF46 /* AppDelegate.m */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.objc; path = AppDelegate.m; sourceTree = "<group>"; };
-		79630CD41D1CD0450099FF46 /* ViewController.h */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.h; path = ViewController.h; sourceTree = "<group>"; };
-		79630CD51D1CD0450099FF46 /* ViewController.m */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.objc; path = ViewController.m; sourceTree = "<group>"; };
-		79630CD81D1CD0450099FF46 /* Base */ = {isa = PBXFileReference; lastKnownFileType = file.storyboard; name = Base; path = Base.lproj/Main.storyboard; sourceTree = "<group>"; };
+		79630CD11D1CD0450099FF46 /* AppDelegate.h */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.h; name = AppDelegate.h; path = Product_A/AppDelegate.h; sourceTree = SOURCE_ROOT; };
+		79630CD21D1CD0450099FF46 /* AppDelegate.m */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.objc; name = AppDelegate.m; path = Product_A/AppDelegate.m; sourceTree = SOURCE_ROOT; };
 		79630CDA1D1CD0450099FF46 /* Assets.xcassets */ = {isa = PBXFileReference; lastKnownFileType = folder.assetcatalog; path = Assets.xcassets; sourceTree = "<group>"; };
 		79630CDD1D1CD0450099FF46 /* Base */ = {isa = PBXFileReference; lastKnownFileType = file.storyboard; name = Base; path = Base.lproj/LaunchScreen.storyboard; sourceTree = "<group>"; };
 		79630CDF1D1CD0450099FF46 /* Info.plist */ = {isa = PBXFileReference; lastKnownFileType = text.plist.xml; path = Info.plist; sourceTree = "<group>"; };
@@ -78,6 +98,252 @@
 /* End PBXFrameworksBuildPhase section */
 
 /* Begin PBXGroup section */
+		795DCFAE1D1CD253000B1C12 /* AppDelegate */ = {
+			isa = PBXGroup;
+			children = (
+				79630CD11D1CD0450099FF46 /* AppDelegate.h */,
+				79630CD21D1CD0450099FF46 /* AppDelegate.m */,
+			);
+			path = AppDelegate;
+			sourceTree = "<group>";
+		};
+		795DCFAF1D1CD253000B1C12 /* CodeClass */ = {
+			isa = PBXGroup;
+			children = (
+				795DCFC01D1CD253000B1C12 /* Root */,
+				795DCFB01D1CD253000B1C12 /* Community */,
+				795DCFB41D1CD253000B1C12 /* Product */,
+				795DCFB81D1CD253000B1C12 /* Radio */,
+				795DCFBC1D1CD253000B1C12 /* Read */,
+				795DCFC41D1CD253000B1C12 /* Setting */,
+			);
+			path = CodeClass;
+			sourceTree = "<group>";
+		};
+		795DCFB01D1CD253000B1C12 /* Community */ = {
+			isa = PBXGroup;
+			children = (
+				795DCFB11D1CD253000B1C12 /* Controller */,
+				795DCFB21D1CD253000B1C12 /* Model */,
+				795DCFB31D1CD253000B1C12 /* View */,
+			);
+			path = Community;
+			sourceTree = "<group>";
+		};
+		795DCFB11D1CD253000B1C12 /* Controller */ = {
+			isa = PBXGroup;
+			children = (
+				795DCFE41D1CDC7A000B1C12 /* CommunityViewController.h */,
+				795DCFE51D1CDC7A000B1C12 /* CommunityViewController.m */,
+			);
+			path = Controller;
+			sourceTree = "<group>";
+		};
+		795DCFB21D1CD253000B1C12 /* Model */ = {
+			isa = PBXGroup;
+			children = (
+			);
+			path = Model;
+			sourceTree = "<group>";
+		};
+		795DCFB31D1CD253000B1C12 /* View */ = {
+			isa = PBXGroup;
+			children = (
+			);
+			path = View;
+			sourceTree = "<group>";
+		};
+		795DCFB41D1CD253000B1C12 /* Product */ = {
+			isa = PBXGroup;
+			children = (
+				795DCFB51D1CD253000B1C12 /* Controller */,
+				795DCFB61D1CD253000B1C12 /* Model */,
+				795DCFB71D1CD253000B1C12 /* View */,
+			);
+			path = Product;
+			sourceTree = "<group>";
+		};
+		795DCFB51D1CD253000B1C12 /* Controller */ = {
+			isa = PBXGroup;
+			children = (
+				795DCFE71D1CDC85000B1C12 /* ProductViewController.h */,
+				795DCFE81D1CDC85000B1C12 /* ProductViewController.m */,
+			);
+			path = Controller;
+			sourceTree = "<group>";
+		};
+		795DCFB61D1CD253000B1C12 /* Model */ = {
+			isa = PBXGroup;
+			children = (
+			);
+			path = Model;
+			sourceTree = "<group>";
+		};
+		795DCFB71D1CD253000B1C12 /* View */ = {
+			isa = PBXGroup;
+			children = (
+			);
+			path = View;
+			sourceTree = "<group>";
+		};
+		795DCFB81D1CD253000B1C12 /* Radio */ = {
+			isa = PBXGroup;
+			children = (
+				795DCFB91D1CD253000B1C12 /* Controller */,
+				795DCFBA1D1CD253000B1C12 /* Model */,
+				795DCFBB1D1CD253000B1C12 /* View */,
+			);
+			path = Radio;
+			sourceTree = "<group>";
+		};
+		795DCFB91D1CD253000B1C12 /* Controller */ = {
+			isa = PBXGroup;
+			children = (
+				795DCFEA1D1CDC9F000B1C12 /* RadioViewController.h */,
+				795DCFEB1D1CDC9F000B1C12 /* RadioViewController.m */,
+			);
+			path = Controller;
+			sourceTree = "<group>";
+		};
+		795DCFBA1D1CD253000B1C12 /* Model */ = {
+			isa = PBXGroup;
+			children = (
+			);
+			path = Model;
+			sourceTree = "<group>";
+		};
+		795DCFBB1D1CD253000B1C12 /* View */ = {
+			isa = PBXGroup;
+			children = (
+			);
+			path = View;
+			sourceTree = "<group>";
+		};
+		795DCFBC1D1CD253000B1C12 /* Read */ = {
+			isa = PBXGroup;
+			children = (
+				795DCFBD1D1CD253000B1C12 /* Controller */,
+				795DCFBE1D1CD253000B1C12 /* Model */,
+				795DCFBF1D1CD253000B1C12 /* View */,
+			);
+			path = Read;
+			sourceTree = "<group>";
+		};
+		795DCFBD1D1CD253000B1C12 /* Controller */ = {
+			isa = PBXGroup;
+			children = (
+				795DCFDE1D1CDBC3000B1C12 /* ReadViewController.h */,
+				795DCFDF1D1CDBC3000B1C12 /* ReadViewController.m */,
+			);
+			path = Controller;
+			sourceTree = "<group>";
+		};
+		795DCFBE1D1CD253000B1C12 /* Model */ = {
+			isa = PBXGroup;
+			children = (
+			);
+			path = Model;
+			sourceTree = "<group>";
+		};
+		795DCFBF1D1CD253000B1C12 /* View */ = {
+			isa = PBXGroup;
+			children = (
+			);
+			path = View;
+			sourceTree = "<group>";
+		};
+		795DCFC01D1CD253000B1C12 /* Root */ = {
+			isa = PBXGroup;
+			children = (
+				795DCFC11D1CD253000B1C12 /* Controller */,
+				795DCFC21D1CD253000B1C12 /* Model */,
+				795DCFC31D1CD253000B1C12 /* View */,
+			);
+			path = Root;
+			sourceTree = "<group>";
+		};
+		795DCFC11D1CD253000B1C12 /* Controller */ = {
+			isa = PBXGroup;
+			children = (
+				795DCFCB1D1CD287000B1C12 /* RootViewController.h */,
+				795DCFCC1D1CD287000B1C12 /* RootViewController.m */,
+			);
+			path = Controller;
+			sourceTree = "<group>";
+		};
+		795DCFC21D1CD253000B1C12 /* Model */ = {
+			isa = PBXGroup;
+			children = (
+			);
+			path = Model;
+			sourceTree = "<group>";
+		};
+		795DCFC31D1CD253000B1C12 /* View */ = {
+			isa = PBXGroup;
+			children = (
+			);
+			path = View;
+			sourceTree = "<group>";
+		};
+		795DCFC41D1CD253000B1C12 /* Setting */ = {
+			isa = PBXGroup;
+			children = (
+				795DCFC51D1CD253000B1C12 /* Controller */,
+				795DCFC61D1CD253000B1C12 /* Model */,
+				795DCFC71D1CD253000B1C12 /* View */,
+			);
+			path = Setting;
+			sourceTree = "<group>";
+		};
+		795DCFC51D1CD253000B1C12 /* Controller */ = {
+			isa = PBXGroup;
+			children = (
+				795DCFE11D1CDBD0000B1C12 /* SettingViewController.h */,
+				795DCFE21D1CDBD0000B1C12 /* SettingViewController.m */,
+			);
+			path = Controller;
+			sourceTree = "<group>";
+		};
+		795DCFC61D1CD253000B1C12 /* Model */ = {
+			isa = PBXGroup;
+			children = (
+			);
+			path = Model;
+			sourceTree = "<group>";
+		};
+		795DCFC71D1CD253000B1C12 /* View */ = {
+			isa = PBXGroup;
+			children = (
+			);
+			path = View;
+			sourceTree = "<group>";
+		};
+		795DCFC81D1CD253000B1C12 /* Tool */ = {
+			isa = PBXGroup;
+			children = (
+				795DCFCF1D1CD3FA000B1C12 /* UIView+TWFrame.h */,
+				795DCFD01D1CD3FA000B1C12 /* UIView+TWFrame.m */,
+			);
+			path = Tool;
+			sourceTree = "<group>";
+		};
+		795DCFC91D1CD253000B1C12 /* Help */ = {
+			isa = PBXGroup;
+			children = (
+				795DCFCE1D1CD336000B1C12 /* PrefixHeader.pch */,
+			);
+			path = Help;
+			sourceTree = "<group>";
+		};
+		795DCFCA1D1CD253000B1C12 /* BaseClass */ = {
+			isa = PBXGroup;
+			children = (
+				795DCFD21D1CD8C2000B1C12 /* RightViewController.h */,
+				795DCFD31D1CD8C2000B1C12 /* RightViewController.m */,
+			);
+			path = BaseClass;
+			sourceTree = "<group>";
+		};
 		79630CC21D1CD0440099FF46 = {
 			isa = PBXGroup;
 			children = (
@@ -101,11 +367,11 @@
 		79630CCD1D1CD0450099FF46 /* Product_A */ = {
 			isa = PBXGroup;
 			children = (
-				79630CD11D1CD0450099FF46 /* AppDelegate.h */,
-				79630CD21D1CD0450099FF46 /* AppDelegate.m */,
-				79630CD41D1CD0450099FF46 /* ViewController.h */,
-				79630CD51D1CD0450099FF46 /* ViewController.m */,
-				79630CD71D1CD0450099FF46 /* Main.storyboard */,
+				795DCFAE1D1CD253000B1C12 /* AppDelegate */,
+				795DCFAF1D1CD253000B1C12 /* CodeClass */,
+				795DCFC81D1CD253000B1C12 /* Tool */,
+				795DCFC91D1CD253000B1C12 /* Help */,
+				795DCFCA1D1CD253000B1C12 /* BaseClass */,
 				79630CDA1D1CD0450099FF46 /* Assets.xcassets */,
 				79630CDC1D1CD0450099FF46 /* LaunchScreen.storyboard */,
 				79630CDF1D1CD0450099FF46 /* Info.plist */,
@@ -248,7 +514,6 @@
 			files = (
 				79630CDE1D1CD0450099FF46 /* LaunchScreen.storyboard in Resources */,
 				79630CDB1D1CD0450099FF46 /* Assets.xcassets in Resources */,
-				79630CD91D1CD0450099FF46 /* Main.storyboard in Resources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};
@@ -273,9 +538,16 @@
 			isa = PBXSourcesBuildPhase;
 			buildActionMask = 2147483647;
 			files = (
-				79630CD61D1CD0450099FF46 /* ViewController.m in Sources */,
+				795DCFE01D1CDBC3000B1C12 /* ReadViewController.m in Sources */,
+				795DCFD41D1CD8C2000B1C12 /* RightViewController.m in Sources */,
+				795DCFE91D1CDC85000B1C12 /* ProductViewController.m in Sources */,
 				79630CD31D1CD0450099FF46 /* AppDelegate.m in Sources */,
+				795DCFD11D1CD3FA000B1C12 /* UIView+TWFrame.m in Sources */,
 				79630CD01D1CD0450099FF46 /* main.m in Sources */,
+				795DCFCD1D1CD287000B1C12 /* RootViewController.m in Sources */,
+				795DCFE61D1CDC7A000B1C12 /* CommunityViewController.m in Sources */,
+				795DCFEC1D1CDC9F000B1C12 /* RadioViewController.m in Sources */,
+				795DCFE31D1CDBD0000B1C12 /* SettingViewController.m in Sources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};
@@ -311,14 +583,6 @@
 /* End PBXTargetDependency section */
 
 /* Begin PBXVariantGroup section */
-		79630CD71D1CD0450099FF46 /* Main.storyboard */ = {
-			isa = PBXVariantGroup;
-			children = (
-				79630CD81D1CD0450099FF46 /* Base */,
-			);
-			name = Main.storyboard;
-			sourceTree = "<group>";
-		};
 		79630CDC1D1CD0450099FF46 /* LaunchScreen.storyboard */ = {
 			isa = PBXVariantGroup;
 			children = (
@@ -416,6 +680,8 @@
 			isa = XCBuildConfiguration;
 			buildSettings = {
 				ASSETCATALOG_COMPILER_APPICON_NAME = AppIcon;
+				GCC_PRECOMPILE_PREFIX_HEADER = YES;
+				GCC_PREFIX_HEADER = "$(SRCROOT)/Product_A/Help/PrefixHeader.pch";
 				INFOPLIST_FILE = Product_A/Info.plist;
 				LD_RUNPATH_SEARCH_PATHS = "$(inherited) @executable_path/Frameworks";
 				PRODUCT_BUNDLE_IDENTIFIER = "wushuputi.Product-A";
@@ -427,6 +693,8 @@
 			isa = XCBuildConfiguration;
 			buildSettings = {
 				ASSETCATALOG_COMPILER_APPICON_NAME = AppIcon;
+				GCC_PRECOMPILE_PREFIX_HEADER = YES;
+				GCC_PREFIX_HEADER = "$(SRCROOT)/Product_A/Help/PrefixHeader.pch";
 				INFOPLIST_FILE = Product_A/Info.plist;
 				LD_RUNPATH_SEARCH_PATHS = "$(inherited) @executable_path/Frameworks";
 				PRODUCT_BUNDLE_IDENTIFIER = "wushuputi.Product-A";
@@ -501,6 +769,7 @@
 				79630CFA1D1CD0450099FF46 /* Release */,
 			);
 			defaultConfigurationIsVisible = 0;
+			defaultConfigurationName = Release;
 		};
 		79630CFB1D1CD0450099FF46 /* Build configuration list for PBXNativeTarget "Product_ATests" */ = {
 			isa = XCConfigurationList;
@@ -509,6 +778,7 @@
 				79630CFD1D1CD0450099FF46 /* Release */,
 			);
 			defaultConfigurationIsVisible = 0;
+			defaultConfigurationName = Release;
 		};
 		79630CFE1D1CD0450099FF46 /* Build configuration list for PBXNativeTarget "Product_AUITests" */ = {
 			isa = XCConfigurationList;
@@ -517,6 +787,7 @@
 				79630D001D1CD0450099FF46 /* Release */,
 			);
 			defaultConfigurationIsVisible = 0;
+			defaultConfigurationName = Release;
 		};
 /* End XCConfigurationList section */
 	};
