@@ -186,6 +186,7 @@
     
 }
 
+#pragma mark ---下载----
 - (void)downloadAction:(UIButton *)button{
     [button setImage:nil forState:(UIControlStateNormal)];
     
@@ -200,6 +201,15 @@
         [_downLoadButton setTitle:[NSString stringWithFormat:@"%ld", (long)progress] forState:(UIControlStateNormal)];
     } didDownLoad:^(NSString *savePath, NSString *url) {
         NSLog(@"%@", savePath);
+        
+        // NSLog(@"%@", _musicInfo);
+        // 保存数据
+        RadioDownloadTable *table = [[RadioDownloadTable alloc] init];
+        [table creatTable];
+        //title, musicUrl, musicImg, musicPath
+        NSArray *music = @[_musicInfo[@"title"], _musicInfo[@"musicUrl"], _musicInfo[@"coverimg"], savePath];
+        [table insertIntoTabel:music];
+        
     }];
     
 }

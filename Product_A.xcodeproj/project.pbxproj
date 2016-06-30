@@ -33,6 +33,8 @@
 		795DCFF81D1D531F000B1C12 /* ReadCollectionViewCell.m in Sources */ = {isa = PBXBuildFile; fileRef = 795DCFF71D1D531F000B1C12 /* ReadCollectionViewCell.m */; };
 		796218061D24A8AB006404B4 /* DownLoad.m in Sources */ = {isa = PBXBuildFile; fileRef = 796218051D24A8AB006404B4 /* DownLoad.m */; };
 		796218091D24A8C9006404B4 /* DownLoadManager.m in Sources */ = {isa = PBXBuildFile; fileRef = 796218081D24A8C9006404B4 /* DownLoadManager.m */; };
+		7962180D1D24F0DD006404B4 /* DBManager.m in Sources */ = {isa = PBXBuildFile; fileRef = 7962180C1D24F0DD006404B4 /* DBManager.m */; };
+		796218101D24F5A3006404B4 /* RadioDownloadTable.m in Sources */ = {isa = PBXBuildFile; fileRef = 7962180F1D24F5A3006404B4 /* RadioDownloadTable.m */; };
 		79630CD01D1CD0450099FF46 /* main.m in Sources */ = {isa = PBXBuildFile; fileRef = 79630CCF1D1CD0450099FF46 /* main.m */; };
 		79630CD31D1CD0450099FF46 /* AppDelegate.m in Sources */ = {isa = PBXBuildFile; fileRef = 79630CD21D1CD0450099FF46 /* AppDelegate.m */; };
 		79630CDB1D1CD0450099FF46 /* Assets.xcassets in Resources */ = {isa = PBXBuildFile; fileRef = 79630CDA1D1CD0450099FF46 /* Assets.xcassets */; };
@@ -386,6 +388,10 @@
 		796218051D24A8AB006404B4 /* DownLoad.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = DownLoad.m; sourceTree = "<group>"; };
 		796218071D24A8C9006404B4 /* DownLoadManager.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = DownLoadManager.h; sourceTree = "<group>"; };
 		796218081D24A8C9006404B4 /* DownLoadManager.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = DownLoadManager.m; sourceTree = "<group>"; };
+		7962180B1D24F0DD006404B4 /* DBManager.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = DBManager.h; sourceTree = "<group>"; };
+		7962180C1D24F0DD006404B4 /* DBManager.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = DBManager.m; sourceTree = "<group>"; };
+		7962180E1D24F5A3006404B4 /* RadioDownloadTable.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = RadioDownloadTable.h; sourceTree = "<group>"; };
+		7962180F1D24F5A3006404B4 /* RadioDownloadTable.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = RadioDownloadTable.m; sourceTree = "<group>"; };
 		79630CCB1D1CD0440099FF46 /* Product_A.app */ = {isa = PBXFileReference; explicitFileType = wrapper.application; includeInIndex = 0; path = Product_A.app; sourceTree = BUILT_PRODUCTS_DIR; };
 		79630CCF1D1CD0450099FF46 /* main.m */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.objc; path = main.m; sourceTree = "<group>"; };
 		79630CD11D1CD0450099FF46 /* AppDelegate.h */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.h; name = AppDelegate.h; path = Product_A/AppDelegate.h; sourceTree = SOURCE_ROOT; };
@@ -828,6 +834,8 @@
 		795DCFBA1D1CD253000B1C12 /* Model */ = {
 			isa = PBXGroup;
 			children = (
+				7962180E1D24F5A3006404B4 /* RadioDownloadTable.h */,
+				7962180F1D24F5A3006404B4 /* RadioDownloadTable.m */,
 			);
 			path = Model;
 			sourceTree = "<group>";
@@ -967,6 +975,7 @@
 		795DCFC81D1CD253000B1C12 /* Tool */ = {
 			isa = PBXGroup;
 			children = (
+				7962180A1D24F0BA006404B4 /* DBManager */,
 				796218031D24A88A006404B4 /* downLoad */,
 				798CD03F1D213F890004F68E /* Unit */,
 				795DCFCF1D1CD3FA000B1C12 /* UIView+TWFrame.h */,
@@ -1009,6 +1018,15 @@
 				796218081D24A8C9006404B4 /* DownLoadManager.m */,
 			);
 			name = downLoad;
+			sourceTree = "<group>";
+		};
+		7962180A1D24F0BA006404B4 /* DBManager */ = {
+			isa = PBXGroup;
+			children = (
+				7962180B1D24F0DD006404B4 /* DBManager.h */,
+				7962180C1D24F0DD006404B4 /* DBManager.m */,
+			);
+			name = DBManager;
 			sourceTree = "<group>";
 		};
 		79630CC21D1CD0440099FF46 = {
@@ -2030,6 +2048,7 @@
 				795DCFF81D1D531F000B1C12 /* ReadCollectionViewCell.m in Sources */,
 				7931C84F1D20C3E00052D862 /* ColumnsDetailModel.m in Sources */,
 				792756B91D2119DC00C25FD1 /* NSString+Html.m in Sources */,
+				7962180D1D24F0DD006404B4 /* DBManager.m in Sources */,
 				796218061D24A8AB006404B4 /* DownLoad.m in Sources */,
 				79A8950C1D2274130097F611 /* AllListTableViewCell.m in Sources */,
 				79FDC3C31D23A6F200B7E73A /* RadioDetailViewController.m in Sources */,
@@ -2045,6 +2064,7 @@
 				79630CD01D1CD0450099FF46 /* main.m in Sources */,
 				795DCFCD1D1CD287000B1C12 /* RootViewController.m in Sources */,
 				795DCFE61D1CDC7A000B1C12 /* CommunityViewController.m in Sources */,
+				796218101D24F5A3006404B4 /* RadioDownloadTable.m in Sources */,
 				7931C8581D20CF100052D862 /* ColumnsDetailViewController.m in Sources */,
 				795DCFEC1D1CDC9F000B1C12 /* RadioViewController.m in Sources */,
 				795DCFF51D1D390E000B1C12 /* ReadModel.m in Sources */,
