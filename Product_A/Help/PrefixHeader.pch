@@ -13,9 +13,49 @@
 // You will also need to set the Prefix Header build setting of one or more of your targets to reference this file.
 
 #import "UIView+TWFrame.h"
+#import "CarouselView.h"
+#import <AFNetworking/AFNetworking.h>
+#import <Masonry/Masonry.h>
+#import <UIImageView+WebCache.h>
+#import <MJRefresh/MJRefresh.h>
 #define PKCOLOR(R,G,B) [UIColor colorWithRed:(R) / 255.0 green:(G)/ 255.0 blue:(B) / 255.0 alpha:1]
 #define kMovieDistance (kScreenWidth / 5.0)
 
-#define kNaviH 40
+#define kNaviH 44
+
+// 阅读界面接口
+#define KReadURL @"http://api2.pianke.me/read/columns"
+#define KReadDic @{"client":"1", "deciceid":"63A94D37-33F9-40FF-9EBB-481182338873", "auth":"BsdsQiiw9K9DCMVzGMTikDJxQauML6E82dsXj1lcWP23tBPTxRY4Pw", "version": "3.0.2"}
+
+// 列表详情界面接口
+#define kColumnsDetailURL @"http://api2.pianke.me/read/columns_detail"
+#define kColumnsDetailDic @{@"deviceid":@"63A94D37-33F9-40FF-9EBB-481182338873",@"typeid":@14,@"client":@"1",@"sort":@"addtime",@"limit":@10,@"version":@"3.0.2",@"auth":@"Wc06FCrkoq1DCMVzGMTikDJxQ8bm3Mrm2NpT9qWjwzcWP23tBKQx1c4P0",@"start":@"0"}
+// 文章详情接口
+#define kArticleInfoURL @"http://api2.pianke.me/article/info"
+#define kArticleInfoDic @{@"contentid": @"54603f3d8ead0e195000028e", @"client": @"1", @"deviceid": @"63A94D37-33F9-40FF-9EBB-481182338873", @"auth": @"Wc06FCrkoq1DCMVzGMTikDJxQ8bm3Mrm2NpT9qWjwzcWP23tBKQx1c4P0", @"version": @"3.0.2"}
+// 电台列表接口
+#define kRadio @"http://api2.pianke.me/ting/radio"
+// 电台列表上拉刷新接口
+#define kRadioRefresh @"http://api2.pianke.me/ting/radio_list"
+#define kRadioRefreshDic   @{@"auth": @"XZU7RH7m1861DC8Z8H8HvkTJxQMGoPLGO9zo4XDA0cWP22NdFSh9d7fo", @"client": @1, @"deviceid": @"6D4DD967-5EB2-40E2-A202-37E64F3BEA31", @"limit": @9, @"start": @9, @"version": @"3.0.6"}
+
+// 电台详情接口
+#define kRadioDetail @"http://api2.pianke.me/ting/radio_detail"
+#define kRadioDetailDic @{@"auth": @"XMdnEiW0m3qxDCMVzGMTikDJxQ8aoNbKF8W1rUDRicWP23tBNQhpd6fw", @"client": @"1", @"deviceid": @"63A94D37-33F9-40FF-9EBB-481182338873", @"radioid": @"55af6aab53479c66758b45b1", @"version": @"3.0.4"}
+
+
+// 宏定义, 用户获取uiimage的宽高比
+#define ImageAspect(image) ((image).size.width / (image).size.height)
+
+// 定义阅读--列表详情里面的字体大小, 颜色
+#define kColumensDetailTitleFontSize 20
+#define kColumensDetailContentFontSize 17
+#define kColumensDetailContentFontColor [UIColor grayColor]
+
+// 电台--列表详情里面的字体大小, 颜色
+#define kRadioAllListFontSize 17
+#define kColumensDetailContentFontSize 17
+
+#define kVoiceSzie 15
 
 #endif /* PrefixHeader_pch */

@@ -8,9 +8,9 @@
 
 #import "RightViewController.h"
 
-@interface RightViewController ()
+@interface RightViewController ()<UIGestureRecognizerDelegate>
 
-@property (nonatomic, strong)UIButton *button;
+
 @property (nonatomic, strong)UITapGestureRecognizer *tap;
 @property (nonatomic, strong)UIPanGestureRecognizer *pan;
 
@@ -29,7 +29,7 @@
     [self.view addSubview:vertical];
     
     // 横线
-    UIView *horizontal = [[UIView alloc] initWithFrame:CGRectMake(0, 20 + kNaviH, kScreenWidth, 1)];
+    UIView *horizontal = [[UIView alloc] initWithFrame:CGRectMake(0, 19 + kNaviH, kScreenWidth, 1)];
      horizontal.backgroundColor = [UIColor lightGrayColor];
     [self.view addSubview:horizontal];
     
@@ -41,9 +41,20 @@
     screenEdgePan.edges  = UIRectEdgeLeft;
     [self.view addGestureRecognizer:screenEdgePan];
     
+#pragma mark ---注意: 点击手势会劫区tabelview的点击手势, 因此需要在相应手势点击的代理方法中,进行判断
     [self.view addGestureRecognizer:self.pan];
     
     
+}
+
+
+#pragma mark ---解决tap点击,与tableview的冲突问题----
+#pragma mark-手势代理，解决和tableview点击发生的冲突
+-(BOOL)gestureRecognizer:(UIGestureRecognizer *)gestureRecognizer shouldReceiveTouch:(UITouch *)touch {
+    if ([NSStringFromClass([touch.view class]) isEqualToString:@"UITableViewCellContentView"]) {//判断如果点击的是tableView的cell，就把手势给关闭了
+        return NO;//关闭手势
+    }//否则手势存在
+    return YES;
 }
 
 #pragma  mark --属性
@@ -61,6 +72,7 @@
     if (!_tap) {
         _tap = [[UITapGestureRecognizer alloc] init];
         [_tap addTarget:self action:@selector(tap:)];
+        _tap.delegate = self;
     }
     return _tap;
 }
@@ -78,7 +90,8 @@
 
 - (UILabel *)titleLabel {
     if (!_titleLabel) {
-        _titleLabel = [[UILabel alloc] initWithFrame:CGRectMake(40, 30, 200, 20)];
+        _titleLabel = [[UILabel alloc] initWithFrame:CGRectMake(50, 30, 200, 20)];
+        
         _titleLabel.font = [UIFont systemFontOfSize:18];
         _titleLabel.textColor = PKCOLOR(25, 25, 25);
     }

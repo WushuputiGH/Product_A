@@ -25,8 +25,13 @@
     self.window.rootViewController = rootVC;
     
     UIView *view = [[UIView alloc] initWithFrame:CGRectMake(0, 0, kScreenWidth, 20)];
+    
     view.backgroundColor = [UIColor blackColor];
     [self.window addSubview:view];
+    [view mas_makeConstraints:^(MASConstraintMaker *make) {
+        make.top.left.right.equalTo(self.window);
+        make.height.equalTo(@20);
+    }];
     return YES;
 }
 

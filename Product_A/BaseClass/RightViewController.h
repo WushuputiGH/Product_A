@@ -13,12 +13,12 @@ typedef NS_ENUM(NSInteger, MOVETYPE) {
 };
 
 @interface RightViewController : UIViewController
-
+@property (nonatomic, strong)UIButton *button;
 @property (nonatomic, strong, readwrite) UILabel *titleLabel;
 
 
 - (void)changeFrameWithType:(MOVETYPE)moveType;
 
-
+- (void)buttonAction:(UIButton *)button;
 
 @end

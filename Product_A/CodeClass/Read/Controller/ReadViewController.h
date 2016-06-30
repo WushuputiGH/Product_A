@@ -7,7 +7,11 @@
 //
 
 #import "RightViewController.h"
+#import "ColumnsDetailViewController.h"
 
 @interface ReadViewController : RightViewController
+
+
+
 
 @end
