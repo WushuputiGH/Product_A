@@ -8,11 +8,11 @@
 
 #import "MyPlayerManager.h"
 
+static MyPlayerManager *defaultManager = nil;
+
 @implementation MyPlayerManager
 
-
 +(MyPlayerManager *)defaultManager{
-    static MyPlayerManager *defaultManager = nil;
     static dispatch_once_t onceToken;
     dispatch_once(&onceToken, ^{
         defaultManager = [[MyPlayerManager alloc] init];
@@ -31,6 +31,7 @@
 
 // 设置数据
 - (void)setMediaLists:(NSMutableArray *)mediaLists{
+    
     [_mediaLists removeAllObjects];
     _mediaLists = [mediaLists mutableCopy];
     AVPlayerItem *avPlayerItem = [AVPlayerItem playerItemWithURL:_mediaLists[_index]];
@@ -43,24 +44,32 @@
     
 }
 
+
+
 // 播放
 
 - (void)play{
     [_avPlayer play];
     _playState = Play;
-    _changeState(_playState);
+    if (_changeState) {
+        _changeState(_playState);
+    }
+    
 }
 
 //暂停
 - (void)pause{
     [_avPlayer pause];
     _playState = Pause;
-    _changeState(_playState);
+    if (_changeState) {
+        _changeState(_playState);
+    }
 }
 
 // 停止
 - (void)stop {
     [self seekToSecondsWith:0];
+    [_avPlayer pause];
     _playState = Pause;
 }
 
@@ -124,7 +133,10 @@
     AVPlayerItem *playerItem = [[AVPlayerItem alloc] initWithURL:_mediaLists[_index]];
     [_avPlayer replaceCurrentItemWithPlayerItem:playerItem];
     [self play];
-    self.changeIndex(index);
+    
+    // 当切歌的时候, 发布一通知
+    [[NSNotificationCenter defaultCenter] postNotificationName:@"NOTICECHANGEMEDIA" object:nil userInfo:@{@"index": @(_index)}];
+
     
 }
 

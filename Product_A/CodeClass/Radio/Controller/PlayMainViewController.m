@@ -171,6 +171,10 @@
     _musicInfo = [musicInfo mutableCopy];
     [_imageView sd_setImageWithURL:[NSURL URLWithString:_musicInfo[@"coverimg"]]];
     _titleLabel.text = _musicInfo[@"title"];
+    
+    // 移除动画, 重新添加动画
+    [_imageView.layer removeAnimationForKey:@"myAnimation"];
+    [self addAnimation];
 
 }
 
@@ -182,8 +186,6 @@
     [[MyPlayerManager defaultManager] pause];
     [[MyPlayerManager defaultManager] seekToSecondsWith:sender.value];
     [[MyPlayerManager defaultManager] play];
-    
-    
 }
 
 #pragma mark ---下载----

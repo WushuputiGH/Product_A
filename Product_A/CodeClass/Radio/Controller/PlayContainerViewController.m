@@ -8,25 +8,22 @@
 
 #import "PlayContainerViewController.h"
 #import "PlayMainViewController.h"
-#import "MyPlayerManager.h"
-#import "PlayControllerView.h"
+
+
 
 
 @interface PlayContainerViewController ()<PlayControllerViewDelegate>
 
 @property (nonatomic, strong)UIScrollView *theScrollView;
 @property (nonatomic, strong)PlayMainViewController *playMainVC;
-@property (nonatomic, strong)MyPlayerManager *myPlayer;
 @property (nonatomic, strong)NSTimer *timer;
-@property (nonatomic, strong)PlayControllerView *playControllerView;
 
 @end
 
 @implementation PlayContainerViewController
 
-- (void)viewDidLoad {
-    [super viewDidLoad];
-    
+
+- (void)initialize{
     // 重新定义button按钮(即返回按钮)
     [self.button setTitle:@"" forState:(UIControlStateNormal)];
     UIImage *buttomImage = [UIImage imageNamed:@"u9_start.png"];
@@ -54,14 +51,23 @@
         NSURL *url = [NSURL URLWithString:item];
         [musicList addObject:url];
     }
-    _myPlayer.mediaLists = musicList;
-    _myPlayer.index = _index;
-    __weak typeof(self) weekSelf = self;
-    _myPlayer.changeIndex = ^(NSInteger index){
-        [weekSelf changeMusicWith:index];
-    };
-    
-     // 添加定时器
+
+    if (!_myPlayer.mediaLists) {
+        _myPlayer.index = _index;
+        _myPlayer.mediaLists = musicList;
+    }else{
+        // 如果已经在播放, 获取目前播放是url
+        NSInteger currentIndex = _myPlayer.index;
+        NSURL *radioId = _myPlayer.mediaLists[currentIndex];
+        //判断是否是正在需要播放的歌曲
+        NSURL *willRadioId = musicList[_index];
+        
+        if (![radioId isEqual:willRadioId ]) {
+            _myPlayer.index = _index;
+            _myPlayer.mediaLists = musicList;
+        }
+    }
+    // 添加定时器
     self.timer = [NSTimer scheduledTimerWithTimeInterval:0.1 target:self selector:@selector(timerAction:) userInfo:nil repeats:YES];
     [self.timer fire];
     
@@ -71,15 +77,31 @@
     
     // 播放音乐
     [self playMusic];
+    
+    // 添加切换音乐的通知观察者
+    [[NSNotificationCenter defaultCenter] addObserver:self selector:@selector(changeMedia:) name:@"NOTICECHANGEMEDIA" object:nil];
+
+}
+
+
+- (void)viewDidLoad {
+    [super viewDidLoad];
+    [self initialize];
 }
 
 - (void)playMusic{
 
     [_myPlayer play];
+
     _playMainVC.musicInfo = _musicList[_index];
     
-    
 }
+
+- (void)viewWillAppear:(BOOL)animated{
+     _playMainVC.musicInfo = _musicList[_index];
+}
+
+
 
 - (void)timerAction:(NSTimer *)timer{
     
@@ -91,7 +113,6 @@
     NSInteger currentTime = (NSInteger)_myPlayer.theCurrentTime;
     _playMainVC.progressView.value = currentTime;
 
-    
 }
 
 
@@ -102,26 +123,34 @@
 
 // 重写button的点击方法
 - (void)buttonAction:(UIButton *)button{
+        
     [self.navigationController popViewControllerAnimated:YES];
 }
 
 
 - (void)setIndex:(NSInteger)index{
     if (_index != index) {
-        [_myPlayer changeMediaWith: index];
+        if (_myPlayer) {
+            if (_myPlayer.index != index) {
+                [_myPlayer changeMediaWith: index];
+            }
+        }
+        _index = index;
     }
 }
 
-- (void)changeMusicWith:(NSInteger) index{
-    _index = index;
+
+//- (void)setMusicList:(NSMutableArray *)musicList{
+//    
+//}
+
+#pragma mark --- 监听音乐改变时候的通知 ---
+- (void)changeMedia: (NSNotification *)sender{
+    NSNumber *indexNum = sender.userInfo[@"index"];
+    _index = indexNum.integerValue;
     // 更改播放主界面的画面
     _playMainVC.musicInfo = _musicList[_index];
-    
-
-    
-    
 }
-
 
 #pragma mark ----实现PlayController的代理方法
 
@@ -131,7 +160,7 @@
 }
 - (void)lastButton:(UIButton *)sender{
     [_myPlayer lastMusic];
-    _playControllerView.playState = Pause;
+    _playControllerView.playState = Play;
 }
 - (void)playButton:(UIButton *)sender{
     

@@ -31,7 +31,8 @@ typedef NS_ENUM(NSInteger, PlayState) {
 @property (nonatomic, assign, readwrite) NSInteger index;
 @property (nonatomic, assign, readwrite) float theCurrentTime;
 @property (nonatomic, assign, readwrite) float totalTime;
-@property (nonatomic, copy, readwrite) void (^changeIndex) (NSInteger index);
+
+
 @property (nonatomic, copy, readwrite) void (^changeState) (PlayState state);
 
 + (MyPlayerManager *)defaultManager;

@@ -45,7 +45,6 @@
         [self containtSubviews];
         UIImage *buttonImage = [[UIImage imageNamed:@"music_icon_play_highlighted"] imageWithRenderingMode:(UIImageRenderingModeAlwaysTemplate)];
         [_playButton setImage:buttonImage forState:(UIControlStateNormal)];
-        _playButton.tintColor = [UIColor grayColor];
     }
     return self;
 }
