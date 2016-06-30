@@ -8,7 +8,7 @@
 
 #import "PlayContainerViewController.h"
 #import "PlayMainViewController.h"
-
+#import "RadioListTableViewController.h"
 
 
 
@@ -17,6 +17,7 @@
 @property (nonatomic, strong)UIScrollView *theScrollView;
 @property (nonatomic, strong)PlayMainViewController *playMainVC;
 @property (nonatomic, strong)NSTimer *timer;
+@property (nonatomic, strong)RadioListTableViewController *radioListVC;
 
 @end
 
@@ -30,12 +31,28 @@
     self.button.tintColor = [UIColor darkGrayColor];
     [self.button setImage:buttomImage forState:(UIControlStateNormal)];
     
-    self.theScrollView = [[UIScrollView alloc] initWithFrame:CGRectMake(0, 64, kScreenWidth, kScreenHeight - 64)];
+    self.theScrollView = [[UIScrollView alloc] initWithFrame:CGRectMake(0, 64, kScreenWidth, kScreenHeight - 128)];
     [self.view addSubview:_theScrollView];
+    self.theScrollView.contentSize = CGSizeMake(2 * kScreenWidth, kScreenHeight - 128);
+    _theScrollView.bounces = NO;
+    _theScrollView.pagingEnabled = YES;
     
+    // 添加主播放图
     self.playMainVC = [[PlayMainViewController alloc] init];
     [_theScrollView addSubview:_playMainVC.view];
     [self addChildViewController:_playMainVC];
+    
+    
+    // 添加播放列表
+    self.radioListVC = [[RadioListTableViewController alloc] init];
+    self.radioListVC.view.frame = CGRectMake(kScreenWidth, 0, kScreenWidth, kScreenHeight - 64);
+    [_theScrollView addSubview: self.radioListVC.view];
+    [self addChildViewController: _radioListVC];
+    _radioListVC.musicList = self.musicList;
+    _radioListVC.name = self.name;
+    
+    
+    
     
     // 添加playControllerView
     _playControllerView  = [[PlayControllerView alloc] init];

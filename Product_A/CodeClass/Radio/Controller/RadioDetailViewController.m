@@ -199,6 +199,7 @@
     
      _playContainerVC.index = indexPath.row;
     _playContainerVC.musicList = [[self.radioDetailModel valueForKeyPath:@"data.list"] mutableCopy];
+    _playContainerVC.name = [self.radioDetailModel valueForKeyPath:@"data.radioInfo.userinfo.uname"];
 
     [self.navigationController pushViewController:_playContainerVC animated:YES];
 

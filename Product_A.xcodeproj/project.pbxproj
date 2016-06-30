@@ -35,6 +35,8 @@
 		796218091D24A8C9006404B4 /* DownLoadManager.m in Sources */ = {isa = PBXBuildFile; fileRef = 796218081D24A8C9006404B4 /* DownLoadManager.m */; };
 		7962180D1D24F0DD006404B4 /* DBManager.m in Sources */ = {isa = PBXBuildFile; fileRef = 7962180C1D24F0DD006404B4 /* DBManager.m */; };
 		796218101D24F5A3006404B4 /* RadioDownloadTable.m in Sources */ = {isa = PBXBuildFile; fileRef = 7962180F1D24F5A3006404B4 /* RadioDownloadTable.m */; };
+		796218131D255A71006404B4 /* RadioListTableViewController.m in Sources */ = {isa = PBXBuildFile; fileRef = 796218121D255A71006404B4 /* RadioListTableViewController.m */; };
+		796218161D255B06006404B4 /* RadioListTableViewCell.m in Sources */ = {isa = PBXBuildFile; fileRef = 796218151D255B06006404B4 /* RadioListTableViewCell.m */; };
 		79630CD01D1CD0450099FF46 /* main.m in Sources */ = {isa = PBXBuildFile; fileRef = 79630CCF1D1CD0450099FF46 /* main.m */; };
 		79630CD31D1CD0450099FF46 /* AppDelegate.m in Sources */ = {isa = PBXBuildFile; fileRef = 79630CD21D1CD0450099FF46 /* AppDelegate.m */; };
 		79630CDB1D1CD0450099FF46 /* Assets.xcassets in Resources */ = {isa = PBXBuildFile; fileRef = 79630CDA1D1CD0450099FF46 /* Assets.xcassets */; };
@@ -392,6 +394,10 @@
 		7962180C1D24F0DD006404B4 /* DBManager.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = DBManager.m; sourceTree = "<group>"; };
 		7962180E1D24F5A3006404B4 /* RadioDownloadTable.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = RadioDownloadTable.h; sourceTree = "<group>"; };
 		7962180F1D24F5A3006404B4 /* RadioDownloadTable.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = RadioDownloadTable.m; sourceTree = "<group>"; };
+		796218111D255A71006404B4 /* RadioListTableViewController.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; name = RadioListTableViewController.h; path = ../View/RadioListTableViewController.h; sourceTree = "<group>"; };
+		796218121D255A71006404B4 /* RadioListTableViewController.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; name = RadioListTableViewController.m; path = ../View/RadioListTableViewController.m; sourceTree = "<group>"; };
+		796218141D255B06006404B4 /* RadioListTableViewCell.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = RadioListTableViewCell.h; sourceTree = "<group>"; };
+		796218151D255B06006404B4 /* RadioListTableViewCell.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = RadioListTableViewCell.m; sourceTree = "<group>"; };
 		79630CCB1D1CD0440099FF46 /* Product_A.app */ = {isa = PBXFileReference; explicitFileType = wrapper.application; includeInIndex = 0; path = Product_A.app; sourceTree = BUILT_PRODUCTS_DIR; };
 		79630CCF1D1CD0450099FF46 /* main.m */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.objc; path = main.m; sourceTree = "<group>"; };
 		79630CD11D1CD0450099FF46 /* AppDelegate.h */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.h; name = AppDelegate.h; path = Product_A/AppDelegate.h; sourceTree = SOURCE_ROOT; };
@@ -827,6 +833,8 @@
 				793EB7C61D23D372003482ED /* PlayContainerViewController.m */,
 				793EB7C81D23E182003482ED /* PlayMainViewController.h */,
 				793EB7C91D23E182003482ED /* PlayMainViewController.m */,
+				796218111D255A71006404B4 /* RadioListTableViewController.h */,
+				796218121D255A71006404B4 /* RadioListTableViewController.m */,
 			);
 			path = Controller;
 			sourceTree = "<group>";
@@ -853,6 +861,8 @@
 				793EB7C31D23C31C003482ED /* RadioDetailTableViewCell.m */,
 				797B9B2E1D2418B900AB3E84 /* PlayControllerView.h */,
 				797B9B2F1D2418B900AB3E84 /* PlayControllerView.m */,
+				796218141D255B06006404B4 /* RadioListTableViewCell.h */,
+				796218151D255B06006404B4 /* RadioListTableViewCell.m */,
 			);
 			path = View;
 			sourceTree = "<group>";
@@ -2057,6 +2067,7 @@
 				795DCFE91D1CDC85000B1C12 /* ProductViewController.m in Sources */,
 				79630CD31D1CD0450099FF46 /* AppDelegate.m in Sources */,
 				795DCFF21D1D388A000B1C12 /* ReadItem.m in Sources */,
+				796218161D255B06006404B4 /* RadioListTableViewCell.m in Sources */,
 				795DCFD11D1CD3FA000B1C12 /* UIView+TWFrame.m in Sources */,
 				793EB7C11D23B17B003482ED /* UserInfonView.m in Sources */,
 				792756C01D211AEC00C25FD1 /* ArticleInfoViewController.m in Sources */,
@@ -2070,6 +2081,7 @@
 				795DCFF51D1D390E000B1C12 /* ReadModel.m in Sources */,
 				795DCFE31D1CDBD0000B1C12 /* SettingViewController.m in Sources */,
 				793EB7C41D23C31C003482ED /* RadioDetailTableViewCell.m in Sources */,
+				796218131D255A71006404B4 /* RadioListTableViewController.m in Sources */,
 				7931C85B1D20EB280052D862 /* ColumnsDetailTableViewCell.m in Sources */,
 				793EB7CA1D23E182003482ED /* PlayMainViewController.m in Sources */,
 				792756C31D2121F400C25FD1 /* ArticleInfoModel.m in Sources */,

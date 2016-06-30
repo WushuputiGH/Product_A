@@ -16,6 +16,7 @@
 @property (nonatomic, strong, readwrite) NSString *currentRadioId;
 @property (nonatomic, strong)PlayControllerView *playControllerView;
 @property (nonatomic, strong)MyPlayerManager *myPlayer;
+@property (nonatomic, strong, readwrite) NSString *name;
 
 - (void)initialize;
 

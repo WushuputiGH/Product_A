@@ -156,6 +156,7 @@
         make.left.equalTo(_likeButton.mas_left);
         make.centerY.equalTo(_titleLabel.mas_bottom).offset(50);
         make.right.equalTo(_commmentButton.mas_right);
+        make.height.equalTo(@60);
     }];
     
   
