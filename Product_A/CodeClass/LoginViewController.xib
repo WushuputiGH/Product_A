@@ -1,0 +1,87 @@
+<?xml version="1.0" encoding="UTF-8" standalone="no"?>
+<document type="com.apple.InterfaceBuilder3.CocoaTouch.XIB" version="3.0" toolsVersion="9532" systemVersion="15F34" targetRuntime="iOS.CocoaTouch" propertyAccessControl="none" useAutolayout="YES" useTraitCollections="YES">
+    <dependencies>
+        <deployment identifier="iOS"/>
+        <plugIn identifier="com.apple.InterfaceBuilder.IBCocoaTouchPlugin" version="9530"/>
+    </dependencies>
+    <objects>
+        <placeholder placeholderIdentifier="IBFilesOwner" id="-1" userLabel="File's Owner" customClass="LoginViewController">
+            <connections>
+                <outlet property="emailTF" destination="chu-gG-MaP" id="O1o-IY-2bM"/>
+                <outlet property="passwordTF" destination="jla-hD-YJY" id="o66-MQ-wXh"/>
+                <outlet property="view" destination="i5M-Pr-FkT" id="sfx-zR-JGt"/>
+            </connections>
+        </placeholder>
+        <placeholder placeholderIdentifier="IBFirstResponder" id="-2" customClass="UIResponder"/>
+        <view clearsContextBeforeDrawing="NO" contentMode="scaleToFill" id="i5M-Pr-FkT">
+            <rect key="frame" x="0.0" y="0.0" width="375" height="667"/>
+            <autoresizingMask key="autoresizingMask" widthSizable="YES" heightSizable="YES"/>
+            <subviews>
+                <button opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="center" contentVerticalAlignment="center" buttonType="roundedRect" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="rnb-kv-kYz">
+                    <rect key="frame" x="10" y="30" width="30" height="30"/>
+                    <state key="normal" title="返回"/>
+                    <connections>
+                        <action selector="clickBack:" destination="-1" eventType="touchUpInside" id="8dT-5o-sCM"/>
+                    </connections>
+                </button>
+                <button opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="center" contentVerticalAlignment="center" buttonType="roundedRect" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="6sX-Pw-4qk">
+                    <rect key="frame" x="335" y="30" width="30" height="30"/>
+                    <state key="normal" title="注册"/>
+                    <connections>
+                        <action selector="regist:" destination="-1" eventType="touchUpInside" id="5AS-VQ-ege"/>
+                    </connections>
+                </button>
+                <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="邮箱:" textAlignment="natural" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="gQb-zR-tBB">
+                    <rect key="frame" x="50" y="140" width="39" height="21"/>
+                    <fontDescription key="fontDescription" type="system" pointSize="17"/>
+                    <color key="textColor" cocoaTouchSystemColor="darkTextColor"/>
+                    <nil key="highlightedColor"/>
+                </label>
+                <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="密码:" textAlignment="natural" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="XVL-ef-30S">
+                    <rect key="frame" x="50" y="200" width="39" height="21"/>
+                    <fontDescription key="fontDescription" type="system" pointSize="17"/>
+                    <color key="textColor" cocoaTouchSystemColor="darkTextColor"/>
+                    <nil key="highlightedColor"/>
+                </label>
+                <textField opaque="NO" clipsSubviews="YES" contentMode="scaleToFill" contentHorizontalAlignment="left" contentVerticalAlignment="center" borderStyle="roundedRect" textAlignment="natural" minimumFontSize="17" translatesAutoresizingMaskIntoConstraints="NO" id="chu-gG-MaP">
+                    <rect key="frame" x="99" y="135" width="235" height="30"/>
+                    <fontDescription key="fontDescription" type="system" pointSize="14"/>
+                    <textInputTraits key="textInputTraits"/>
+                </textField>
+                <textField opaque="NO" clipsSubviews="YES" contentMode="scaleToFill" contentHorizontalAlignment="left" contentVerticalAlignment="center" borderStyle="roundedRect" textAlignment="natural" minimumFontSize="17" translatesAutoresizingMaskIntoConstraints="NO" id="jla-hD-YJY">
+                    <rect key="frame" x="99" y="197" width="235" height="30"/>
+                    <fontDescription key="fontDescription" type="system" pointSize="14"/>
+                    <textInputTraits key="textInputTraits"/>
+                </textField>
+                <button opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="center" contentVerticalAlignment="center" buttonType="roundedRect" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="zId-Oh-pNW">
+                    <rect key="frame" x="172" y="390" width="30" height="30"/>
+                    <state key="normal" title="登陆"/>
+                    <connections>
+                        <action selector="login:" destination="-1" eventType="touchUpInside" id="Ezb-gc-jEd"/>
+                    </connections>
+                </button>
+            </subviews>
+            <color key="backgroundColor" white="1" alpha="1" colorSpace="custom" customColorSpace="calibratedWhite"/>
+            <constraints>
+                <constraint firstItem="chu-gG-MaP" firstAttribute="leading" secondItem="gQb-zR-tBB" secondAttribute="trailing" constant="10" id="97F-tg-gIE"/>
+                <constraint firstAttribute="trailing" secondItem="chu-gG-MaP" secondAttribute="trailing" constant="41" id="9aQ-vA-s6f"/>
+                <constraint firstItem="gQb-zR-tBB" firstAttribute="centerY" secondItem="chu-gG-MaP" secondAttribute="centerY" id="BOO-DG-Y2s"/>
+                <constraint firstItem="jla-hD-YJY" firstAttribute="top" secondItem="chu-gG-MaP" secondAttribute="bottom" constant="32" id="Cyu-nK-v4w"/>
+                <constraint firstItem="gQb-zR-tBB" firstAttribute="leading" secondItem="i5M-Pr-FkT" secondAttribute="leading" constant="50" id="FpD-U8-Znv"/>
+                <constraint firstItem="rnb-kv-kYz" firstAttribute="top" secondItem="i5M-Pr-FkT" secondAttribute="top" constant="30" id="PWR-0V-ptD"/>
+                <constraint firstItem="XVL-ef-30S" firstAttribute="leading" secondItem="gQb-zR-tBB" secondAttribute="leading" id="Yhm-3V-3Hl"/>
+                <constraint firstItem="XVL-ef-30S" firstAttribute="baseline" secondItem="jla-hD-YJY" secondAttribute="baseline" id="YzZ-1X-LuB"/>
+                <constraint firstAttribute="trailing" secondItem="6sX-Pw-4qk" secondAttribute="trailing" constant="10" id="adT-K7-5VV"/>
+                <constraint firstItem="rnb-kv-kYz" firstAttribute="baseline" secondItem="6sX-Pw-4qk" secondAttribute="baseline" id="dFb-4M-K6n"/>
+                <constraint firstAttribute="bottom" secondItem="zId-Oh-pNW" secondAttribute="bottom" constant="247" id="fAJ-bs-End"/>
+                <constraint firstItem="zId-Oh-pNW" firstAttribute="centerX" secondItem="i5M-Pr-FkT" secondAttribute="centerX" id="gjj-76-fA2"/>
+                <constraint firstItem="rnb-kv-kYz" firstAttribute="leading" secondItem="i5M-Pr-FkT" secondAttribute="leading" constant="10" id="moS-fx-wJE"/>
+                <constraint firstItem="chu-gG-MaP" firstAttribute="top" secondItem="i5M-Pr-FkT" secondAttribute="top" constant="135" id="wEb-je-gb4"/>
+                <constraint firstItem="jla-hD-YJY" firstAttribute="leading" secondItem="chu-gG-MaP" secondAttribute="leading" id="yXx-j6-klA"/>
+                <constraint firstItem="chu-gG-MaP" firstAttribute="trailing" secondItem="jla-hD-YJY" secondAttribute="trailing" id="zmt-QE-xSy"/>
+            </constraints>
+            <simulatedScreenMetrics key="simulatedDestinationMetrics" type="retina47"/>
+            <point key="canvasLocation" x="512.5" y="432.5"/>
+        </view>
+    </objects>
+</document>

@@ -127,6 +127,7 @@
                 return ;
             }
             self.radioDetailModel = [newDic mutableCopy];
+            
             [self constraintSubViews];
             
         });
@@ -200,6 +201,8 @@
      _playContainerVC.index = indexPath.row;
     _playContainerVC.musicList = [[self.radioDetailModel valueForKeyPath:@"data.list"] mutableCopy];
     _playContainerVC.name = [self.radioDetailModel valueForKeyPath:@"data.radioInfo.userinfo.uname"];
+    
+    [[NSNotificationCenter defaultCenter] postNotificationName:@"NOTICEADDPLAY" object:nil userInfo:@{@"index": @(indexPath.row), @"radioDetailModel": [self.radioDetailModel valueForKeyPath:@"data"]}];
 
     [self.navigationController pushViewController:_playContainerVC animated:YES];
 
@@ -225,6 +228,7 @@
 #pragma mark --- 点击cell中播放button执行的方法-----
 - (void)playAction:(UIButton *)button{
    
+        
     
     // 获取对应的行
     NSInteger index = button.tag - 100;
@@ -236,17 +240,22 @@
     // 加载音乐播放器
     MyPlayerManager *myPlayer = [MyPlayerManager defaultManager];
     
-    if (myPlayer.playState == Play) {
-        //如果正在播放, 获取播放对应的url
-        NSInteger playingIndex = myPlayer.index;
-        NSURL *playUrl = myPlayer.mediaLists[playingIndex];
-        
-        if ([musicUrl isEqual:playUrl]) {
+    
+    //如果正在播放, 获取播放对应的url
+    NSInteger playingIndex = myPlayer.index;
+    NSURL *playUrl = myPlayer.mediaLists[playingIndex];
+
+    if ([musicUrl isEqual:playUrl]) {
+        if (myPlayer.playState == Play) {
             _currentPlayingUrl = nil;
-            [myPlayer stop];
+            [myPlayer pause];
             [_radioDetailTableView reloadData];
-            return;
+        }else{
+            _currentPlayingUrl = musicUrl;
+            [myPlayer play];
+            [_radioDetailTableView reloadData];
         }
+        return;
     }
 
     NSArray *urlString = [dataList valueForKeyPath:@"musicUrl"];
@@ -260,7 +269,7 @@
     self.currentPlayingUrl = musicUrl;
     [myPlayer play];
  
-
+    [[NSNotificationCenter defaultCenter] postNotificationName:@"NOTICEADDPLAY" object:nil userInfo:@{@"index": @(index), @"radioDetailModel": [self.radioDetailModel valueForKeyPath:@"data"]}];
     [_radioDetailTableView reloadData];
 
 }

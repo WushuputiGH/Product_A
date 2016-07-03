@@ -46,6 +46,7 @@
     BOOL result = [_dataBase executeUpdate:updata withArgumentsInArray:Info];
     if (result) {
         NSLog(@"成功插入");
+       
     }else {
         NSLog(@"插入失败");
     }

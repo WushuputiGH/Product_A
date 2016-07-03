@@ -8,7 +8,14 @@
 
 #import <UIKit/UIKit.h>
 
+
 @interface RadioListTableViewCell : UITableViewCell
 @property (nonatomic, strong, readwrite) UIButton *downLoadload;
+@property (nonatomic, assign) DownloadState downloadState;
+@property (nonatomic, strong, readwrite) NSDictionary *musicInfo;
+
+
+- (void)configureWithMusicInfoDic:(NSDictionary *)musicInfo;
+- (void)changeDownloadButton:(NSDictionary *)musicInfo;
 
 @end

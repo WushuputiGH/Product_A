@@ -7,38 +7,164 @@
 //
 
 #import "DownLoadManager.h"
+
+static DownLoadManager *manager = nil;
+
 @interface DownLoadManager()<DownloadDelegate>
-@property (nonatomic, strong)NSMutableDictionary *dic; //存放下载任务
 
 @end
-
-
 
 @implementation DownLoadManager
 
 + (DownLoadManager *)defaultManager{
-    static DownLoadManager *manager = nil;
+  
     static dispatch_once_t onceToken;
     dispatch_once(&onceToken, ^{
         manager = [[DownLoadManager alloc] init];
+        manager.downLoadTaskInfoDict = [NSMutableDictionary dictionary];
         
     });
     return  manager;
 }
 
 
-- (DownLoad *)creatDownloadWithUrl:(NSString *)url{
-    DownLoad *task = self.dic[url];
+- (DownLoad *)creatDownloadWithMusicInfo:(NSDictionary *)musicInfo{
+    NSString *url = musicInfo[@"musicUrl"];
+    DownLoad *task = self.downLoadTaskInfoDict[url];
     if (!task) {
+        DownLoadTaskInfo *downLoadTaskInfo = [[DownLoadTaskInfo alloc] init];
         task = [[DownLoad alloc] initWith:url];
-        [self.dic setValue:task forKey:url];
+        [task monitorDownload:^(long long bytesWritten, NSInteger progress) {
+            downLoadTaskInfo.progress = progress;
+        } didDownLoad:^(NSString *savePath, NSString *url) {
+            downLoadTaskInfo.path = savePath;
+            // 下载完成之后, 创建表
+            RadioDownloadTable *radioDownTable = [[RadioDownloadTable alloc] init];
+            [radioDownTable creatTable];
+
+             //插入数据 title, musicUrl, musicImg, musicPath
+            NSArray *array = @[musicInfo[@"title"], musicInfo[@"musicUrl"], musicInfo[@"coverimg"], savePath];
+            [radioDownTable insertIntoTabel:array];
+        }];
+        downLoadTaskInfo.task = task;
+        downLoadTaskInfo.musicInfo = musicInfo;
+        [self.downLoadTaskInfoDict setValue:downLoadTaskInfo forKey:url];
+        //
+        task.cancelResumeBlock = ^(){
+            NSData *downLoadTaskInfoData = [NSKeyedArchiver archivedDataWithRootObject:[DownLoadManager defaultManager].downLoadTaskInfoDict];
+            
+            [[NSUserDefaults standardUserDefaults] setObject: downLoadTaskInfoData forKey:@"downLoad"];
+            NSLog(@"%@", [NSSearchPathForDirectoriesInDomains(9, 1, 1) firstObject]);
+        };
+        
+        [[NSNotificationCenter defaultCenter] postNotificationName:@"COMPLETEDOWNLOAD" object:nil userInfo:nil];
     }
     task.delegate = self;
     return task;
 }
 
+
+
+- (DownLoad *)resumeDownloadWithTask:(DownLoad *)downloadTask  MusicInfo:(NSDictionary *)musicInfo{
+    NSString *url = musicInfo[@"musicUrl"];
+    DownLoad *task = self.downLoadTaskInfoDict[url];
+    if (!task) {
+        DownLoadTaskInfo *downLoadTaskInfo = [[DownLoadTaskInfo alloc] init];
+        task = downloadTask;
+        [task monitorDownload:^(long long bytesWritten, NSInteger progress) {
+            downLoadTaskInfo.progress = progress;
+        } didDownLoad:^(NSString *savePath, NSString *url) {
+            downLoadTaskInfo.path = savePath;
+            // 下载完成之后, 创建表
+            RadioDownloadTable *radioDownTable = [[RadioDownloadTable alloc] init];
+            [radioDownTable creatTable];
+            
+            //插入数据 title, musicUrl, musicImg, musicPath
+            NSArray *array = @[musicInfo[@"title"], musicInfo[@"musicUrl"], musicInfo[@"coverimg"], savePath];
+            [radioDownTable insertIntoTabel:array];
+        }];
+        downLoadTaskInfo.task = task;
+        downLoadTaskInfo.musicInfo = musicInfo;
+        [self.downLoadTaskInfoDict setValue:downLoadTaskInfo forKey:url];
+        //
+        [[NSNotificationCenter defaultCenter] postNotificationName:@"COMPLETEDOWNLOAD" object:nil userInfo:nil];
+    }
+    task.delegate = self;
+    return task;
+}
+
+
+
+
+- (DownLoad *)resumeDownloadWithDownloadTaskInfo:(DownLoadTaskInfo *)downloadTaskInfo{
+    // 获取存在任务里面的musicInfo信息
+    NSDictionary *musicInfo = downloadTaskInfo.musicInfo;
+    NSString *url = musicInfo[@"musicUrl"];
+    DownLoad *task = self.downLoadTaskInfoDict[url];
+    
+    if (!task) {
+        // 获取以前的下载任务
+        task = downloadTaskInfo.task;
+        // 赋值新的下载任务
+        task = [[DownLoad alloc] initWithResumeData:task.resumeData url:url];
+        [task monitorDownload:^(long long bytesWritten, NSInteger progress) {
+            downloadTaskInfo.progress = progress;
+        } didDownLoad:^(NSString *savePath, NSString *url) {
+            downloadTaskInfo.path = savePath;
+            // 下载完成之后, 创建表
+            RadioDownloadTable *radioDownTable = [[RadioDownloadTable alloc] init];
+            [radioDownTable creatTable];
+            
+            //插入数据 title, musicUrl, musicImg, musicPath
+            NSArray *array = @[musicInfo[@"title"], musicInfo[@"musicUrl"], musicInfo[@"coverimg"], savePath];
+            [radioDownTable insertIntoTabel:array];
+        }];
+        downloadTaskInfo.task = task;
+        downloadTaskInfo.musicInfo = musicInfo;
+        [self.downLoadTaskInfoDict setValue:downloadTaskInfo forKey:url];
+        //
+        task.cancelResumeBlock = ^(){
+            NSData *downLoadTaskInfoData = [NSKeyedArchiver archivedDataWithRootObject:[DownLoadManager defaultManager].downLoadTaskInfoDict];
+            
+            [[NSUserDefaults standardUserDefaults] setObject: downLoadTaskInfoData forKey:@"downLoad"];
+            NSLog(@"%@", [NSSearchPathForDirectoriesInDomains(9, 1, 1) firstObject]);
+        };
+
+        [[NSNotificationCenter defaultCenter] postNotificationName:@"COMPLETEDOWNLOAD" object:nil userInfo:nil];
+    }
+    task.delegate = self;
+    return task;
+}
+
+
+
+
+
+//- (DownLoad *)creatDownloadWithUrl:(NSString *)url{
+//    DownLoad *task = self.downLoadTaskInfoDict[url];
+//    if (!task) {
+//        DownLoadTaskInfo *downLoadTaskInfo = [[DownLoadTaskInfo alloc] init];
+//        task = [[DownLoad alloc] initWith:url];
+//        [task monitorDownload:^(long long bytesWritten, NSInteger progress) {
+//            downLoadTaskInfo.progress = progress;
+//        } didDownLoad:^(NSString *savePath, NSString *url) {
+//            downLoadTaskInfo.path = savePath;
+//            if(_completedHandle){
+//                _completedHandle(downLoadTaskInfo.path);
+//            }
+//        }];
+//        downLoadTaskInfo.task = task;
+//        [self.downLoadTaskInfoDict setValue:downLoadTaskInfo forKey:url];
+//    }
+//    task.delegate = self;
+//    return task;
+//}
+
 - (void)removeDownloadTask:(NSString *)url{
-    [self.dic removeObjectForKey:url];
+    [self.downLoadTaskInfoDict removeObjectForKey:url];
+    [[NSNotificationCenter defaultCenter] postNotificationName:@"COMPLETEDOWNLOAD" object:nil userInfo:nil];
+    
+ 
 }
 
 @end

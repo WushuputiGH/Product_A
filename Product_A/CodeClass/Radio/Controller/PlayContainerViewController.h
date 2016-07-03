@@ -18,6 +18,8 @@
 @property (nonatomic, strong)MyPlayerManager *myPlayer;
 @property (nonatomic, strong, readwrite) NSString *name;
 
+
+
 - (void)initialize;
 
 @end

@@ -8,6 +8,9 @@
 
 #import "RootViewController.h"
 #import "RightViewController.h"
+#import "PlayView.h"
+#import "MyPlayerManager.h"
+
 #define kCAGradientLayerH (kScreenHeight / 3.0)
 @interface RootViewController () <UITableViewDataSource, UITableViewDelegate>
 
@@ -16,6 +19,11 @@
 @property (nonatomic, strong)RightViewController *rightVC;
 @property (nonatomic, strong)UINavigationController *myNavigationVC;
 @property (nonatomic, assign)BOOL isFirstSelected;
+@property (nonatomic, strong)PlayView *playView;
+
+// 用于保存播放列表
+@property (nonatomic, strong)NSMutableDictionary *radioData;
+
 
 @end
 
@@ -29,8 +37,41 @@
     [super viewDidLoad];
     // Do any additional setup after loading the view.
     [self initGradientLayer];
+  
+    [self createPlayView];
     [self initTableView];
+    
+    
+    
+    // 添加通知 NOTICEADDPLAY: 表示添加播放列表的通知
+    [[NSNotificationCenter defaultCenter] addObserver:self selector:@selector(noticeAddPlay:) name:@"NOTICEADDPLAY" object:nil];
+
+    // 添加通知, 当播放状态改变时候的通知
+    [[NSNotificationCenter defaultCenter] addObserver:self selector:@selector(playStateChange:) name:@"PLAYSTATECHANGE" object:nil];
+    
+    // 监听切歌的通知
+    [[NSNotificationCenter defaultCenter] addObserver:self selector:@selector(noticeChangeMedia:) name:@"NOTICECHANGEMEDIA" object:nil];
 }
+
+
+// 创建登陆注册界面
+- (void)createUserView{
+    UserView *userView = [[[NSBundle mainBundle] loadNibNamed:@"UserView" owner:nil options:nil] firstObject];
+    userView.frame = CGRectMake(0, 20, kScreenWidth - kMovieDistance, kCAGradientLayerH);
+    userView.rootView = self;
+    [self.view addSubview:userView];
+    
+}
+
+
+// 创建下面播放界面
+- (void)createPlayView{
+    self.playView = [[[NSBundle mainBundle] loadNibNamed:@"PlayView" owner:nil options:nil] firstObject];
+    _playView.frame = CGRectMake(0, kScreenHeight - 64, kScreenWidth - kMovieDistance, 64) ;
+    [self.view addSubview:_playView];
+    _playView.rootVC = self;
+}
+
 
 - (void)initTableView {
     _controllers = @[@"RadioViewController", @"ReadViewController", @"CommunityViewController", @"ProductViewController", @"SettingViewController"];
@@ -41,8 +82,11 @@
     tableView.rowHeight = tableView.height / _titles.count;
     tableView.dataSource = self;
     tableView.delegate = self;
-    [tableView selectRowAtIndexPath:[NSIndexPath indexPathForRow:0 inSection:0] animated:nil scrollPosition:(UITableViewScrollPositionTop)];
+    [tableView selectRowAtIndexPath:[NSIndexPath indexPathForRow:0 inSection:0] animated:NO scrollPosition:(UITableViewScrollPositionTop)];
     [self.view addSubview:tableView];
+    
+    // 加载用户登陆视图
+    [self createUserView];
 
     
     // 初始化子视图
@@ -120,6 +164,53 @@
     gradientLayer.colors = @[(id)PKCOLOR(180, 180, 180).CGColor, (id)PKCOLOR(100, 90, 100).CGColor,(id)PKCOLOR(40, 40, 40).CGColor];
     [self.view.layer addSublayer:gradientLayer];
     
+}
+
+
+- (void)noticeAddPlay:(NSNotification *)notification{
+    self.radioData = notification.userInfo[@"radioDetailModel"];
+    self.playView.radioData = notification.userInfo[@"radioDetailModel"];
+    // 获取播放下标
+    NSInteger index = [notification.userInfo[@"index"] integerValue];
+    // 配置播放界面
+    [self configureLpayViewWith:index];
+}
+
+- (void)playStateChange:(NSNotification *)notification{
+    [self changePlayViewButtonImager];
+}
+
+// 赋值playView的方法
+- (void)configureLpayViewWith: (NSInteger )index{
+    NSArray *array = [self.radioData valueForKeyPath:@"list"];
+    [self.playView.imageView sd_setImageWithURL:[NSURL URLWithString:array[index][@"coverimg"]]];
+    self.playView.titleLabel.text = array[index][@"title"];
+    self.playView.userLabel.text = [self.radioData valueForKeyPath:@"radioInfo.userinfo.uname"];
+    [self changePlayViewButtonImager];
+    
+}
+
+- (void)noticeChangeMedia:(NSNotification *)notication {
+    NSInteger index = [notication.userInfo[@"index"] integerValue];
+    // 配置播放界面
+    [self configureLpayViewWith:index];
+}
+
+- (void)changePlayViewButtonImager{
+    // 获取播放状态
+    UIImage *buttonImage = nil;
+    
+    if ( [MyPlayerManager defaultManager].playState == Play){
+        buttonImage = [[UIImage imageNamed:@"music_icon_stop_highlighted"] imageWithRenderingMode:(UIImageRenderingModeAlwaysTemplate)];
+    }else{
+        buttonImage = [[UIImage imageNamed:@"music_icon_play_highlighted"] imageWithRenderingMode:(UIImageRenderingModeAlwaysTemplate)];
+    }
+    [self.playView.playButton setImage:buttonImage forState:(UIControlStateNormal)];
+}
+
+
+- (void)viewWillDisappear:(BOOL)animated{
+    NSLog(@"rootview将要消失");
 }
 
 - (void)didReceiveMemoryWarning {

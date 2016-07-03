@@ -19,3 +19,5 @@
 @property (nonatomic, strong, readwrite)UILabel *totalTimeLabel;
 
 @end
+
+

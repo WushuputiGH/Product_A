@@ -12,4 +12,5 @@
 
 @property (nonatomic, strong, readwrite) NSMutableArray *musicList;
 @property (nonatomic, strong, readwrite) NSString *name;
+
 @end

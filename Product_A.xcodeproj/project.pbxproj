@@ -37,6 +37,15 @@
 		796218101D24F5A3006404B4 /* RadioDownloadTable.m in Sources */ = {isa = PBXBuildFile; fileRef = 7962180F1D24F5A3006404B4 /* RadioDownloadTable.m */; };
 		796218131D255A71006404B4 /* RadioListTableViewController.m in Sources */ = {isa = PBXBuildFile; fileRef = 796218121D255A71006404B4 /* RadioListTableViewController.m */; };
 		796218161D255B06006404B4 /* RadioListTableViewCell.m in Sources */ = {isa = PBXBuildFile; fileRef = 796218151D255B06006404B4 /* RadioListTableViewCell.m */; };
+		796218191D25F9DE006404B4 /* UserInfoManager.m in Sources */ = {isa = PBXBuildFile; fileRef = 796218171D25F9DE006404B4 /* UserInfoManager.m */; };
+		7962181F1D25FB23006404B4 /* UserView.m in Sources */ = {isa = PBXBuildFile; fileRef = 7962181E1D25FB23006404B4 /* UserView.m */; };
+		796218211D25FB5B006404B4 /* UserView.xib in Resources */ = {isa = PBXBuildFile; fileRef = 796218201D25FB5B006404B4 /* UserView.xib */; };
+		796218261D26052E006404B4 /* LoginViewController.m in Sources */ = {isa = PBXBuildFile; fileRef = 796218241D26052E006404B4 /* LoginViewController.m */; };
+		796218271D26052E006404B4 /* LoginViewController.xib in Resources */ = {isa = PBXBuildFile; fileRef = 796218251D26052E006404B4 /* LoginViewController.xib */; };
+		7962182B1D26055B006404B4 /* RegistViewController.m in Sources */ = {isa = PBXBuildFile; fileRef = 796218291D26055B006404B4 /* RegistViewController.m */; };
+		7962182C1D26055B006404B4 /* RegistViewController.xib in Resources */ = {isa = PBXBuildFile; fileRef = 7962182A1D26055B006404B4 /* RegistViewController.xib */; };
+		7962182F1D26106F006404B4 /* PlayView.m in Sources */ = {isa = PBXBuildFile; fileRef = 7962182E1D26106F006404B4 /* PlayView.m */; };
+		796218311D26107A006404B4 /* PlayView.xib in Resources */ = {isa = PBXBuildFile; fileRef = 796218301D26107A006404B4 /* PlayView.xib */; };
 		79630CD01D1CD0450099FF46 /* main.m in Sources */ = {isa = PBXBuildFile; fileRef = 79630CCF1D1CD0450099FF46 /* main.m */; };
 		79630CD31D1CD0450099FF46 /* AppDelegate.m in Sources */ = {isa = PBXBuildFile; fileRef = 79630CD21D1CD0450099FF46 /* AppDelegate.m */; };
 		79630CDB1D1CD0450099FF46 /* Assets.xcassets in Resources */ = {isa = PBXBuildFile; fileRef = 79630CDA1D1CD0450099FF46 /* Assets.xcassets */; };
@@ -317,6 +326,9 @@
 		79A895561D2274B80097F611 /* navigationbar_back@2x.png in Resources */ = {isa = PBXBuildFile; fileRef = 79A895321D2274B80097F611 /* navigationbar_back@2x.png */; };
 		79A895571D2274B80097F611 /* navigationbar_more@2x.png in Resources */ = {isa = PBXBuildFile; fileRef = 79A895331D2274B80097F611 /* navigationbar_more@2x.png */; };
 		79A895581D2274B80097F611 /* WiFi.png in Resources */ = {isa = PBXBuildFile; fileRef = 79A895341D2274B80097F611 /* WiFi.png */; };
+		79F6D12A1D275C890033FAB6 /* DownLoadTaskInfo.m in Sources */ = {isa = PBXBuildFile; fileRef = 79F6D1291D275C890033FAB6 /* DownLoadTaskInfo.m */; };
+		79F6D16F1D279B780033FAB6 /* RadioDownloadTableViewController.m in Sources */ = {isa = PBXBuildFile; fileRef = 79F6D16E1D279B780033FAB6 /* RadioDownloadTableViewController.m */; };
+		79F6D1721D27E77B0033FAB6 /* DownLoadCacheTabel.m in Sources */ = {isa = PBXBuildFile; fileRef = 79F6D1711D27E77B0033FAB6 /* DownLoadCacheTabel.m */; };
 		79FDC3C01D2377B000B7E73A /* 1.jpg in Resources */ = {isa = PBXBuildFile; fileRef = 79FDC3BF1D2377B000B7E73A /* 1.jpg */; };
 		79FDC3C31D23A6F200B7E73A /* RadioDetailViewController.m in Sources */ = {isa = PBXBuildFile; fileRef = 79FDC3C21D23A6F200B7E73A /* RadioDetailViewController.m */; };
 /* End PBXBuildFile section */
@@ -398,6 +410,20 @@
 		796218121D255A71006404B4 /* RadioListTableViewController.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; name = RadioListTableViewController.m; path = ../View/RadioListTableViewController.m; sourceTree = "<group>"; };
 		796218141D255B06006404B4 /* RadioListTableViewCell.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = RadioListTableViewCell.h; sourceTree = "<group>"; };
 		796218151D255B06006404B4 /* RadioListTableViewCell.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = RadioListTableViewCell.m; sourceTree = "<group>"; };
+		796218171D25F9DE006404B4 /* UserInfoManager.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = UserInfoManager.m; sourceTree = "<group>"; };
+		796218181D25F9DE006404B4 /* UserInfoManager.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = UserInfoManager.h; sourceTree = "<group>"; };
+		7962181D1D25FB23006404B4 /* UserView.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = UserView.h; sourceTree = "<group>"; };
+		7962181E1D25FB23006404B4 /* UserView.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = UserView.m; sourceTree = "<group>"; };
+		796218201D25FB5B006404B4 /* UserView.xib */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = file.xib; path = UserView.xib; sourceTree = "<group>"; };
+		796218231D26052E006404B4 /* LoginViewController.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = LoginViewController.h; sourceTree = "<group>"; };
+		796218241D26052E006404B4 /* LoginViewController.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = LoginViewController.m; sourceTree = "<group>"; };
+		796218251D26052E006404B4 /* LoginViewController.xib */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = file.xib; path = LoginViewController.xib; sourceTree = "<group>"; };
+		796218281D26055B006404B4 /* RegistViewController.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = RegistViewController.h; sourceTree = "<group>"; };
+		796218291D26055B006404B4 /* RegistViewController.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = RegistViewController.m; sourceTree = "<group>"; };
+		7962182A1D26055B006404B4 /* RegistViewController.xib */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = file.xib; path = RegistViewController.xib; sourceTree = "<group>"; };
+		7962182D1D26106F006404B4 /* PlayView.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = PlayView.h; sourceTree = "<group>"; };
+		7962182E1D26106F006404B4 /* PlayView.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = PlayView.m; sourceTree = "<group>"; };
+		796218301D26107A006404B4 /* PlayView.xib */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = file.xib; path = PlayView.xib; sourceTree = "<group>"; };
 		79630CCB1D1CD0440099FF46 /* Product_A.app */ = {isa = PBXFileReference; explicitFileType = wrapper.application; includeInIndex = 0; path = Product_A.app; sourceTree = BUILT_PRODUCTS_DIR; };
 		79630CCF1D1CD0450099FF46 /* main.m */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.objc; path = main.m; sourceTree = "<group>"; };
 		79630CD11D1CD0450099FF46 /* AppDelegate.h */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.h; name = AppDelegate.h; path = Product_A/AppDelegate.h; sourceTree = SOURCE_ROOT; };
@@ -689,6 +715,12 @@
 		79A895321D2274B80097F611 /* navigationbar_back@2x.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; path = "navigationbar_back@2x.png"; sourceTree = "<group>"; };
 		79A895331D2274B80097F611 /* navigationbar_more@2x.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; path = "navigationbar_more@2x.png"; sourceTree = "<group>"; };
 		79A895341D2274B80097F611 /* WiFi.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; path = WiFi.png; sourceTree = "<group>"; };
+		79F6D1281D275C890033FAB6 /* DownLoadTaskInfo.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = DownLoadTaskInfo.h; sourceTree = "<group>"; };
+		79F6D1291D275C890033FAB6 /* DownLoadTaskInfo.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = DownLoadTaskInfo.m; sourceTree = "<group>"; };
+		79F6D16D1D279B780033FAB6 /* RadioDownloadTableViewController.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = RadioDownloadTableViewController.h; sourceTree = "<group>"; };
+		79F6D16E1D279B780033FAB6 /* RadioDownloadTableViewController.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = RadioDownloadTableViewController.m; sourceTree = "<group>"; };
+		79F6D1701D27E77B0033FAB6 /* DownLoadCacheTabel.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = DownLoadCacheTabel.h; sourceTree = "<group>"; };
+		79F6D1711D27E77B0033FAB6 /* DownLoadCacheTabel.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = DownLoadCacheTabel.m; sourceTree = "<group>"; };
 		79FDC3BF1D2377B000B7E73A /* 1.jpg */ = {isa = PBXFileReference; lastKnownFileType = image.jpeg; path = 1.jpg; sourceTree = "<group>"; };
 		79FDC3C11D23A6F200B7E73A /* RadioDetailViewController.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = RadioDetailViewController.h; sourceTree = "<group>"; };
 		79FDC3C21D23A6F200B7E73A /* RadioDetailViewController.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = RadioDetailViewController.m; sourceTree = "<group>"; };
@@ -736,6 +768,7 @@
 			children = (
 				79FDC3BF1D2377B000B7E73A /* 1.jpg */,
 				795DCFC01D1CD253000B1C12 /* Root */,
+				796218221D2604EF006404B4 /* LoginAndRegister */,
 				795DCFB01D1CD253000B1C12 /* Community */,
 				795DCFB41D1CD253000B1C12 /* Product */,
 				795DCFB81D1CD253000B1C12 /* Radio */,
@@ -835,6 +868,8 @@
 				793EB7C91D23E182003482ED /* PlayMainViewController.m */,
 				796218111D255A71006404B4 /* RadioListTableViewController.h */,
 				796218121D255A71006404B4 /* RadioListTableViewController.m */,
+				79F6D16D1D279B780033FAB6 /* RadioDownloadTableViewController.h */,
+				79F6D16E1D279B780033FAB6 /* RadioDownloadTableViewController.m */,
 			);
 			path = Controller;
 			sourceTree = "<group>";
@@ -945,6 +980,12 @@
 		795DCFC31D1CD253000B1C12 /* View */ = {
 			isa = PBXGroup;
 			children = (
+				7962181D1D25FB23006404B4 /* UserView.h */,
+				7962181E1D25FB23006404B4 /* UserView.m */,
+				796218201D25FB5B006404B4 /* UserView.xib */,
+				7962182D1D26106F006404B4 /* PlayView.h */,
+				7962182E1D26106F006404B4 /* PlayView.m */,
+				796218301D26107A006404B4 /* PlayView.xib */,
 			);
 			path = View;
 			sourceTree = "<group>";
@@ -1024,8 +1065,12 @@
 			children = (
 				796218041D24A8AB006404B4 /* DownLoad.h */,
 				796218051D24A8AB006404B4 /* DownLoad.m */,
+				79F6D1281D275C890033FAB6 /* DownLoadTaskInfo.h */,
+				79F6D1291D275C890033FAB6 /* DownLoadTaskInfo.m */,
 				796218071D24A8C9006404B4 /* DownLoadManager.h */,
 				796218081D24A8C9006404B4 /* DownLoadManager.m */,
+				79F6D1701D27E77B0033FAB6 /* DownLoadCacheTabel.h */,
+				79F6D1711D27E77B0033FAB6 /* DownLoadCacheTabel.m */,
 			);
 			name = downLoad;
 			sourceTree = "<group>";
@@ -1035,8 +1080,23 @@
 			children = (
 				7962180B1D24F0DD006404B4 /* DBManager.h */,
 				7962180C1D24F0DD006404B4 /* DBManager.m */,
+				796218181D25F9DE006404B4 /* UserInfoManager.h */,
+				796218171D25F9DE006404B4 /* UserInfoManager.m */,
 			);
 			name = DBManager;
+			sourceTree = "<group>";
+		};
+		796218221D2604EF006404B4 /* LoginAndRegister */ = {
+			isa = PBXGroup;
+			children = (
+				796218231D26052E006404B4 /* LoginViewController.h */,
+				796218241D26052E006404B4 /* LoginViewController.m */,
+				796218251D26052E006404B4 /* LoginViewController.xib */,
+				796218281D26055B006404B4 /* RegistViewController.h */,
+				796218291D26055B006404B4 /* RegistViewController.m */,
+				7962182A1D26055B006404B4 /* RegistViewController.xib */,
+			);
+			name = LoginAndRegister;
 			sourceTree = "<group>";
 		};
 		79630CC21D1CD0440099FF46 = {
@@ -1741,6 +1801,7 @@
 				798CCF7A1D213D8B0004F68E /* u72.png in Resources */,
 				798CCF641D213D8B0004F68E /* u18.png in Resources */,
 				798CCFAA1D213D8B0004F68E /* u49.png in Resources */,
+				796218311D26107A006404B4 /* PlayView.xib in Resources */,
 				798CCFF01D213D8B0004F68E /* u39_end.png in Resources */,
 				798CCF5C1D213D8B0004F68E /* u88_line.png in Resources */,
 				798CCF911D213D8B0004F68E /* u37.png in Resources */,
@@ -1834,6 +1895,7 @@
 				798CCFE71D213D8B0004F68E /* u9_start.png in Resources */,
 				798CCF991D213D8B0004F68E /* u535.png in Resources */,
 				798CCF6B1D213D8B0004F68E /* u44.png in Resources */,
+				796218211D25FB5B006404B4 /* UserView.xib in Resources */,
 				798CD02B1D213D8B0004F68E /* u235.png in Resources */,
 				79A895411D2274B80097F611 /* cancel@2x.png in Resources */,
 				798CCFA81D213D8B0004F68E /* u42_line.png in Resources */,
@@ -1867,6 +1929,7 @@
 				798CCFB61D213D8B0004F68E /* u15_line.png in Resources */,
 				79A8954A1D2274B80097F611 /* LaunchImage-Portrait@2x~ipad.png in Resources */,
 				798CD03E1D213D8B0004F68E /* u94_start.png in Resources */,
+				7962182C1D26055B006404B4 /* RegistViewController.xib in Resources */,
 				798CD03C1D213D8B0004F68E /* u94_end.png in Resources */,
 				798CD0201D213D8B0004F68E /* u161_start.png in Resources */,
 				798CCFC81D213D8B0004F68E /* u36.png in Resources */,
@@ -1880,6 +1943,7 @@
 				798CCFE91D213D8B0004F68E /* u2.png in Resources */,
 				798CCF9A1D213D8B0004F68E /* u60_line.png in Resources */,
 				798CCF9F1D213D8B0004F68E /* u74.png in Resources */,
+				796218271D26052E006404B4 /* LoginViewController.xib in Resources */,
 				798CCF8B1D213D8B0004F68E /* u313_line.png in Resources */,
 				798CCFAC1D213D8B0004F68E /* u121_line.png in Resources */,
 				798CCFDC1D213D8B0004F68E /* u94.png in Resources */,
@@ -2053,6 +2117,7 @@
 			files = (
 				795DCFE01D1CDBC3000B1C12 /* ReadViewController.m in Sources */,
 				793EB7C71D23D372003482ED /* PlayContainerViewController.m in Sources */,
+				7962181F1D25FB23006404B4 /* UserView.m in Sources */,
 				79A894FB1D2205600097F611 /* MyPlayerManager.m in Sources */,
 				795DCFD41D1CD8C2000B1C12 /* RightViewController.m in Sources */,
 				795DCFF81D1D531F000B1C12 /* ReadCollectionViewCell.m in Sources */,
@@ -2061,8 +2126,11 @@
 				7962180D1D24F0DD006404B4 /* DBManager.m in Sources */,
 				796218061D24A8AB006404B4 /* DownLoad.m in Sources */,
 				79A8950C1D2274130097F611 /* AllListTableViewCell.m in Sources */,
+				796218191D25F9DE006404B4 /* UserInfoManager.m in Sources */,
 				79FDC3C31D23A6F200B7E73A /* RadioDetailViewController.m in Sources */,
+				79F6D1721D27E77B0033FAB6 /* DownLoadCacheTabel.m in Sources */,
 				79A895011D2266060097F611 /* HotListCollectionViewCell.m in Sources */,
+				7962182F1D26106F006404B4 /* PlayView.m in Sources */,
 				797B9B301D2418B900AB3E84 /* PlayControllerView.m in Sources */,
 				795DCFE91D1CDC85000B1C12 /* ProductViewController.m in Sources */,
 				79630CD31D1CD0450099FF46 /* AppDelegate.m in Sources */,
@@ -2075,14 +2143,18 @@
 				79630CD01D1CD0450099FF46 /* main.m in Sources */,
 				795DCFCD1D1CD287000B1C12 /* RootViewController.m in Sources */,
 				795DCFE61D1CDC7A000B1C12 /* CommunityViewController.m in Sources */,
+				7962182B1D26055B006404B4 /* RegistViewController.m in Sources */,
 				796218101D24F5A3006404B4 /* RadioDownloadTable.m in Sources */,
 				7931C8581D20CF100052D862 /* ColumnsDetailViewController.m in Sources */,
 				795DCFEC1D1CDC9F000B1C12 /* RadioViewController.m in Sources */,
+				79F6D16F1D279B780033FAB6 /* RadioDownloadTableViewController.m in Sources */,
+				79F6D12A1D275C890033FAB6 /* DownLoadTaskInfo.m in Sources */,
 				795DCFF51D1D390E000B1C12 /* ReadModel.m in Sources */,
 				795DCFE31D1CDBD0000B1C12 /* SettingViewController.m in Sources */,
 				793EB7C41D23C31C003482ED /* RadioDetailTableViewCell.m in Sources */,
 				796218131D255A71006404B4 /* RadioListTableViewController.m in Sources */,
 				7931C85B1D20EB280052D862 /* ColumnsDetailTableViewCell.m in Sources */,
+				796218261D26052E006404B4 /* LoginViewController.m in Sources */,
 				793EB7CA1D23E182003482ED /* PlayMainViewController.m in Sources */,
 				792756C31D2121F400C25FD1 /* ArticleInfoModel.m in Sources */,
 				795DCFEF1D1D36D4000B1C12 /* CarouselView.m in Sources */,

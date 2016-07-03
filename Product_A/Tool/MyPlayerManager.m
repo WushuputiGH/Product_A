@@ -32,16 +32,18 @@ static MyPlayerManager *defaultManager = nil;
 // 设置数据
 - (void)setMediaLists:(NSMutableArray *)mediaLists{
     
-    [_mediaLists removeAllObjects];
-    _mediaLists = [mediaLists mutableCopy];
-    AVPlayerItem *avPlayerItem = [AVPlayerItem playerItemWithURL:_mediaLists[_index]];
-    if (!_avPlayer) {
-        // 如果没有, 就初始化
-        _avPlayer = [[AVPlayer alloc] initWithPlayerItem:avPlayerItem];
-    }else{
-        [_avPlayer replaceCurrentItemWithPlayerItem:avPlayerItem];
+
+    if (mediaLists && mediaLists.count) {
+        [_mediaLists removeAllObjects];
+        _mediaLists = [mediaLists mutableCopy];
+        AVPlayerItem *avPlayerItem = [AVPlayerItem playerItemWithURL:_mediaLists[_index]];
+        if (!_avPlayer) {
+            // 如果没有, 就初始化
+            _avPlayer = [[AVPlayer alloc] initWithPlayerItem:avPlayerItem];
+        }else{
+            [_avPlayer replaceCurrentItemWithPlayerItem:avPlayerItem];
+        }
     }
-    
 }
 
 
@@ -50,17 +52,25 @@ static MyPlayerManager *defaultManager = nil;
 
 - (void)play{
     [_avPlayer play];
-    _playState = Play;
+    self.playState = Play;
     if (_changeState) {
         _changeState(_playState);
     }
     
 }
 
+
+- (void)setPlayState:(PlayState)playState{
+    // 播放状态改变, 发送一个通知, 通知所有监听者, 状态改变
+    _playState = playState;
+    [[NSNotificationCenter defaultCenter] postNotificationName:@"PLAYSTATECHANGE" object:nil userInfo:@{@"playState": @(playState)}];
+}
+
+
 //暂停
 - (void)pause{
     [_avPlayer pause];
-    _playState = Pause;
+    self.playState = Pause;
     if (_changeState) {
         _changeState(_playState);
     }
@@ -70,7 +80,7 @@ static MyPlayerManager *defaultManager = nil;
 - (void)stop {
     [self seekToSecondsWith:0];
     [_avPlayer pause];
-    _playState = Pause;
+    self.playState = Pause;
 }
 
 // 改变当前播放源的时间

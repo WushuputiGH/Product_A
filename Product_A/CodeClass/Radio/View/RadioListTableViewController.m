@@ -10,6 +10,7 @@
 #import "RadioListTableViewCell.h"
 
 @interface RadioListTableViewController ()
+@property (nonatomic , strong)NSTimer *timer;
 
 @end
 
@@ -20,6 +21,9 @@
     
     self.tableView.frame = CGRectMake(0, 64, kScreenWidth, kScreenHeight - 128);
     self.tableView.rowHeight = 60;
+    
+    // 创建定时器, 用于监控下载
+    self.timer = [NSTimer scheduledTimerWithTimeInterval:0.3 target:self selector:@selector(downLoadTimer:) userInfo:nil repeats:1];
  
 }
 
@@ -45,55 +49,25 @@
     if (cell == nil) {
         cell = [[RadioListTableViewCell alloc] initWithStyle:(UITableViewCellStyleSubtitle) reuseIdentifier:@"radioListCell"];
     }
-
-    cell.textLabel.text = [self.musicList[indexPath.row] valueForKey:@"title"];
+  
     cell.detailTextLabel.text = [NSString stringWithFormat:@"by: %@", self.name];
+    
     return cell;
 }
 
-
-/*
-// Override to support conditional editing of the table view.
-- (BOOL)tableView:(UITableView *)tableView canEditRowAtIndexPath:(NSIndexPath *)indexPath {
-    // Return NO if you do not want the specified item to be editable.
-    return YES;
+- (void)downLoadTimer:(NSTimer *)timer{
+    
+    // 获取显示的cell
+    NSArray *visibleCells = [self.tableView visibleCells];
+    for (RadioListTableViewCell *cell in visibleCells) {
+        // 获取cell 对应的index
+        NSIndexPath *indexPath = [self.tableView indexPathForCell:cell];
+        [cell configureWithMusicInfoDic:self.musicList[indexPath.row]];
+        [cell changeDownloadButton:self.musicList[indexPath.row]];
+    }
+    
 }
-*/
 
-/*
-// Override to support editing the table view.
-- (void)tableView:(UITableView *)tableView commitEditingStyle:(UITableViewCellEditingStyle)editingStyle forRowAtIndexPath:(NSIndexPath *)indexPath {
-    if (editingStyle == UITableViewCellEditingStyleDelete) {
-        // Delete the row from the data source
-        [tableView deleteRowsAtIndexPaths:@[indexPath] withRowAnimation:UITableViewRowAnimationFade];
-    } else if (editingStyle == UITableViewCellEditingStyleInsert) {
-        // Create a new instance of the appropriate class, insert it into the array, and add a new row to the table view
-    }   
-}
-*/
 
-/*
-// Override to support rearranging the table view.
-- (void)tableView:(UITableView *)tableView moveRowAtIndexPath:(NSIndexPath *)fromIndexPath toIndexPath:(NSIndexPath *)toIndexPath {
-}
-*/
-
-/*
-// Override to support conditional rearranging of the table view.
-- (BOOL)tableView:(UITableView *)tableView canMoveRowAtIndexPath:(NSIndexPath *)indexPath {
-    // Return NO if you do not want the item to be re-orderable.
-    return YES;
-}
-*/
-
-/*
-#pragma mark - Navigation
-
-// In a storyboard-based application, you will often want to do a little preparation before navigation
-- (void)prepareForSegue:(UIStoryboardSegue *)segue sender:(id)sender {
-    // Get the new view controller using [segue destinationViewController].
-    // Pass the selected object to the new view controller.
-}
-*/
 
 @end

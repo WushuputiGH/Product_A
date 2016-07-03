@@ -17,6 +17,23 @@
 
 - (BOOL)application:(UIApplication *)application didFinishLaunchingWithOptions:(NSDictionary *)launchOptions {
     
+     NSLog(@"%@", [NSSearchPathForDirectoriesInDomains(9, 1, 1) firstObject]);
+    // 首先获取未完成的下载任务
+    NSData *data = [[NSUserDefaults standardUserDefaults]valueForKey:@"downLoad"];
+    NSDictionary *downLoadTaskInfoDict = [NSKeyedUnarchiver unarchiveObjectWithData:data];
+    // 历遍这个字典, 进行重新布置下载任务
+    for (NSString *url in downLoadTaskInfoDict) {
+        // 首先获取保存的任务信息
+        DownLoadTaskInfo *downloadTaskInfo = downLoadTaskInfoDict[url];
+        // 使用musicInfo信息, 恢复下载任务
+        DownLoad *task = downloadTaskInfo.task;
+        if (task.resumeData) {
+             [[DownLoadManager defaultManager] resumeDownloadWithDownloadTaskInfo:downloadTaskInfo];
+        }
+       
+    }
+//
+    
     self.window = [[UIWindow alloc] initWithFrame:[UIScreen mainScreen].bounds];
     [self.window makeKeyAndVisible];
     self.window.backgroundColor = [UIColor whiteColor];
@@ -36,14 +53,29 @@
 }
 
 - (void)applicationWillResignActive:(UIApplication *)application {
-    // Sent when the application is about to move from active to inactive state. This can occur for certain types of temporary interruptions (such as an incoming phone call or SMS message) or when the user quits the application and it begins the transition to the background state.
-    // Use this method to pause ongoing tasks, disable timers, and throttle down OpenGL ES frame rates. Games should use this method to pause the game.
+    // 当程序将要退出的时候, 保存未完成的下载任务
+    // 首先需要获取未完成的任务
+    NSDictionary *downLoadTaskInfoDict = [DownLoadManager defaultManager].downLoadTaskInfoDict;
+    // 遍历字典, 对每一个任务执行cancelTask方法
+    for (NSString *url in downLoadTaskInfoDict) {
+        // 获取每一个任务信息
+        DownLoadTaskInfo *taskInfo = downLoadTaskInfoDict[url];
+        // 获取每一个任务
+        DownLoad *task = taskInfo.task;
+        // 每一个task执行cancelTask的方法
+        [task cancelTask];
+    }
+
+
+
 }
 
 - (void)applicationDidEnterBackground:(UIApplication *)application {
     // Use this method to release shared resources, save user data, invalidate timers, and store enough application state information to restore your application to its current state in case it is terminated later.
     // If your application supports background execution, this method is called instead of applicationWillTerminate: when the user quits.
 }
+
+
 
 - (void)applicationWillEnterForeground:(UIApplication *)application {
     // Called as part of the transition from the background to the inactive state; here you can undo many of the changes made on entering the background.
@@ -54,7 +86,10 @@
 }
 
 - (void)applicationWillTerminate:(UIApplication *)application {
-    // Called when the application is about to terminate. Save data if appropriate. See also applicationDidEnterBackground:.
+
+
+    
+    
 }
 
 @end

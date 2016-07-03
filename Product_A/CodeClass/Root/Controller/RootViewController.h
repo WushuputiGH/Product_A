@@ -7,6 +7,7 @@
 //
 
 #import <UIKit/UIKit.h>
+#import "UserView.h"
 
 @interface RootViewController : UIViewController
 

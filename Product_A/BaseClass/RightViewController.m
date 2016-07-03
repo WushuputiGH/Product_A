@@ -14,6 +14,9 @@
 @property (nonatomic, strong)UITapGestureRecognizer *tap;
 @property (nonatomic, strong)UIPanGestureRecognizer *pan;
 
+// 定义一个毛玻璃
+@property (nonatomic, strong)UIView *areoView;
+
 @end
 
 @implementation RightViewController
@@ -51,7 +54,14 @@
 #pragma mark ---解决tap点击,与tableview的冲突问题----
 #pragma mark-手势代理，解决和tableview点击发生的冲突
 -(BOOL)gestureRecognizer:(UIGestureRecognizer *)gestureRecognizer shouldReceiveTouch:(UITouch *)touch {
-    if ([NSStringFromClass([touch.view class]) isEqualToString:@"UITableViewCellContentView"]) {//判断如果点击的是tableView的cell，就把手势给关闭了
+    
+//    NSLog(@"%@", [touch.view class]);
+    if ([NSStringFromClass([touch.view class]) isEqualToString:@"UITableViewCellContentView"]) {
+        //判断如果点击的是tableView的cell，就把手势给关闭了
+        return NO;// 不响应这个手势
+    }
+
+    if ([NSStringFromClass([touch.view.superview class]) isEqualToString:@"HotListCollectionViewCell"]) {
         return NO;//关闭手势
     }//否则手势存在
     return YES;
@@ -101,7 +111,6 @@
 
 - (void)buttonAction:(UIButton *)button {
     [self changeFrameWithType: MOVETYPERIGHT];
-    
    }
 
 - (void)changeFrameWithType: (MOVETYPE)moveType
@@ -112,15 +121,29 @@
         self.button.userInteractionEnabled = YES;
         self.pan.enabled = NO;
         newFrame.origin.x = 0;
+        // 当移动到最左边的时候, 将毛玻璃移除
+        [self.areoView removeFromSuperview];
     } else if (moveType == MOVETYPERIGHT){
         self.tap.enabled = YES;
         self.button.userInteractionEnabled = NO;
         self.pan.enabled = YES;
         newFrame.origin.x = kScreenWidth - kMovieDistance;
+        
+        // 等移动到右边的时候, 上面覆盖一层UIView, 使得可以屏蔽手势
+        self.areoView = [[UIView alloc] initWithFrame:self.view.bounds];
+        self.areoView.backgroundColor = [UIColor darkGrayColor];
+        self.areoView.alpha = 0.5;
+        [self.view addSubview:self.areoView];
+       
     }
     [UIView animateWithDuration:0.5 animations:^{
         self.navigationController.view.frame = newFrame;
     }];
+    
+
+    
+    
+    
 }
 
 - (void)tap:(UIGestureRecognizer *)tap {

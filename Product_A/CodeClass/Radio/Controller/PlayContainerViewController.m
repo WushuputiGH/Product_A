@@ -45,7 +45,7 @@
     
     // 添加播放列表
     self.radioListVC = [[RadioListTableViewController alloc] init];
-    self.radioListVC.view.frame = CGRectMake(kScreenWidth, 0, kScreenWidth, kScreenHeight - 64);
+    self.radioListVC.view.frame = CGRectMake(kScreenWidth, 0, kScreenWidth, kScreenHeight - 128);
     [_theScrollView addSubview: self.radioListVC.view];
     [self addChildViewController: _radioListVC];
     _radioListVC.musicList = self.musicList;
@@ -140,8 +140,13 @@
 
 // 重写button的点击方法
 - (void)buttonAction:(UIButton *)button{
-        
-    [self.navigationController popViewControllerAnimated:YES];
+    
+    if (self.presentingViewController) {
+        [self dismissViewControllerAnimated:YES completion:nil];
+    }else{
+        [self.navigationController popViewControllerAnimated:YES];
+    }
+    
 }
 
 

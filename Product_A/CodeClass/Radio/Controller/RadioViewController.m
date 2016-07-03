@@ -16,6 +16,7 @@
 
 @property(nonatomic, strong)NSMutableDictionary *radioListModel;
 @property(nonatomic, strong)NSMutableArray *carouselArray;
+@property(nonatomic, strong)NSMutableArray *carouselIdArray;
 @property(nonatomic, strong)NSMutableArray *collectionViewModel;
 
 // 整体的scrollerView
@@ -31,11 +32,13 @@
 @property (nonatomic, strong)UILabel *allListLabel;
 @property (nonatomic, strong)UIView *allListView;
 
+
 //
 @property (nonatomic, strong)AFHTTPSessionManager *manager;
 @end
 
 @implementation RadioViewController
+
 
 - (void)viewDidLoad {
     [super viewDidLoad];
@@ -81,6 +84,15 @@
     
     _carouselView = [[CarouselView alloc] initWithFrame:CGRectMake(0, 0, kScreenWidth, (300.0 / 640) * kScreenWidth) imageURLs:@[@"http://pkicdn.image.alimmdn.com/timeline/tagimgs/86602e8ed99158a87434f61aab2c8b47.jpg"]];
     [self.scrollerView addSubview:_carouselView];
+    
+
+    __weak typeof(self) weakSelf = self;
+    _carouselView.imageClick = ^(NSInteger index){
+        if (weakSelf.carouselArray.count) {
+            NSDictionary *radioDic = @{@"radioid": weakSelf.carouselIdArray[index]};
+            [weakSelf pushToRadioDetailWith:radioDic];
+        }
+    };
     
     UICollectionViewFlowLayout *flowlayout = [[UICollectionViewFlowLayout alloc] init];
     flowlayout.scrollDirection = UICollectionViewScrollDirectionHorizontal;
@@ -226,17 +238,19 @@
     if (!_carouselArray) {
         _carouselArray = [NSMutableArray array];
     }
+    if (!_carouselIdArray) {
+        _carouselIdArray = [NSMutableArray array];
+    }
     if (!_collectionViewModel) {
         _collectionViewModel = [NSMutableArray array];
     }
-    
-    
-    
-    
+ 
     // 解析数据的时候,赋值轮播图的数组
     NSArray *carouselArray = [[radioListModel valueForKey:@"data"] valueForKey:@"carousel"];
+    
     for (NSDictionary *dic in carouselArray) {
         [_carouselArray addObject:dic[@"img"]];
+        [_carouselIdArray addObject:[[dic[@"url"] componentsSeparatedByString:@"/"] lastObject]];
     }
     
     NSArray *collectionViewModel = [radioListModel valueForKeyPath:@"data.hotlist"];
@@ -261,6 +275,12 @@
     [cell cellConfigureWithImageURLString:[_collectionViewModel[indexPath.item] valueForKey:@"coverimg"]];
     
     return cell;
+}
+
+- (void)collectionView:(UICollectionView *)collectionView didSelectItemAtIndexPath:(NSIndexPath *)indexPath{
+
+    NSDictionary *radioDic = _collectionViewModel[indexPath.item];
+    [self pushToRadioDetailWith:radioDic];
 }
 
 
@@ -298,6 +318,7 @@
 }
 
 
+#pragma mark --- 跳转到详情页的方法-----
 - (void)pushToRadioDetailWith:(NSDictionary *)radioDic {
     
     RadioDetailViewController *radioDetailVC = [[RadioDetailViewController alloc] init];
