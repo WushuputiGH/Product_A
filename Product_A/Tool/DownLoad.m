@@ -74,6 +74,17 @@
 }
 
 
+// 使用resumedata, 升级任务
+-(instancetype)updataWithResumeData:(NSData *)resumeData{
+  
+
+    NSURLSessionConfiguration *cfg = [NSURLSessionConfiguration defaultSessionConfiguration];
+    // 根据配置, 创建网络会话
+    NSURLSession *session = [NSURLSession sessionWithConfiguration:cfg delegate:self delegateQueue:[NSOperationQueue mainQueue]];
+    _task = [session downloadTaskWithResumeData:resumeData];
+   
+    return self;
+}
 
 
 
@@ -88,7 +99,12 @@
     // 取消任务后, 将任务保存
     [self.task cancelByProducingResumeData:^(NSData * _Nullable resumeData) {
         self.resumeData = resumeData;
-        self.cancelResumeBlock();
+        self.cancelResumeBlock(self, resumeData);
+        [self updataWithResumeData:resumeData];
+        if (self.downState == DownloadStateRunning) {
+            [self start];
+        }
+        
     }];
 }
 

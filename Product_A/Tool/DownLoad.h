@@ -39,12 +39,12 @@ typedef NS_ENUM(NSInteger, DownloadState) {
 @property (nonatomic, assign, readwrite) DownloadState downState;
 
 // 调用可恢复取消时候执行的block
-@property (nonatomic, copy, readwrite) void (^cancelResumeBlock) ();
+@property (nonatomic, copy, readwrite) void (^cancelResumeBlock) (DownLoad *task, NSData *newResumeData);
 
 // 给一个下载地址, 初始化
 - (instancetype)initWith:(NSString *)url;
 -(instancetype)initWithResumeData:(NSData *)resumeData url:(NSString *)ur;
-
+-(instancetype)updataWithResumeData:(NSData *)resumeData;
 // 开始下载
 - (void)start;
 // 暂停任务

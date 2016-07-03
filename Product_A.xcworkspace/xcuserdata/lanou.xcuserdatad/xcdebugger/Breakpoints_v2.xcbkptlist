@@ -52,7 +52,7 @@
                   moduleName = "Product_A"
                   usesParentBreakpointCondition = "Yes"
                   urlString = "file:///Users/lanou/Desktop/Hzy/Lesson/%E9%A1%B9%E7%9B%AE%E9%98%B6%E6%AE%B51/Product_A/Product_A/CodeClass/RegistViewController.m"
-                  timestampString = "489223803.134295"
+                  timestampString = "489233017.289575"
                   startingColumnNumber = "9223372036854775807"
                   endingColumnNumber = "9223372036854775807"
                   startingLineNumber = "72"
@@ -67,7 +67,7 @@
                   moduleName = "Product_A"
                   usesParentBreakpointCondition = "Yes"
                   urlString = "file:///Users/lanou/Desktop/Hzy/Lesson/%E9%A1%B9%E7%9B%AE%E9%98%B6%E6%AE%B51/Product_A/Product_A/CodeClass/RegistViewController.m"
-                  timestampString = "489223803.1346"
+                  timestampString = "489233017.289839"
                   startingColumnNumber = "9223372036854775807"
                   endingColumnNumber = "9223372036854775807"
                   startingLineNumber = "72"
@@ -99,29 +99,13 @@
             shouldBeEnabled = "Yes"
             ignoreCount = "0"
             continueAfterRunningActions = "No"
-            filePath = "Product_A/CodeClass/Radio/Controller/RadioDownloadTableViewController.m"
-            timestampString = "489223508.796282"
+            filePath = "Product_A/Tool/DownLoadManager.m"
+            timestampString = "489233016.241909"
             startingColumnNumber = "9223372036854775807"
             endingColumnNumber = "9223372036854775807"
-            startingLineNumber = "74"
-            endingLineNumber = "74"
-            landmarkName = "-tableView:cellForRowAtIndexPath:"
-            landmarkType = "5">
-         </BreakpointContent>
-      </BreakpointProxy>
-      <BreakpointProxy
-         BreakpointExtensionID = "Xcode.Breakpoint.FileBreakpoint">
-         <BreakpointContent
-            shouldBeEnabled = "Yes"
-            ignoreCount = "0"
-            continueAfterRunningActions = "No"
-            filePath = "Product_A/CodeClass/Radio/View/RadioListTableViewCell.m"
-            timestampString = "489223681.370365"
-            startingColumnNumber = "9223372036854775807"
-            endingColumnNumber = "9223372036854775807"
-            startingLineNumber = "119"
-            endingLineNumber = "119"
-            landmarkName = "-downloadAction:"
+            startingLineNumber = "102"
+            endingLineNumber = "102"
+            landmarkName = "-resumeDownloadWithDownloadTaskInfo:"
             landmarkType = "5">
          </BreakpointContent>
       </BreakpointProxy>
