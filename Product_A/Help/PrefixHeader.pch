@@ -24,6 +24,22 @@
 #import "RadioDownloadTable.h"
 #import "UserInfoManager.h"
 
+
+#import <ShareSDK/ShareSDK.h>
+#import <ShareSDKConnector/ShareSDKConnector.h>
+
+//腾讯开放平台（对应QQ和QQ空间）SDK头文件
+#import <TencentOpenAPI/TencentOAuth.h>
+#import <TencentOpenAPI/QQApiInterface.h>
+
+//微信SDK头文件
+#import "WXApi.h"
+
+//新浪微博SDK头文件
+#import "WeiboSDK.h"
+//新浪微博SDK需要在项目Build Settings中的Other Linker Flags添加"-ObjC"
+
+
 #define kMySqliteName @"pianke.sqlite"
 #define kRadioDownloadTable @"radio"
 
@@ -51,6 +67,9 @@
 // 评论上传接口
 #define kCommentUploadUrl  @"http://api2.pianke.me/comment/add"
 
+// 评论删除接口
+#define kCommentDeleteUrl @"http://api2.pianke.me/comment/del"
+
 // 电台列表接口
 #define kRadio @"http://api2.pianke.me/ting/radio"
 // 电台列表上拉刷新接口
@@ -60,6 +79,11 @@
 // 电台详情接口
 #define kRadioDetail @"http://api2.pianke.me/ting/radio_detail"
 #define kRadioDetailDic @{@"auth": @"XMdnEiW0m3qxDCMVzGMTikDJxQ8aoNbKF8W1rUDRicWP23tBNQhpd6fw", @"client": @"1", @"deviceid": @"63A94D37-33F9-40FF-9EBB-481182338873", @"radioid": @"55af6aab53479c66758b45b1", @"version": @"3.0.4"}
+
+
+// 良品接口
+#define kProductUrl @"http://api2.pianke.me/pub/shop"
+#define kProductParDic  @{@"start":@0, @"client": @"1", @"deviceid": @"63A94D37-33F9-40FF-9EBB-481182338873", @"limit":@10, @"auth":@"", @"version":@"3.0.2"}
 
 
 // 宏定义, 用户获取uiimage的宽高比

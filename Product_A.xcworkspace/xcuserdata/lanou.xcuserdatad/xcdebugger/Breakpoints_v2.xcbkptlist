@@ -212,45 +212,11 @@
             ignoreCount = "0"
             continueAfterRunningActions = "No"
             filePath = "Product_A/CodeClass/Read/Controller/CommentContainerViewController.m"
-            timestampString = "489338447.35616"
+            timestampString = "489380249.12739"
             startingColumnNumber = "9223372036854775807"
             endingColumnNumber = "9223372036854775807"
-            startingLineNumber = "128"
-            endingLineNumber = "128"
-            landmarkName = "-upLoadComment"
-            landmarkType = "5">
-            <Locations>
-               <Location
-                  shouldBeEnabled = "Yes"
-                  ignoreCount = "0"
-                  continueAfterRunningActions = "No"
-                  symbolName = "__47-[CommentContainerViewController upLoadComment]_block_invoke170"
-                  moduleName = "Product_A"
-                  usesParentBreakpointCondition = "Yes"
-                  urlString = "file:///Users/lanou/Desktop/Hzy/Lesson/%E9%A1%B9%E7%9B%AE%E9%98%B6%E6%AE%B51/Product_A/Product_A/CodeClass/Read/Controller/CommentContainerViewController.m"
-                  timestampString = "489338524.129324"
-                  startingColumnNumber = "9223372036854775807"
-                  endingColumnNumber = "9223372036854775807"
-                  startingLineNumber = "128"
-                  endingLineNumber = "128"
-                  offsetFromSymbolStart = "570">
-               </Location>
-               <Location
-                  shouldBeEnabled = "Yes"
-                  ignoreCount = "0"
-                  continueAfterRunningActions = "No"
-                  symbolName = "__47-[CommentContainerViewController upLoadComment]_block_invoke_2"
-                  moduleName = "Product_A"
-                  usesParentBreakpointCondition = "Yes"
-                  urlString = "file:///Users/lanou/Desktop/Hzy/Lesson/%E9%A1%B9%E7%9B%AE%E9%98%B6%E6%AE%B51/Product_A/Product_A/CodeClass/Read/Controller/CommentContainerViewController.m"
-                  timestampString = "489338524.131157"
-                  startingColumnNumber = "9223372036854775807"
-                  endingColumnNumber = "9223372036854775807"
-                  startingLineNumber = "128"
-                  endingLineNumber = "128"
-                  offsetFromSymbolStart = "12">
-               </Location>
-            </Locations>
+            startingLineNumber = "332"
+            endingLineNumber = "332">
          </BreakpointContent>
       </BreakpointProxy>
       <BreakpointProxy
@@ -260,13 +226,11 @@
             ignoreCount = "0"
             continueAfterRunningActions = "No"
             filePath = "Product_A/CodeClass/Read/Controller/CommentContainerViewController.m"
-            timestampString = "489338447.35616"
+            timestampString = "489380249.12739"
             startingColumnNumber = "9223372036854775807"
             endingColumnNumber = "9223372036854775807"
-            startingLineNumber = "119"
-            endingLineNumber = "119"
-            landmarkName = "-upLoadComment"
-            landmarkType = "5">
+            startingLineNumber = "323"
+            endingLineNumber = "323">
          </BreakpointContent>
       </BreakpointProxy>
       <BreakpointProxy
@@ -276,45 +240,11 @@
             ignoreCount = "0"
             continueAfterRunningActions = "No"
             filePath = "Product_A/CodeClass/Read/Controller/CommentContainerViewController.m"
-            timestampString = "489338447.35616"
+            timestampString = "489380249.12739"
             startingColumnNumber = "9223372036854775807"
             endingColumnNumber = "9223372036854775807"
-            startingLineNumber = "118"
-            endingLineNumber = "118"
-            landmarkName = "-upLoadComment"
-            landmarkType = "5">
-            <Locations>
-               <Location
-                  shouldBeEnabled = "Yes"
-                  ignoreCount = "0"
-                  continueAfterRunningActions = "No"
-                  symbolName = "-[CommentContainerViewController upLoadComment]"
-                  moduleName = "Product_A"
-                  usesParentBreakpointCondition = "Yes"
-                  urlString = "file:///Users/lanou/Desktop/Hzy/Lesson/%E9%A1%B9%E7%9B%AE%E9%98%B6%E6%AE%B51/Product_A/Product_A/CodeClass/Read/Controller/CommentContainerViewController.m"
-                  timestampString = "489338524.135795"
-                  startingColumnNumber = "9223372036854775807"
-                  endingColumnNumber = "9223372036854775807"
-                  startingLineNumber = "118"
-                  endingLineNumber = "118"
-                  offsetFromSymbolStart = "1152">
-               </Location>
-               <Location
-                  shouldBeEnabled = "Yes"
-                  ignoreCount = "0"
-                  continueAfterRunningActions = "No"
-                  symbolName = "__47-[CommentContainerViewController upLoadComment]_block_invoke170"
-                  moduleName = "Product_A"
-                  usesParentBreakpointCondition = "Yes"
-                  urlString = "file:///Users/lanou/Desktop/Hzy/Lesson/%E9%A1%B9%E7%9B%AE%E9%98%B6%E6%AE%B51/Product_A/Product_A/CodeClass/Read/Controller/CommentContainerViewController.m"
-                  timestampString = "489338524.136196"
-                  startingColumnNumber = "9223372036854775807"
-                  endingColumnNumber = "9223372036854775807"
-                  startingLineNumber = "118"
-                  endingLineNumber = "118"
-                  offsetFromSymbolStart = "72">
-               </Location>
-            </Locations>
+            startingLineNumber = "322"
+            endingLineNumber = "322">
          </BreakpointContent>
       </BreakpointProxy>
       <BreakpointProxy
@@ -324,13 +254,11 @@
             ignoreCount = "0"
             continueAfterRunningActions = "No"
             filePath = "Product_A/CodeClass/Read/Controller/CommentContainerViewController.m"
-            timestampString = "489338447.35616"
+            timestampString = "489380249.12739"
             startingColumnNumber = "9223372036854775807"
             endingColumnNumber = "9223372036854775807"
-            startingLineNumber = "195"
-            endingLineNumber = "195"
-            landmarkName = "-textViewShouldBeginEditing:"
-            landmarkType = "5">
+            startingLineNumber = "399"
+            endingLineNumber = "399">
          </BreakpointContent>
       </BreakpointProxy>
       <BreakpointProxy
@@ -340,13 +268,11 @@
             ignoreCount = "0"
             continueAfterRunningActions = "No"
             filePath = "Product_A/CodeClass/Read/Controller/CommentContainerViewController.m"
-            timestampString = "489338447.35616"
+            timestampString = "489380249.12739"
             startingColumnNumber = "9223372036854775807"
             endingColumnNumber = "9223372036854775807"
-            startingLineNumber = "123"
-            endingLineNumber = "123"
-            landmarkName = "-upLoadComment"
-            landmarkType = "5">
+            startingLineNumber = "327"
+            endingLineNumber = "327">
          </BreakpointContent>
       </BreakpointProxy>
       <BreakpointProxy
@@ -356,13 +282,11 @@
             ignoreCount = "0"
             continueAfterRunningActions = "No"
             filePath = "Product_A/CodeClass/Read/Controller/CommentContainerViewController.m"
-            timestampString = "489338447.35616"
+            timestampString = "489380249.12739"
             startingColumnNumber = "9223372036854775807"
             endingColumnNumber = "9223372036854775807"
-            startingLineNumber = "185"
-            endingLineNumber = "185"
-            landmarkName = "-textView:shouldChangeTextInRange:replacementText:"
-            landmarkType = "5">
+            startingLineNumber = "389"
+            endingLineNumber = "389">
          </BreakpointContent>
       </BreakpointProxy>
       <BreakpointProxy
@@ -372,12 +296,26 @@
             ignoreCount = "0"
             continueAfterRunningActions = "No"
             filePath = "Product_A/CodeClass/Read/Controller/CommentContainerViewController.m"
-            timestampString = "489338447.35616"
+            timestampString = "489380249.12739"
             startingColumnNumber = "9223372036854775807"
             endingColumnNumber = "9223372036854775807"
-            startingLineNumber = "107"
-            endingLineNumber = "107"
-            landmarkName = "-upLoadComment"
+            startingLineNumber = "311"
+            endingLineNumber = "311">
+         </BreakpointContent>
+      </BreakpointProxy>
+      <BreakpointProxy
+         BreakpointExtensionID = "Xcode.Breakpoint.FileBreakpoint">
+         <BreakpointContent
+            shouldBeEnabled = "Yes"
+            ignoreCount = "0"
+            continueAfterRunningActions = "No"
+            filePath = "Product_A/CodeClass/Product/Controller/ProductViewController.m"
+            timestampString = "489390411.594437"
+            startingColumnNumber = "9223372036854775807"
+            endingColumnNumber = "9223372036854775807"
+            startingLineNumber = "30"
+            endingLineNumber = "30"
+            landmarkName = "-viewDidLoad"
             landmarkType = "5">
          </BreakpointContent>
       </BreakpointProxy>

@@ -98,25 +98,51 @@
 }
 
 
-/*
-// Override to support conditional editing of the table view.
-- (BOOL)tableView:(UITableView *)tableView canEditRowAtIndexPath:(NSIndexPath *)indexPath {
-    // Return NO if you do not want the specified item to be editable.
-    return YES;
-}
-*/
 
-/*
-// Override to support editing the table view.
+
+- (BOOL)tableView:(UITableView *)tableView canEditRowAtIndexPath:(NSIndexPath *)indexPath {
+    
+    // 获取对应的评论
+    NSDictionary *commentInfo = [self.commentModel.data valueForKeyPath:@"data.list"][indexPath.row];
+    
+    if ([[commentInfo valueForKey:@"isdel"] integerValue] == 1) {
+        return YES;
+    }
+    
+    return NO;
+}
+
+
+
 - (void)tableView:(UITableView *)tableView commitEditingStyle:(UITableViewCellEditingStyle)editingStyle forRowAtIndexPath:(NSIndexPath *)indexPath {
     if (editingStyle == UITableViewCellEditingStyleDelete) {
-        // Delete the row from the data source
-        [tableView deleteRowsAtIndexPaths:@[indexPath] withRowAnimation:UITableViewRowAnimationFade];
-    } else if (editingStyle == UITableViewCellEditingStyleInsert) {
-        // Create a new instance of the appropriate class, insert it into the array, and add a new row to the table view
-    }   
+        
+        // 执行删除功能
+        // 首先获取评论信息
+        NSDictionary *commentInfo = [self.commentModel.data valueForKeyPath:@"data.list"][indexPath.row];
+        [self deleteComment:commentInfo];
+    }
 }
-*/
+
+
+#pragma mark ---删除评论
+- (void)deleteComment:(NSDictionary *)commentInfo{
+    AFHTTPSessionManager *netManager = [AFHTTPSessionManager manager];
+    netManager.responseSerializer = [AFHTTPResponseSerializer serializer];
+    NSDictionary *parDic = @{@"auth": [UserInfoManager getUserAuth], @"commentid": [commentInfo valueForKey:@"contentid"], @"contentid": self.articleInfoModel.data[@"contentid"],@"client": @1, @"deviceid": @"6D4DD967-5EB2-40E2-A202-37E64F3BEA31"};
+    [netManager POST:kCommentDeleteUrl parameters:parDic progress:nil success:^(NSURLSessionDataTask * _Nonnull task, id  _Nullable responseObject) {
+        
+        NSDictionary *dic = [NSJSONSerialization JSONObjectWithData:responseObject options:(NSJSONReadingMutableContainers) error:nil];
+        if ([dic[@"result"] integerValue] == 1) {
+            // 如果删除成功, 重新刷新数据
+            dispatch_async(dispatch_get_main_queue(), ^{
+                [self netRequst];
+            });
+            
+        }
+        
+    } failure:nil];
+}
 
 /*
 // Override to support rearranging the table view.

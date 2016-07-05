@@ -2,11 +2,12 @@
 //  CommentContainerViewController.m
 //  Product_A
 //
-//  Created by lanou on 16/7/4.
+//  Created by lanou on 16/7/5.
 //  Copyright © 2016年 H. All rights reserved.
 //
 
 #import "CommentContainerViewController.h"
+
 #import "CommentSendView.h"
 #import "CommentTableViewController.h"
 
@@ -63,7 +64,7 @@
     
     self.commentTableVC = [[CommentTableViewController alloc] init];
     self.commentTableVC.articleInfoModel = self.articleInfoModel;
-    self.commentTableVC.view.frame = CGRectMake(0, 0, kScreenWidth, kScreenHeight - 44);
+    self.commentTableVC.view.frame = CGRectMake(0, 64, kScreenWidth, kScreenHeight - 44);
     [self.view addSubview:self.commentTableVC.view];
     [self addChildViewController:self.commentTableVC];
     
@@ -72,11 +73,22 @@
     [self.view addSubview:self.commentSendView];
     [self.commentSendView.sendButton addTarget:self action:@selector(sendComment:) forControlEvents:(UIControlEventTouchUpInside)];
     self.commentSendView.commentTextView.delegate = self;
-
+    
     // 监听键盘弹出, 消失信息
     [[NSNotificationCenter defaultCenter] addObserver:self selector:@selector(kayBoardShow:) name:UIKeyboardWillShowNotification object:nil];
     [[NSNotificationCenter defaultCenter] addObserver:self selector:@selector(kayBoardHide:) name:UIKeyboardWillHideNotification object:nil];
     
+    // 重新定义button按钮(即返回按钮)
+    [self.button setTitle:@"" forState:(UIControlStateNormal)];
+    UIImage *buttomImage = [UIImage imageNamed:@"u9_start.png"];
+    self.button.tintColor = [UIColor darkGrayColor];
+    [self.button setImage:buttomImage forState:(UIControlStateNormal)];
+    
+}
+
+// 重写button的点击方法
+- (void)buttonAction:(UIButton *)button{
+    [self.navigationController popViewControllerAnimated:YES];
 }
 
 #pragma mark  ---发送按钮-----
@@ -90,8 +102,8 @@
         [self presentViewController:alertController animated:YES completion:^{
             [NSTimer scheduledTimerWithTimeInterval:0.8f target:self selector:@selector(alertDismiss:) userInfo:@{@"alert": alertController} repeats:NO];
         }];
-  
- 
+        
+        
     }
     else{
         // 评论不为空的时候, 上传评论
@@ -136,7 +148,7 @@
         } failure:^(NSURLSessionDataTask * _Nullable task, NSError * _Nonnull error) {
         }];
     }
-   
+    
     
     
 }
@@ -173,7 +185,7 @@
         self.commentSendView.transform = CGAffineTransformIdentity;
         
     } completion:^(BOOL finished) {
-//        self.commentSendView.commentTextView.text = @"";
+        //        self.commentSendView.commentTextView.text = @"";
     }];
 }
 
@@ -216,13 +228,14 @@
 }
 
 /*
-#pragma mark - Navigation
-
-// In a storyboard-based application, you will often want to do a little preparation before navigation
-- (void)prepareForSegue:(UIStoryboardSegue *)segue sender:(id)sender {
-    // Get the new view controller using [segue destinationViewController].
-    // Pass the selected object to the new view controller.
-}
-*/
+ #pragma mark - Navigation
+ 
+ // In a storyboard-based application, you will often want to do a little preparation before navigation
+ - (void)prepareForSegue:(UIStoryboardSegue *)segue sender:(id)sender {
+ // Get the new view controller using [segue destinationViewController].
+ // Pass the selected object to the new view controller.
+ }
+ */
 
 @end
+

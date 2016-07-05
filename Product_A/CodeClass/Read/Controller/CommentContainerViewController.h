@@ -2,13 +2,12 @@
 //  CommentContainerViewController.h
 //  Product_A
 //
-//  Created by lanou on 16/7/4.
+//  Created by lanou on 16/7/5.
 //  Copyright © 2016年 H. All rights reserved.
 //
 
-#import <UIKit/UIKit.h>
+#import "RightViewController.h"
 #import "ArticleInfoModel.h"
-
-@interface CommentContainerViewController : UIViewController
+@interface CommentContainerViewController : RightViewController
 @property (nonatomic, strong, readwrite) ArticleInfoModel *articleInfoModel;
 @end

@@ -11,6 +11,7 @@
 #import "NSString+Html.h"
 #import "CommentContainerViewController.h"
 #import "CommentTableViewController.h"
+#import "ShareViewController.h"
 
 @interface ArticleInfoViewController ()
 
@@ -20,8 +21,14 @@
 @property (nonatomic, strong)ArticleInfoModel *model;
 @property (nonatomic, strong)CommentContainerViewController *commentContainerVC;
 
+// 分享控制器
+@property (nonatomic, strong)ShareViewController *shareVC;
 
 @end
+
+
+
+
 
 @implementation ArticleInfoViewController
 
@@ -59,6 +66,11 @@
     [self.likeButton setTitleColor:[UIColor grayColor] forState:UIControlStateNormal];
     [self.view addSubview:self.likeButton];
 
+    // 首先初始化分享控制器
+    self.shareVC = [[ShareViewController alloc] init];
+    self.shareVC.view.frame = CGRectMake(310, 30, 30, 30);
+    [self.view addSubview:self.shareVC.view];
+    [self addChildViewController:self.shareVC];
     
     
     // 重新定义button按钮(即返回按钮)
@@ -97,7 +109,13 @@
         NSNumber *likeNum = counterList[@"like"];
         [self.commentButton setTitle:[NSString stringWithFormat:@"%@", commentNum] forState:UIControlStateNormal];
         [self.likeButton setTitle:[NSString stringWithFormat:@"%@", likeNum] forState:UIControlStateNormal];
+        // 获取分享信息
+        NSDictionary *shareInfo = [self.model valueForKeyPath:@"data.shareinfo"];
         
+        NSData *imageData = [NSData dataWithContentsOfURL:[NSURL URLWithString:shareInfo[@"pic"]]];
+        UIImage *shareImage = [UIImage imageWithData:imageData];
+                                   
+        [self.shareVC configureWithShareTitle:shareInfo[@"title"] shareContent:shareInfo[@"text"] shareUrl:shareInfo[@"url"] shareImage:shareImage];        
         
         
     } failure:^(NSURLSessionDataTask * _Nullable task, NSError * _Nonnull error) {
@@ -114,6 +132,9 @@
     _commentContainerVC.articleInfoModel = self.model;
     [self.navigationController pushViewController:self.commentContainerVC animated:YES];
 }
+
+
+
 
 
 
