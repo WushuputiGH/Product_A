@@ -112,10 +112,12 @@ static MyPlayerManager *defaultManager = nil;
     if (_playType == RandomPlay){
         _index = arc4random()%_mediaLists.count;
     }else{
-        if (_index == 0) {
-            _index = _mediaLists.count - 1;
-        }else{
-            _index -- ;
+        if (_playType == ListPlay){
+            if (_index == 0) {
+                _index = _mediaLists.count - 1;
+            }else{
+                _index -- ;
+            }
         }
     }
     [self changeMediaWith:_index];
@@ -127,11 +129,14 @@ static MyPlayerManager *defaultManager = nil;
     if (_playType == RandomPlay){
         _index = arc4random()%_mediaLists.count;
     }else{
-        if (_index == _mediaLists.count - 1) {
-            _index = 0;
-        }else{
-            _index ++ ;
+        if (_playType == ListPlay) {
+            if (_index == _mediaLists.count - 1) {
+                _index = 0;
+            }else{
+                _index ++ ;
+            }
         }
+    
     }
     [self changeMediaWith:_index];
 

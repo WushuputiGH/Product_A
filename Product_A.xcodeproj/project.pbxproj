@@ -298,6 +298,13 @@
 		798CD03C1D213D8B0004F68E /* u94_end.png in Resources */ = {isa = PBXBuildFile; fileRef = 798CCF511D213D8B0004F68E /* u94_end.png */; };
 		798CD03D1D213D8B0004F68E /* u94_line.png in Resources */ = {isa = PBXBuildFile; fileRef = 798CCF521D213D8B0004F68E /* u94_line.png */; };
 		798CD03E1D213D8B0004F68E /* u94_start.png in Resources */ = {isa = PBXBuildFile; fileRef = 798CCF531D213D8B0004F68E /* u94_start.png */; };
+		79A10B301D2BAD730009F078 /* PlayTitleView.m in Sources */ = {isa = PBXBuildFile; fileRef = 79A10B2F1D2BAD730009F078 /* PlayTitleView.m */; };
+		79A10B321D2BAD810009F078 /* PlayTitleView.xib in Resources */ = {isa = PBXBuildFile; fileRef = 79A10B311D2BAD810009F078 /* PlayTitleView.xib */; };
+		79A10B341D2BAFFC0009F078 /* rrow_Loop.png in Resources */ = {isa = PBXBuildFile; fileRef = 79A10B331D2BAFFC0009F078 /* rrow_Loop.png */; };
+		79A10B361D2BB2C00009F078 /* star.png in Resources */ = {isa = PBXBuildFile; fileRef = 79A10B351D2BB2C00009F078 /* star.png */; };
+		79A10B381D2BB4500009F078 /* Share.png in Resources */ = {isa = PBXBuildFile; fileRef = 79A10B371D2BB4500009F078 /* Share.png */; };
+		79A10B3E1D2BCAB80009F078 /* ShareButton.m in Sources */ = {isa = PBXBuildFile; fileRef = 79A10B3D1D2BCAB80009F078 /* ShareButton.m */; };
+		79A10B401D2BCF6C0009F078 /* music_shuffle.png in Resources */ = {isa = PBXBuildFile; fileRef = 79A10B3F1D2BCF6C0009F078 /* music_shuffle.png */; };
 		79A894FB1D2205600097F611 /* MyPlayerManager.m in Sources */ = {isa = PBXBuildFile; fileRef = 79A894FA1D2205600097F611 /* MyPlayerManager.m */; };
 		79A895011D2266060097F611 /* HotListCollectionViewCell.m in Sources */ = {isa = PBXBuildFile; fileRef = 79A895001D2266060097F611 /* HotListCollectionViewCell.m */; };
 		79A8950C1D2274130097F611 /* AllListTableViewCell.m in Sources */ = {isa = PBXBuildFile; fileRef = 79A8950B1D2274130097F611 /* AllListTableViewCell.m */; };
@@ -704,6 +711,15 @@
 		798CCF511D213D8B0004F68E /* u94_end.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; path = u94_end.png; sourceTree = "<group>"; };
 		798CCF521D213D8B0004F68E /* u94_line.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; path = u94_line.png; sourceTree = "<group>"; };
 		798CCF531D213D8B0004F68E /* u94_start.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; path = u94_start.png; sourceTree = "<group>"; };
+		79A10B2E1D2BAD730009F078 /* PlayTitleView.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = PlayTitleView.h; sourceTree = "<group>"; };
+		79A10B2F1D2BAD730009F078 /* PlayTitleView.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = PlayTitleView.m; sourceTree = "<group>"; };
+		79A10B311D2BAD810009F078 /* PlayTitleView.xib */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = file.xib; path = PlayTitleView.xib; sourceTree = "<group>"; };
+		79A10B331D2BAFFC0009F078 /* rrow_Loop.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; path = rrow_Loop.png; sourceTree = "<group>"; };
+		79A10B351D2BB2C00009F078 /* star.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; path = star.png; sourceTree = "<group>"; };
+		79A10B371D2BB4500009F078 /* Share.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; path = Share.png; sourceTree = "<group>"; };
+		79A10B3C1D2BCAB80009F078 /* ShareButton.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = ShareButton.h; sourceTree = "<group>"; };
+		79A10B3D1D2BCAB80009F078 /* ShareButton.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = ShareButton.m; sourceTree = "<group>"; };
+		79A10B3F1D2BCF6C0009F078 /* music_shuffle.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; path = music_shuffle.png; sourceTree = "<group>"; };
 		79A894F91D2205600097F611 /* MyPlayerManager.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = MyPlayerManager.h; sourceTree = "<group>"; };
 		79A894FA1D2205600097F611 /* MyPlayerManager.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = MyPlayerManager.m; sourceTree = "<group>"; };
 		79A894FF1D2266060097F611 /* HotListCollectionViewCell.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = HotListCollectionViewCell.h; sourceTree = "<group>"; };
@@ -937,6 +953,9 @@
 				797B9B2F1D2418B900AB3E84 /* PlayControllerView.m */,
 				796218141D255B06006404B4 /* RadioListTableViewCell.h */,
 				796218151D255B06006404B4 /* RadioListTableViewCell.m */,
+				79A10B2E1D2BAD730009F078 /* PlayTitleView.h */,
+				79A10B2F1D2BAD730009F078 /* PlayTitleView.m */,
+				79A10B311D2BAD810009F078 /* PlayTitleView.xib */,
 			);
 			path = View;
 			sourceTree = "<group>";
@@ -1218,7 +1237,11 @@
 		798CCE541D213D8B0004F68E /* images */ = {
 			isa = PBXGroup;
 			children = (
+				79A10B371D2BB4500009F078 /* Share.png */,
+				79A10B351D2BB2C00009F078 /* star.png */,
+				79A10B331D2BAFFC0009F078 /* rrow_Loop.png */,
 				79F97E3A1D2B880D0053EF7F /* wizard_48px.png */,
+				79A10B3F1D2BCF6C0009F078 /* music_shuffle.png */,
 				7927D2FA1D2A8F6800CC2FBC /* send.png */,
 				79A8950D1D2274B80097F611 /* 片刻资源图片 */,
 				798CCE551D213D8B0004F68E /* pk_下载 */,
@@ -1698,6 +1721,8 @@
 			children = (
 				79F97E371D2B84E50053EF7F /* ShareViewController.h */,
 				79F97E381D2B84E50053EF7F /* ShareViewController.m */,
+				79A10B3C1D2BCAB80009F078 /* ShareButton.h */,
+				79A10B3D1D2BCAB80009F078 /* ShareButton.m */,
 			);
 			name = Share;
 			sourceTree = "<group>";
@@ -1868,11 +1893,13 @@
 				798CCFF01D213D8B0004F68E /* u39_end.png in Resources */,
 				798CCF5C1D213D8B0004F68E /* u88_line.png in Resources */,
 				798CCF911D213D8B0004F68E /* u37.png in Resources */,
+				79A10B341D2BAFFC0009F078 /* rrow_Loop.png in Resources */,
 				798CCFB91D213D8B0004F68E /* u35_line.png in Resources */,
 				798CCFD31D213D8B0004F68E /* u137.png in Resources */,
 				798CCF811D213D8B0004F68E /* u129.png in Resources */,
 				798CCFD21D213D8B0004F68E /* u135.png in Resources */,
 				798CCF941D213D8B0004F68E /* u436.png in Resources */,
+				79A10B381D2BB4500009F078 /* Share.png in Resources */,
 				798CD0261D213D8B0004F68E /* u215.png in Resources */,
 				798CCFAD1D213D8B0004F68E /* u127.png in Resources */,
 				798CCFF91D213D8B0004F68E /* u154_line.png in Resources */,
@@ -1925,6 +1952,7 @@
 				798CD0081D213D8B0004F68E /* u82.png in Resources */,
 				798CCF821D213D8B0004F68E /* u142_line.png in Resources */,
 				798CD0151D213D8B0004F68E /* u104.png in Resources */,
+				79A10B321D2BAD810009F078 /* PlayTitleView.xib in Resources */,
 				798CD03D1D213D8B0004F68E /* u94_line.png in Resources */,
 				798CCFA91D213D8B0004F68E /* u47.png in Resources */,
 				798CD00A1D213D8B0004F68E /* u86.png in Resources */,
@@ -1948,6 +1976,7 @@
 				798CCF9E1D213D8B0004F68E /* u70_line.png in Resources */,
 				79A895401D2274B80097F611 /* AppIcon76x76~ipad.png in Resources */,
 				79A895421D2274B80097F611 /* face_e@2x.png in Resources */,
+				79A10B361D2BB2C00009F078 /* star.png in Resources */,
 				798CCFC31D213D8B0004F68E /* u311.png in Resources */,
 				798CCFD91D213D8B0004F68E /* u33.png in Resources */,
 				798CD0231D213D8B0004F68E /* u20_line.png in Resources */,
@@ -2028,6 +2057,7 @@
 				798CCF681D213D8B0004F68E /* u30.png in Resources */,
 				798CD0031D213D8B0004F68E /* u44_line.png in Resources */,
 				798CCFE81D213D8B0004F68E /* u0.png in Resources */,
+				79A10B401D2BCF6C0009F078 /* music_shuffle.png in Resources */,
 				79A895361D2274B80097F611 /* AppIcon29x29@2x~ipad.png in Resources */,
 				798CCF6A1D213D8B0004F68E /* u34.png in Resources */,
 				798CCFFB1D213D8B0004F68E /* u161_line.png in Resources */,
@@ -2186,6 +2216,7 @@
 				795DCFE01D1CDBC3000B1C12 /* ReadViewController.m in Sources */,
 				793EB7C71D23D372003482ED /* PlayContainerViewController.m in Sources */,
 				7962181F1D25FB23006404B4 /* UserView.m in Sources */,
+				79A10B3E1D2BCAB80009F078 /* ShareButton.m in Sources */,
 				79A894FB1D2205600097F611 /* MyPlayerManager.m in Sources */,
 				795DCFD41D1CD8C2000B1C12 /* RightViewController.m in Sources */,
 				793F4C001D2B5721005BF440 /* CommentContainerViewController.m in Sources */,
@@ -2232,6 +2263,7 @@
 				793BA1051D2A8B9B0076966E /* CommentSendView.m in Sources */,
 				793EB7CA1D23E182003482ED /* PlayMainViewController.m in Sources */,
 				792756C31D2121F400C25FD1 /* ArticleInfoModel.m in Sources */,
+				79A10B301D2BAD730009F078 /* PlayTitleView.m in Sources */,
 				79F97E391D2B84E50053EF7F /* ShareViewController.m in Sources */,
 				795DCFEF1D1D36D4000B1C12 /* CarouselView.m in Sources */,
 			);

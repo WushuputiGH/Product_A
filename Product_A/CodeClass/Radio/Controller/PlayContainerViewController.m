@@ -9,6 +9,7 @@
 #import "PlayContainerViewController.h"
 #import "PlayMainViewController.h"
 #import "RadioListTableViewController.h"
+#import "PlayTitleView.h"
 
 
 
@@ -19,9 +20,14 @@
 @property (nonatomic, strong)NSTimer *timer;
 @property (nonatomic, strong)RadioListTableViewController *radioListVC;
 
+// 添加play控制视图
+@property (nonatomic, strong)PlayTitleView *playTitleView;
+
 @end
 
 @implementation PlayContainerViewController
+
+
 
 
 - (void)initialize{
@@ -51,8 +57,12 @@
     _radioListVC.musicList = self.musicList;
     _radioListVC.name = self.name;
     
-    
-    
+    // 添加上面的循环, 收藏, 分享等
+    self.playTitleView = [[[NSBundle mainBundle] loadNibNamed:@"PlayTitleView" owner:nil options:nil] firstObject];
+    self.playTitleView.frame = CGRectMake(61, 20, kScreenWidth - 81, 40);
+    [self.playTitleView changeAccrodingPlaytype];
+    [self.view addSubview:self.playTitleView];
+
     
     // 添加playControllerView
     _playControllerView  = [[PlayControllerView alloc] init];
@@ -104,6 +114,7 @@
 - (void)viewDidLoad {
     [super viewDidLoad];
     [self initialize];
+    [self configureShare];
 }
 
 - (void)playMusic{
@@ -193,6 +204,16 @@
         [[MyPlayerManager defaultManager] play];
         _playControllerView.playState = Play;
     }
+}
+
+#pragma mark ---配置分享按钮---
+- (void)configureShare{
+    // 配置 分享按钮
+    // 获取分享信息
+    NSDictionary *shareInfo = [self.musicList[_index] valueForKeyPath:@"playInfo.shareinfo"];
+    NSData *imageData = [NSData dataWithContentsOfURL:[NSURL URLWithString:shareInfo[@"pic"]]];
+    UIImage *image = [UIImage imageWithData:imageData];
+    [self.playTitleView.shareButton configureWithShareTitle:shareInfo[@"title"] shareContent:shareInfo[@"text"] shareUrl:shareInfo[@"url"] shareImage:image];
 }
 
 - (void)didReceiveMemoryWarning {
