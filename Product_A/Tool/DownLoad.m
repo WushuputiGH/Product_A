@@ -77,6 +77,9 @@
 // 使用resumedata, 升级任务
 -(instancetype)updataWithResumeData:(NSData *)resumeData{
   
+    if (resumeData == nil) {
+        return self;
+    }
 
     NSURLSessionConfiguration *cfg = [NSURLSessionConfiguration defaultSessionConfiguration];
     // 根据配置, 创建网络会话
@@ -155,6 +158,9 @@ didFinishDownloadingToURL:(NSURL *)location{
         if (_delegate && [_delegate respondsToSelector:@selector(removeDownloadTask:)]){
             [_delegate removeDownloadTask:_url];
         }
+        
+        
+        
         
         [session invalidateAndCancel];
     }

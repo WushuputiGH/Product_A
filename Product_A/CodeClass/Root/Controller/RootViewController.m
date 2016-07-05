@@ -10,6 +10,8 @@
 #import "RightViewController.h"
 #import "PlayView.h"
 #import "MyPlayerManager.h"
+#import "UserInfoManager.h"
+#import "UIButton+WebCache.h"
 
 #define kCAGradientLayerH (kScreenHeight / 3.0)
 @interface RootViewController () <UITableViewDataSource, UITableViewDelegate>
@@ -40,8 +42,7 @@
   
     [self createPlayView];
     [self initTableView];
-    
-    
+
     
     // 添加通知 NOTICEADDPLAY: 表示添加播放列表的通知
     [[NSNotificationCenter defaultCenter] addObserver:self selector:@selector(noticeAddPlay:) name:@"NOTICEADDPLAY" object:nil];
@@ -54,12 +55,23 @@
 }
 
 
+
 // 创建登陆注册界面
 - (void)createUserView{
     UserView *userView = [[[NSBundle mainBundle] loadNibNamed:@"UserView" owner:nil options:nil] firstObject];
     userView.frame = CGRectMake(0, 20, kScreenWidth - kMovieDistance, kCAGradientLayerH);
     userView.rootView = self;
     [self.view addSubview:userView];
+    if ([UserInfoManager getUserName]) {
+        // 获取名称
+        NSLog(@"%@", [UserInfoManager getUserName]);
+        
+        [userView.loginOrRigister setTitle:[UserInfoManager getUserName] forState:(UIControlStateNormal)];
+        // 获取图片
+        NSString *imageString = [UserInfoManager getUserIcon];
+        [userView.userimg setTitle:nil forState:(UIControlStateNormal)];
+        [userView.userimg sd_setBackgroundImageWithURL:[NSURL URLWithString:imageString]  forState:(UIControlStateNormal)];
+    }
     
 }
 

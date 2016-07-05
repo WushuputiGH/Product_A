@@ -97,6 +97,7 @@
             [self.downLoadload setImage:[UIImage imageNamed:@"u148_end.png"] forState:UIControlStateNormal];
             break;
         case DownloadStateRunning:
+            NSLog(@"%ld" ,(long)downLoadInfo.task.task.state);
             self.downLoadload.titleLabel.text = [NSString stringWithFormat:@"%2ld%%", downLoadInfo.progress];
             [self.downLoadload setTitle:[NSString stringWithFormat:@"%2ld%%", downLoadInfo.progress] forState:(UIControlStateNormal)];
             break;

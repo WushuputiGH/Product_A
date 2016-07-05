@@ -9,6 +9,8 @@
 #import "ArticleInfoViewController.h"
 #import "ArticleInfoModel.h"
 #import "NSString+Html.h"
+#import "CommentContainerViewController.h"
+#import "CommentTableViewController.h"
 
 @interface ArticleInfoViewController ()
 
@@ -16,6 +18,8 @@
 @property (nonatomic, strong)UIButton *likeButton;
 @property (nonatomic, strong)UIWebView *theWebView;
 @property (nonatomic, strong)ArticleInfoModel *model;
+@property (nonatomic, strong)CommentContainerViewController *commentContainerVC;
+
 
 @end
 
@@ -42,6 +46,7 @@
     self.commentButton.tintColor = [UIColor darkGrayColor];
     [self.commentButton setTitleColor:[UIColor grayColor] forState:UIControlStateNormal];
     [self.view addSubview:self.commentButton];
+    [self.commentButton addTarget:self action:@selector(commentButton:) forControlEvents:(UIControlEventTouchUpInside)];
     
    
     self.likeButton = [UIButton buttonWithType:(UIButtonTypeSystem)];
@@ -53,6 +58,7 @@
     self.likeButton.tintColor = [UIColor darkGrayColor];
     [self.likeButton setTitleColor:[UIColor grayColor] forState:UIControlStateNormal];
     [self.view addSubview:self.likeButton];
+
     
     
     // 重新定义button按钮(即返回按钮)
@@ -97,6 +103,18 @@
     } failure:^(NSURLSessionDataTask * _Nullable task, NSError * _Nonnull error) {
     }];
 }
+
+
+#pragma mark --- 评论点击按钮 ---
+
+- (void)commentButton:(UIButton *)commentButton{
+   
+    // 点击评论的时候, 弹出评论
+    self.commentContainerVC = [[CommentContainerViewController alloc] init];
+    _commentContainerVC.articleInfoModel = self.model;
+    [self.navigationController pushViewController:self.commentContainerVC animated:YES];
+}
+
 
 
 - (void)didReceiveMemoryWarning {

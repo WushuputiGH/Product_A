@@ -81,7 +81,6 @@
 
 - (void)alertDismiss:(NSTimer *)timer{
     [timer.userInfo[@"alert"] dismissViewControllerAnimated:NO completion:nil];
-    
 }
 @end
 

@@ -140,8 +140,23 @@ static DownLoadManager *manager = nil;
 - (void)removeDownloadTask:(NSString *)url{
     [self.downLoadTaskInfoDict removeObjectForKey:url];
     [[NSNotificationCenter defaultCenter] postNotificationName:@"COMPLETEDOWNLOAD" object:nil userInfo:nil];
-    
  
+    NSDictionary *downLoadTaskInfoDict = [DownLoadManager defaultManager].downLoadTaskInfoDict;
+    // 遍历字典, 对每一个任务执行cancelTask方法
+    for (NSString *url in downLoadTaskInfoDict) {
+        // 获取每一个任务信息
+        DownLoadTaskInfo *taskInfo = downLoadTaskInfoDict[url];
+        // 获取每一个任务
+        DownLoad *task = taskInfo.task;
+        // 每一个task执行cancelTask的方法
+        [task cancelTask];
+    }
+    if (downLoadTaskInfoDict.count == 0) {
+        [[NSUserDefaults standardUserDefaults] removeObjectForKey:@"downLoad"];
+    }
+    
+
+
 }
 
 @end

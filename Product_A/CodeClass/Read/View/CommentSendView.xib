@@ -1,0 +1,73 @@
+<?xml version="1.0" encoding="UTF-8" standalone="no"?>
+<document type="com.apple.InterfaceBuilder3.CocoaTouch.XIB" version="3.0" toolsVersion="9532" systemVersion="15F34" targetRuntime="iOS.CocoaTouch" propertyAccessControl="none" useAutolayout="YES" useTraitCollections="YES">
+    <dependencies>
+        <deployment identifier="iOS"/>
+        <plugIn identifier="com.apple.InterfaceBuilder.IBCocoaTouchPlugin" version="9530"/>
+        <capability name="Aspect ratio constraints" minToolsVersion="5.1"/>
+        <capability name="Constraints with non-1.0 multipliers" minToolsVersion="5.1"/>
+    </dependencies>
+    <objects>
+        <placeholder placeholderIdentifier="IBFilesOwner" id="-1" userLabel="File's Owner"/>
+        <placeholder placeholderIdentifier="IBFirstResponder" id="-2" customClass="UIResponder"/>
+        <view contentMode="scaleToFill" id="iN0-l3-epB" customClass="CommentSendView">
+            <rect key="frame" x="0.0" y="0.0" width="455" height="44"/>
+            <autoresizingMask key="autoresizingMask" widthSizable="YES" heightSizable="YES"/>
+            <subviews>
+                <textView clipsSubviews="YES" multipleTouchEnabled="YES" contentMode="scaleToFill" usesAttributedText="YES" translatesAutoresizingMaskIntoConstraints="NO" id="j2f-zV-0pf">
+                    <rect key="frame" x="0.0" y="4" width="413" height="36"/>
+                    <color key="backgroundColor" white="1" alpha="1" colorSpace="calibratedWhite"/>
+                    <attributedString key="attributedText">
+                        <fragment content="你的评论会让作者更有动力!">
+                            <attributes>
+                                <color key="NSColor" white="0.66666666666666663" alpha="1" colorSpace="calibratedWhite"/>
+                                <font key="NSFont" size="15" name="PingFangSC-Regular"/>
+                                <paragraphStyle key="NSParagraphStyle" alignment="left" lineBreakMode="wordWrapping" baseWritingDirection="natural" tighteningFactorForTruncation="0.0"/>
+                            </attributes>
+                        </fragment>
+                    </attributedString>
+                    <textInputTraits key="textInputTraits" autocapitalizationType="sentences"/>
+                </textView>
+                <button opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="center" contentVerticalAlignment="center" buttonType="roundedRect" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="ll7-B7-44b">
+                    <rect key="frame" x="418" y="5" width="35" height="35"/>
+                    <constraints>
+                        <constraint firstAttribute="width" secondItem="ll7-B7-44b" secondAttribute="height" multiplier="1:1" id="5NO-Jq-MG2"/>
+                    </constraints>
+                    <color key="tintColor" red="0.0" green="0.47843137250000001" blue="1" alpha="1" colorSpace="calibratedRGB"/>
+                    <state key="normal" image="send.png"/>
+                    <connections>
+                        <action selector="sendButton:" destination="iN0-l3-epB" eventType="touchUpInside" id="BEt-1p-Nwb"/>
+                    </connections>
+                </button>
+                <view contentMode="scaleToFill" translatesAutoresizingMaskIntoConstraints="NO" id="aOj-91-vYE">
+                    <rect key="frame" x="415" y="4" width="1" height="36"/>
+                    <color key="backgroundColor" white="0.33333333333333331" alpha="1" colorSpace="calibratedWhite"/>
+                    <constraints>
+                        <constraint firstAttribute="width" constant="1" id="j4j-GR-jMp"/>
+                    </constraints>
+                </view>
+            </subviews>
+            <color key="backgroundColor" white="1" alpha="1" colorSpace="custom" customColorSpace="calibratedWhite"/>
+            <constraints>
+                <constraint firstItem="aOj-91-vYE" firstAttribute="centerY" secondItem="iN0-l3-epB" secondAttribute="centerY" id="AMy-hr-paV"/>
+                <constraint firstItem="ll7-B7-44b" firstAttribute="height" secondItem="iN0-l3-epB" secondAttribute="height" multiplier="0.8" id="Cxd-vC-wHA"/>
+                <constraint firstItem="ll7-B7-44b" firstAttribute="centerY" secondItem="iN0-l3-epB" secondAttribute="centerY" id="Dd1-0w-cAR"/>
+                <constraint firstItem="j2f-zV-0pf" firstAttribute="leading" secondItem="iN0-l3-epB" secondAttribute="leading" id="G2h-P2-rPQ"/>
+                <constraint firstItem="j2f-zV-0pf" firstAttribute="centerY" secondItem="iN0-l3-epB" secondAttribute="centerY" id="NRB-eJ-4M8"/>
+                <constraint firstItem="ll7-B7-44b" firstAttribute="leading" secondItem="aOj-91-vYE" secondAttribute="trailing" constant="2" id="TFZ-Zh-uJZ"/>
+                <constraint firstItem="aOj-91-vYE" firstAttribute="height" secondItem="iN0-l3-epB" secondAttribute="height" multiplier="0.8" id="bok-Cy-3NR"/>
+                <constraint firstItem="j2f-zV-0pf" firstAttribute="height" secondItem="iN0-l3-epB" secondAttribute="height" multiplier="0.8" id="mGI-SK-MeT"/>
+                <constraint firstAttribute="trailing" secondItem="ll7-B7-44b" secondAttribute="trailing" constant="2" id="qja-mT-9Sq"/>
+                <constraint firstItem="aOj-91-vYE" firstAttribute="leading" secondItem="j2f-zV-0pf" secondAttribute="trailing" constant="2" id="vDa-Ma-pID"/>
+            </constraints>
+            <freeformSimulatedSizeMetrics key="simulatedDestinationMetrics"/>
+            <connections>
+                <outlet property="commentTextView" destination="j2f-zV-0pf" id="ywo-Hh-1Zc"/>
+                <outlet property="sendButton" destination="ll7-B7-44b" id="MJ8-p2-Ufn"/>
+            </connections>
+            <point key="canvasLocation" x="167.5" y="160"/>
+        </view>
+    </objects>
+    <resources>
+        <image name="send.png" width="48" height="48"/>
+    </resources>
+</document>

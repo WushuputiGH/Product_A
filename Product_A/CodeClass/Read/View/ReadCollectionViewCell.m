@@ -40,6 +40,7 @@
         make.bottom.equalTo(self.contentView).offset(-2);
         make.left.equalTo(self.contentView).offset(2);
 //        make.height.equalTo(@40);
+      
     }];
     
     self.ennameLabel = [[UILabel alloc] init];

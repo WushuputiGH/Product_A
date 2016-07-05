@@ -57,6 +57,7 @@
     [self addSubview:self.pageController];
     // 一共几个diandian
     self.pageController.numberOfPages = self.imageURLs.count;
+
 }
 
 

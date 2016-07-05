@@ -22,6 +22,7 @@
 #import <FMDB/FMDB.h>
 #import "DBManager.h"
 #import "RadioDownloadTable.h"
+#import "UserInfoManager.h"
 
 #define kMySqliteName @"pianke.sqlite"
 #define kRadioDownloadTable @"radio"
@@ -43,6 +44,13 @@
 // 文章详情接口
 #define kArticleInfoURL @"http://api2.pianke.me/article/info"
 #define kArticleInfoDic @{@"contentid": @"54603f3d8ead0e195000028e", @"client": @"1", @"deviceid": @"63A94D37-33F9-40FF-9EBB-481182338873", @"auth": @"Wc06FCrkoq1DCMVzGMTikDJxQ8bm3Mrm2NpT9qWjwzcWP23tBKQx1c4P0", @"version": @"3.0.2"}
+
+// 评论接口
+#define kCommentUrl @"http://api2.pianke.me/comment/get"
+#define kCommentParUrl  @{@"auth": @"XZU7RH7m1861DC8Z8H8HvkTJxQMGoPLGO9zo4XDA0cWP22NdFSh9d7fo", @"client": @1, @"contentid": @"553a073adfa688b70300001c", @"deviceid": @"6D4DD967-5EB2-40E2-A202-37E64F3BEA31", @"limit": @10, @"start": @0, @"version": @"3.0.6"}
+// 评论上传接口
+#define kCommentUploadUrl  @"http://api2.pianke.me/comment/add"
+
 // 电台列表接口
 #define kRadio @"http://api2.pianke.me/ting/radio"
 // 电台列表上拉刷新接口

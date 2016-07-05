@@ -9,6 +9,7 @@
 #import "UserView.h"
 #import "LoginViewController.h"
 #import "UserInfoManager.h"
+#import "UIButton+WebCache.h"
 
 
 @implementation UserView
@@ -35,7 +36,14 @@
     UINavigationController *navigationVC = [[UINavigationController alloc] initWithRootViewController:loginViewController];
     loginViewController.loginSucess = ^(){
         NSLog(@"dddd");
+        // 获取名称
         [_loginOrRigister setTitle:[UserInfoManager getUserName] forState:(UIControlStateNormal)];
+        // 获取图片
+        NSString *imageString = [UserInfoManager getUserIcon];
+        [_userimg setTitle:nil forState:(UIControlStateNormal)];
+        [_userimg sd_setBackgroundImageWithURL:[NSURL URLWithString:imageString]  forState:(UIControlStateNormal)];
+        
+    
     };
     [self.rootView presentViewController:navigationVC animated:YES completion:nil];
     
