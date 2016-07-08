@@ -20,7 +20,7 @@
     [super viewDidLoad];
     
     self.tableView.frame = CGRectMake(0, 64, kScreenWidth, kScreenHeight - 128);
-    self.tableView.rowHeight = 60;
+    self.tableView.estimatedRowHeight = 60;
     
     // 创建定时器, 用于监控下载
     self.timer = [NSTimer scheduledTimerWithTimeInterval:0.3 target:self selector:@selector(downLoadTimer:) userInfo:nil repeats:1];
@@ -49,8 +49,10 @@
     if (cell == nil) {
         cell = [[RadioListTableViewCell alloc] initWithStyle:(UITableViewCellStyleSubtitle) reuseIdentifier:@"radioListCell"];
     }
-  
-    cell.detailTextLabel.text = [NSString stringWithFormat:@"by: %@", self.name];
+    if (self.name) {
+        cell.detailTextLabel.text = [NSString stringWithFormat:@"by: %@", self.name];
+    }
+    
     
     return cell;
 }

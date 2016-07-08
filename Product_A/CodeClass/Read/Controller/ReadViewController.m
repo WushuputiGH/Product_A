@@ -115,6 +115,7 @@
     columnsDetailVC.typeId = item.type;
     columnsDetailVC.titleLabel.text = item.name;
     [self.navigationController pushViewController:columnsDetailVC animated:YES];
+    
 
 }
 

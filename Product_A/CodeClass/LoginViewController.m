@@ -28,6 +28,8 @@
     [super viewDidLoad];
     // Do any additional setup after loading the view from its nib.
     self.navigationController.navigationBarHidden = YES;
+    self.passwordTF.secureTextEntry = YES;
+    self.passwordTF.keyboardType = UIKeyboardTypeASCIICapable;
 }
 
 - (void)didReceiveMemoryWarning {
@@ -46,6 +48,17 @@
 }
 */
 
+// 通用提示框
+- (void)alertViewController: (NSString *)message{
+    UIAlertController *alert = [UIAlertController alertControllerWithTitle:message message:nil preferredStyle:(UIAlertControllerStyleAlert)];
+    UIAlertAction *action = [UIAlertAction actionWithTitle:@"Do" style:(UIAlertActionStyleCancel) handler:^(UIAlertAction * _Nonnull action) {
+      
+        
+    }];
+    [alert addAction:action];
+    [self showDetailViewController:alert sender:nil];
+}
+
 - (IBAction)clickBack:(UIButton *)sender {
     
     [self dismissViewControllerAnimated:YES completion:nil];
@@ -55,6 +68,9 @@
 - (IBAction)regist:(UIButton *)sender {
     
     RegistViewController *registVC = [[RegistViewController alloc] init];
+    registVC.registSuccessed = ^(NSString *email){
+        self.emailTF.text = email;
+    };
     [self.navigationController pushViewController:registVC animated:YES];
     
 }
@@ -71,6 +87,7 @@
         // NSLog(@"%@", dic);
         if ([dic[@"result"] integerValue] == 0) {
             NSLog(@"%@", dic[@"data"][@"msg"]);
+            [self alertViewController:dic[@"data"][@"msg"]];
         }else{
             [UserInfoManager conserveUserAuth:dic[@"data"][@"auth"]];
             [UserInfoManager conserveUserIcon:dic[@"data"][@"icon"]];

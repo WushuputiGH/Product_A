@@ -15,11 +15,6 @@
 }
 
 
-//@property (nonatomic, strong, readwrite) UIImageView *theImageView;
-//@property (nonatomic, strong, readwrite) UILabel *theTitleLabel;
-//@property (nonatomic, strong, readwrite)UIImageView *voiceImageView;
-//@property (nonatomic, strong, readwrite)UILabel *musicVisitLabel;
-//@property (nonatomic, strong, readwrite) UIButton *playButton;
 - (instancetype)initWithStyle:(UITableViewCellStyle)style reuseIdentifier:(NSString *)reuseIdentifier
 {
     self = [super initWithStyle:style reuseIdentifier:reuseIdentifier];
@@ -29,7 +24,8 @@
         
         _theTitleLabel = [[UILabel alloc] init];
         [self.contentView addSubview:_theTitleLabel];
-        _theTitleLabel.font = [UIFont systemFontOfSize:18];
+        _theTitleLabel.font = [UIFont systemFontOfSize:16];
+        _theTitleLabel.numberOfLines = 0;
         
         _voiceImageView = [[UIImageView alloc] init];
         _voiceImageView.image = [UIImage imageNamed:@"WiFi.png"];
@@ -43,7 +39,7 @@
         _playButton = [UIButton buttonWithType:UIButtonTypeSystem];
         [self.contentView addSubview:_playButton];
         [self containtSubviews];
-        UIImage *buttonImage = [[UIImage imageNamed:@"music_icon_play_highlighted"] imageWithRenderingMode:(UIImageRenderingModeAlwaysTemplate)];
+        UIImage *buttonImage = [[UIImage imageNamed:@"start"] imageWithRenderingMode:(UIImageRenderingModeAlwaysTemplate)];
         [_playButton setImage:buttonImage forState:(UIControlStateNormal)];
     }
     return self;
@@ -60,6 +56,7 @@
     [_theTitleLabel mas_makeConstraints:^(MASConstraintMaker *make) {
         make.left.equalTo(_theImageView.mas_right).offset(10);
         make.top.equalTo(_theImageView.mas_top).offset(5);
+        make.right.lessThanOrEqualTo(_playButton.mas_left).offset(-10);
     }];
     
     [_voiceImageView mas_makeConstraints:^(MASConstraintMaker *make) {
@@ -83,7 +80,7 @@
 
 - (void)configureWithDic:(NSDictionary *)dic{
     [_theImageView sd_setImageWithURL:[NSURL URLWithString:dic[@"coverimg"]]];
-    _theTitleLabel.text = dic[@"title"];
+    _theTitleLabel.text = [dic valueForKeyPath:@"playInfo.title"];
     _musicVisitLabel.text = [NSString stringWithFormat:@"%@", dic[@"musicVisit"]];
 }
 

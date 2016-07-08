@@ -9,6 +9,7 @@
 #import <UIKit/UIKit.h>
 #import "RootViewController.h"
 #import "RadioDownloadTableViewController.h"
+#import "MyFileTableViewController.h"
 
 @interface UserView : UIView
 @property (strong, nonatomic) IBOutlet UIStackView *chooseStackView;
@@ -23,5 +24,9 @@
 @property (nonatomic, assign, readwrite) BOOL isAppear;
 
 @property (nonatomic, strong, readwrite)UIViewController  *rootView;
+
+// 定于属性, 用户本地文件是否显示
+@property (nonatomic, strong, readwrite)MyFileTableViewController *myFileTableVC;
+@property (nonatomic, assign, readwrite) BOOL isAppearMyFile;
 
 @end

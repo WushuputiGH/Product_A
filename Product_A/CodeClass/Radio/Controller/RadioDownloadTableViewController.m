@@ -26,7 +26,6 @@
     // 创建定时器, 用于监控下载
     self.timer = [NSTimer scheduledTimerWithTimeInterval:0.3 target:self selector:@selector(downLoadTimer:) userInfo:nil repeats:1];
     
-    self.tableView.rowHeight = 50;
     self.tableView.separatorInset = UIEdgeInsetsMake(10, 5, 10, 5);
     self.tableView.separatorColor = [UIColor lightTextColor];
     self.tableView.separatorInset = UIEdgeInsetsMake(-20, 10, 10, 10);
@@ -34,7 +33,7 @@
     // 添加监控, 检测下载数据变化时候执行
     [[NSNotificationCenter defaultCenter] addObserver:self selector:@selector(refreshDate) name:@"COMPLETEDOWNLOAD" object:nil];
     self.tableView.backgroundColor = PKCOLOR(40, 40, 40);
-    
+    self.tableView.estimatedRowHeight = 50;
     
 }
 
@@ -80,7 +79,7 @@
     if (indexPath.section == 1) {
         [cell.downLoadload setEnabled:NO];
         cell.textLabel.text = self.didDownloadingMusic[indexPath.row][0];
-        [cell.downLoadload setImage:[UIImage imageNamed:@"u148_end.png"] forState:UIControlStateNormal];
+        [cell.downLoadload setImage:[UIImage imageNamed:@"download2"] forState:UIControlStateNormal];
         [cell.downLoadload setTitle:@"已完成" forState:(UIControlStateNormal)];
     }
 

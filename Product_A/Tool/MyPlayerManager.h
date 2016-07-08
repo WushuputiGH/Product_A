@@ -33,6 +33,7 @@ typedef NS_ENUM(NSInteger, PlayState) {
 @property (nonatomic, assign, readwrite) float totalTime;
 
 
+
 @property (nonatomic, copy, readwrite) void (^changeState) (PlayState state);
 
 + (MyPlayerManager *)defaultManager;
@@ -49,4 +50,7 @@ typedef NS_ENUM(NSInteger, PlayState) {
 - (void)nextMusic;
 - (void)seekToSecondsWith:(float)seconds;
 - (void)changeMediaWith:(NSInteger)index;
+
+- (void)upDateMediaLists: (NSArray *)mediaLists;
+
 @end

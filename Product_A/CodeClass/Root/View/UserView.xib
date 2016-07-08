@@ -14,23 +14,20 @@
             <rect key="frame" x="0.0" y="0.0" width="505" height="263"/>
             <autoresizingMask key="autoresizingMask" widthSizable="YES" heightSizable="YES"/>
             <subviews>
-                <button opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="center" contentVerticalAlignment="center" buttonType="roundedRect" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="W1m-2g-SUs">
-                    <rect key="frame" x="25" y="30" width="112" height="102"/>
-                    <color key="backgroundColor" red="1" green="0.62008015100000002" blue="0.47499502630000001" alpha="1" colorSpace="calibratedRGB"/>
+                <button opaque="NO" clipsSubviews="YES" contentMode="scaleToFill" contentHorizontalAlignment="center" contentVerticalAlignment="center" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="W1m-2g-SUs">
+                    <rect key="frame" x="25" y="30" width="102" height="102"/>
                     <constraints>
-                        <constraint firstAttribute="width" secondItem="W1m-2g-SUs" secondAttribute="height" multiplier="1.1" id="jUQ-lc-Q4Y"/>
+                        <constraint firstAttribute="width" secondItem="W1m-2g-SUs" secondAttribute="height" multiplier="1:1" id="jUQ-lc-Q4Y"/>
                     </constraints>
-                    <state key="normal" title="Button">
-                        <color key="titleColor" name="alternateSelectedControlTextColor" catalog="System" colorSpace="catalog"/>
-                    </state>
+                    <state key="normal" image="house2.png"/>
                     <connections>
                         <action selector="userimg:" destination="iN0-l3-epB" eventType="touchUpInside" id="7pW-LD-o5h"/>
                     </connections>
                 </button>
                 <button opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="center" contentVerticalAlignment="center" buttonType="roundedRect" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="upB-wS-Zi8">
-                    <rect key="frame" x="157" y="66" width="73" height="30"/>
+                    <rect key="frame" x="147" y="66" width="73" height="30"/>
                     <state key="normal" title="登陆 | 注册">
-                        <color key="titleColor" name="alternateSelectedControlTextColor" catalog="System" colorSpace="catalog"/>
+                        <color key="titleColor" red="0.0" green="0.0" blue="0.0" alpha="1" colorSpace="calibratedRGB"/>
                     </state>
                     <connections>
                         <action selector="loginOrRigister:" destination="iN0-l3-epB" eventType="touchUpInside" id="wtF-w1-46G"/>
@@ -39,20 +36,23 @@
                 <stackView opaque="NO" contentMode="scaleToFill" distribution="fillEqually" alignment="center" translatesAutoresizingMaskIntoConstraints="NO" id="tlX-2d-P0B">
                     <rect key="frame" x="25" y="145" width="455" height="30"/>
                     <subviews>
-                        <button opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="center" contentVerticalAlignment="center" buttonType="roundedRect" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="qbh-xJ-axJ">
+                        <button opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="center" contentVerticalAlignment="center" buttonType="roundedRect" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="Gjp-qg-v9J">
                             <rect key="frame" x="0.0" y="0.0" width="114" height="30"/>
+                            <state key="normal" title="本地">
+                                <color key="titleColor" name="alternateSelectedControlTextColor" catalog="System" colorSpace="catalog"/>
+                            </state>
+                            <connections>
+                                <action selector="myFile:" destination="iN0-l3-epB" eventType="touchUpInside" id="ybO-A4-uiu"/>
+                            </connections>
+                        </button>
+                        <button opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="center" contentVerticalAlignment="center" buttonType="roundedRect" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="qbh-xJ-axJ">
+                            <rect key="frame" x="114" y="0.0" width="114" height="30"/>
                             <state key="normal" title="下载">
                                 <color key="titleColor" name="alternateSelectedControlTextColor" catalog="System" colorSpace="catalog"/>
                             </state>
                             <connections>
                                 <action selector="downloadButton:" destination="iN0-l3-epB" eventType="touchUpInside" id="Ynb-w6-u6c"/>
                             </connections>
-                        </button>
-                        <button opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="center" contentVerticalAlignment="center" buttonType="roundedRect" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="Gjp-qg-v9J">
-                            <rect key="frame" x="114" y="0.0" width="114" height="30"/>
-                            <state key="normal" title="喜欢">
-                                <color key="titleColor" name="alternateSelectedControlTextColor" catalog="System" colorSpace="catalog"/>
-                            </state>
                         </button>
                         <button opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="center" contentVerticalAlignment="center" buttonType="roundedRect" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="UNT-oN-Y1m">
                             <rect key="frame" x="228" y="0.0" width="113" height="30"/>
@@ -100,4 +100,7 @@
             <point key="canvasLocation" x="226.5" y="184.5"/>
         </view>
     </objects>
+    <resources>
+        <image name="house2.png" width="123" height="127"/>
+    </resources>
 </document>

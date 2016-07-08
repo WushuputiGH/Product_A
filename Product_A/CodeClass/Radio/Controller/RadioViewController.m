@@ -35,9 +35,24 @@
 
 //
 @property (nonatomic, strong)AFHTTPSessionManager *manager;
+
+// 建立一个字典, 用于存储已经存在的RadioDetailViewController
+@property (nonatomic, strong)NSMutableDictionary *radioDetailVCDict;
+
 @end
 
+
+
+
 @implementation RadioViewController
+
+
+-(NSMutableDictionary *)radioDetailVCDict{
+    if (!_radioDetailVCDict) {
+        _radioDetailVCDict = [NSMutableDictionary dictionary];
+    }
+    return _radioDetailVCDict;
+}
 
 
 - (void)viewDidLoad {
@@ -321,9 +336,16 @@
 #pragma mark --- 跳转到详情页的方法-----
 - (void)pushToRadioDetailWith:(NSDictionary *)radioDic {
     
-    RadioDetailViewController *radioDetailVC = [[RadioDetailViewController alloc] init];
-    radioDetailVC.radioId = radioDic[@"radioid"];
-    radioDetailVC.titleLabel.text = radioDic[@"title"];
+    
+    // 首先判断有没有存在
+    RadioDetailViewController *radioDetailVC = self.radioDetailVCDict[radioDic[@"radioid"]];
+    if (!radioDetailVC) {
+        radioDetailVC = [[RadioDetailViewController alloc] init];
+        radioDetailVC.radioId = radioDic[@"radioid"];
+        radioDetailVC.titleLabel.text = radioDic[@"title"];
+        [self.radioDetailVCDict setValue:radioDetailVC forKey:radioDic[@"radioid"]];
+    }
+    
     [self.navigationController pushViewController:radioDetailVC animated:YES];
  
 }

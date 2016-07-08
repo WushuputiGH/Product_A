@@ -67,4 +67,21 @@
     return mArray;
 }
 
+
+
+// 删除一条数据
+// 删除
+- (void)deleteWithUrl:(NSString *)musicUrl{
+     NSString *string = [NSString stringWithFormat:@"delete from %@ where musicUrl = ?", kRadioDownloadTable];
+    BOOL result = [_dataBase executeUpdate: string, musicUrl];
+    if (result) {
+        NSLog(@"删除成功");
+        
+    }else {
+        NSLog(@"删除失败");
+    }
+}
+
+
+
 @end

@@ -16,6 +16,7 @@
 @property (strong, nonatomic) IBOutlet UIButton *colloctionButton;
 
 @property (strong, nonatomic) IBOutlet ShareButton *shareButton;
+@property (strong, nonatomic) IBOutlet UIButton *listButton;
 
 
 - (IBAction)changePlayType:(UIButton *)sender;
@@ -24,6 +25,7 @@
 
 - (void)changeAccrodingPlaytype;
 
+- (IBAction)list:(UIButton *)sender;
 
 
 @end

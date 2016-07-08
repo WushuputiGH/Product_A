@@ -10,7 +10,10 @@
 #import "PlayMainViewController.h"
 #import "RadioListTableViewController.h"
 #import "PlayTitleView.h"
+#import "CommentContainerViewController.h"
+#import "ArticleInfoModel.h"
 
+#define kPlayControllerHeight (kScreenHeight / 7.0)
 
 
 @interface PlayContainerViewController ()<PlayControllerViewDelegate>
@@ -20,8 +23,13 @@
 @property (nonatomic, strong)NSTimer *timer;
 @property (nonatomic, strong)RadioListTableViewController *radioListVC;
 
+@property (nonatomic, assign)BOOL isShowList;
+
 // 添加play控制视图
 @property (nonatomic, strong)PlayTitleView *playTitleView;
+
+
+
 
 @end
 
@@ -39,34 +47,38 @@
     
     self.theScrollView = [[UIScrollView alloc] initWithFrame:CGRectMake(0, 64, kScreenWidth, kScreenHeight - 128)];
     [self.view addSubview:_theScrollView];
-    self.theScrollView.contentSize = CGSizeMake(2 * kScreenWidth, kScreenHeight - 128);
+    self.theScrollView.contentSize = CGSizeMake(2 * kScreenWidth, kScreenHeight - 64 - kPlayControllerHeight);
     _theScrollView.bounces = NO;
     _theScrollView.pagingEnabled = YES;
+    _theScrollView.scrollEnabled = NO;
     
     // 添加主播放图
     self.playMainVC = [[PlayMainViewController alloc] init];
+    self.playMainVC.view.frame = CGRectMake(0, 0, kScreenWidth, kScreenHeight - 64 - kPlayControllerHeight);
     [_theScrollView addSubview:_playMainVC.view];
     [self addChildViewController:_playMainVC];
-    
+   
+    [self.playMainVC.commmentButton addTarget:self action:@selector(comment) forControlEvents:(UIControlEventTouchUpInside)];
     
     // 添加播放列表
     self.radioListVC = [[RadioListTableViewController alloc] init];
-    self.radioListVC.view.frame = CGRectMake(kScreenWidth, 0, kScreenWidth, kScreenHeight - 128);
+    self.radioListVC.view.frame = CGRectMake(0, kScreenHeight - 64 - kPlayControllerHeight, kScreenWidth, 0);
     [_theScrollView addSubview: self.radioListVC.view];
     [self addChildViewController: _radioListVC];
     _radioListVC.musicList = self.musicList;
     _radioListVC.name = self.name;
     
-    // 添加上面的循环, 收藏, 分享等
+    // 添加上面的循环, 收藏, 分享, 播放列表等
     self.playTitleView = [[[NSBundle mainBundle] loadNibNamed:@"PlayTitleView" owner:nil options:nil] firstObject];
     self.playTitleView.frame = CGRectMake(61, 20, kScreenWidth - 81, 40);
     [self.playTitleView changeAccrodingPlaytype];
+    [self.playTitleView.listButton addTarget:self action:@selector(showRadioList) forControlEvents:UIControlEventTouchUpInside];
     [self.view addSubview:self.playTitleView];
 
     
     // 添加playControllerView
     _playControllerView  = [[PlayControllerView alloc] init];
-    _playControllerView.frame = CGRectMake(0, kScreenHeight - 64, kScreenWidth, 64);
+    _playControllerView.frame = CGRectMake(0, kScreenHeight - kPlayControllerHeight, kScreenWidth, kPlayControllerHeight);
     [self.view addSubview:_playControllerView];
     _playControllerView.delegate = self;
     
@@ -75,7 +87,14 @@
     NSArray *urlString = [_musicList valueForKeyPath:@"musicUrl"];
     NSMutableArray *musicList = [NSMutableArray array];
     for (NSString *item in urlString) {
-        NSURL *url = [NSURL URLWithString:item];
+        NSURL *url = nil;
+        if (_isLocation){
+            url = [NSURL fileURLWithPath:item];
+            
+        }else{
+            url = [NSURL URLWithString:item];
+        }
+       
         [musicList addObject:url];
     }
 
@@ -101,7 +120,6 @@
     // 添加通知, 当播放结束的时候
     [[NSNotificationCenter defaultCenter] addObserver:self selector:@selector(nextMusic) name:AVPlayerItemDidPlayToEndTimeNotification object:nil];
     
-    
     // 播放音乐
     [self playMusic];
     
@@ -126,6 +144,7 @@
 }
 
 - (void)viewWillAppear:(BOOL)animated{
+    [super viewWillAppear:animated];
      _playMainVC.musicInfo = _musicList[_index];
 }
 
@@ -183,6 +202,8 @@
     _index = indexNum.integerValue;
     // 更改播放主界面的画面
     _playMainVC.musicInfo = _musicList[_index];
+    [self configureShare];
+    
 }
 
 #pragma mark ----实现PlayController的代理方法
@@ -219,6 +240,44 @@
 - (void)didReceiveMemoryWarning {
     [super didReceiveMemoryWarning];
     // Dispose of any resources that can be recreated.
+}
+
+#pragma mark --- 弹出播放列表----
+- (void)showRadioList{
+
+    if (_isShowList) {
+        [UIView animateWithDuration:0.5 animations:^{
+            self.radioListVC.view.frame = CGRectMake(0, kScreenHeight - 64 - kPlayControllerHeight, kScreenWidth, 0);
+        }];
+        _isShowList = NO;
+    }else{
+
+        [UIView animateWithDuration:0.5 animations:^{
+            self.radioListVC.view.frame = self.playMainVC.view.frame;
+        }];
+        _isShowList = YES;
+    }
+
+}
+
+#pragma mark ---弹出评论----
+
+- (void)comment{
+    
+    CommentContainerViewController *commentVC = [[CommentContainerViewController alloc] init];
+//     [parDic setValue:self.articleInfoModel.data[@"contentid"]
+    
+    NSDictionary *playInfo = [_musicList[_index] valueForKeyPath:@"playInfo"];
+    
+      
+    NSDictionary *data = @{@"contentid": playInfo[@"ting_contentid"]};
+    ArticleInfoModel *model = [[ArticleInfoModel alloc] init];
+    model.data = data;
+    
+    commentVC.articleInfoModel = model;
+    [self.navigationController pushViewController:commentVC animated:YES];
+    
+    
 }
 
 /*

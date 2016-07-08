@@ -14,6 +14,13 @@
 #import "UIButton+WebCache.h"
 
 #define kCAGradientLayerH (kScreenHeight / 3.0)
+
+@implementation UIScrollView (UITouchEvent)
+-(void)touchesBegan:(NSSet *)touches withEvent:(UIEvent *)event {
+    [self.nextResponder touchesBegan:touches withEvent:event];
+}
+@end
+
 @interface RootViewController () <UITableViewDataSource, UITableViewDelegate>
 
 @property (nonatomic, strong)NSArray *controllers;
@@ -54,6 +61,9 @@
     [[NSNotificationCenter defaultCenter] addObserver:self selector:@selector(noticeChangeMedia:) name:@"NOTICECHANGEMEDIA" object:nil];
 }
 
+- (void)touchesBegan:(NSSet<UITouch *> *)touches withEvent:(UIEvent *)event{
+    [self.view endEditing:YES];
+}
 
 
 // 创建登陆注册界面
@@ -62,16 +72,29 @@
     userView.frame = CGRectMake(0, 20, kScreenWidth - kMovieDistance, kCAGradientLayerH);
     userView.rootView = self;
     [self.view addSubview:userView];
-    if ([UserInfoManager getUserName]) {
-        // 获取名称
-        NSLog(@"%@", [UserInfoManager getUserName]);
-        
-        [userView.loginOrRigister setTitle:[UserInfoManager getUserName] forState:(UIControlStateNormal)];
-        // 获取图片
-        NSString *imageString = [UserInfoManager getUserIcon];
-        [userView.userimg setTitle:nil forState:(UIControlStateNormal)];
-        [userView.userimg sd_setBackgroundImageWithURL:[NSURL URLWithString:imageString]  forState:(UIControlStateNormal)];
-    }
+    dispatch_sync(dispatch_get_global_queue(DISPATCH_QUEUE_PRIORITY_DEFAULT, 0), ^{
+        if (![[UserInfoManager getUserName] isEqualToString:@" "]) {
+            userView.userimg.layer.cornerRadius = userView.userimg.height / 4.0;
+            // 获取名称
+            NSLog(@"%@", [UserInfoManager getUserName]);
+            
+            [userView.loginOrRigister setTitle:[UserInfoManager getUserName] forState:(UIControlStateNormal)];
+            // 获取图片
+            NSString *imageString = [UserInfoManager getUserIcon];
+//            // 获取图片
+//            NSData *data = [NSData dataWithContentsOfURL:[NSURL URLWithString:imageString]];
+//            UIImage *image = [[UIImage imageWithData:data] imageWithRenderingMode:(UIImageRenderingModeAlwaysOriginal)];
+//            [userView.userimg setTitle:nil forState:(UIControlStateNormal)];
+//            [userView.userimg setImage:image forState:(UIControlStateNormal)];
+//            NSString *imageString = [UserInfoManager getUserIcon];
+            [userView.userimg setTitle:nil forState:(UIControlStateNormal)];
+            [userView.userimg setImage:nil forState:(UIControlStateNormal)];
+            [userView.userimg sd_setBackgroundImageWithURL:[NSURL URLWithString:imageString]  forState:(UIControlStateNormal)];
+        }
+    });
+    
+//        [userView.userimg sd_setBackgroundImageWithURL:[NSURL URLWithString:imageString]  forState:(UIControlStateNormal)];
+    
     
 }
 
@@ -106,6 +129,7 @@
     _rightVC.titleLabel.text = _titles[0];
     _myNavigationVC = [[UINavigationController alloc] initWithRootViewController:_rightVC];
     _myNavigationVC.navigationBar.hidden = YES;
+    _myNavigationVC.view.tag = 800;
     [self.view addSubview:_myNavigationVC.view];
     
 }
@@ -182,6 +206,7 @@
 - (void)noticeAddPlay:(NSNotification *)notification{
     self.radioData = notification.userInfo[@"radioDetailModel"];
     self.playView.radioData = notification.userInfo[@"radioDetailModel"];
+    self.playView.isLoacation = [notification.userInfo[@"isLoacation"] boolValue];
     // 获取播放下标
     NSInteger index = [notification.userInfo[@"index"] integerValue];
     // 配置播放界面
@@ -213,16 +238,17 @@
     UIImage *buttonImage = nil;
     
     if ( [MyPlayerManager defaultManager].playState == Play){
-        buttonImage = [[UIImage imageNamed:@"music_icon_stop_highlighted"] imageWithRenderingMode:(UIImageRenderingModeAlwaysTemplate)];
+        buttonImage = [[UIImage imageNamed:@"pause"] imageWithRenderingMode:(UIImageRenderingModeAlwaysTemplate)];
     }else{
-        buttonImage = [[UIImage imageNamed:@"music_icon_play_highlighted"] imageWithRenderingMode:(UIImageRenderingModeAlwaysTemplate)];
+        buttonImage = [[UIImage imageNamed:@"start"] imageWithRenderingMode:(UIImageRenderingModeAlwaysTemplate)];
     }
     [self.playView.playButton setImage:buttonImage forState:(UIControlStateNormal)];
 }
 
 
 - (void)viewWillDisappear:(BOOL)animated{
-    NSLog(@"rootview将要消失");
+    [super viewWillAppear:animated];
+//    NSLog(@"rootview将要消失");
 }
 
 - (void)didReceiveMemoryWarning {

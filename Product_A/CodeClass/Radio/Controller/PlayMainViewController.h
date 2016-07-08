@@ -17,6 +17,8 @@
 
 @property (nonatomic, strong, readwrite)UISlider *progressView;
 @property (nonatomic, strong, readwrite)UILabel *totalTimeLabel;
+@property (nonatomic, strong, readwrite)UIButton *commmentButton;
+
 
 @end
 

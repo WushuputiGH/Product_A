@@ -27,9 +27,11 @@
     if (self) {
         self.downLoadload = [UIButton buttonWithType:(UIButtonTypeSystem)];
         _downLoadload = [UIButton buttonWithType:UIButtonTypeSystem];
-        [self.downLoadload setImage:[UIImage imageNamed:@"u148_end.png"] forState:UIControlStateNormal];
+        [self.downLoadload setImage:[UIImage imageNamed:@"download2"] forState:UIControlStateNormal];
+        [_downLoadload.imageView setContentMode:1];
         [self.contentView addSubview:self.downLoadload];
         [self.downLoadload addTarget:self action:@selector(downloadAction:) forControlEvents:(UIControlEventTouchUpInside)];
+        self.textLabel.numberOfLines = 0;
        
         
     
@@ -46,21 +48,22 @@
         make.height.equalTo(@30);
         make.width.equalTo(@70);
     }];
-    
-
 
     
 }
 
 - (void)configureWithMusicInfoDic:(NSDictionary *)musicInfo{
     _musicInfo = musicInfo;
-    self.textLabel.text = musicInfo[@"title"];
+    self.textLabel.text = [_musicInfo valueForKeyPath:@"playInfo.title"];
     // 获取默认下载列队
     DownLoadManager *dManager = [DownLoadManager defaultManager];
 
     // 1. 获取音乐的usrl
     NSString *musicUrlString = musicInfo[@"musicUrl"];
     
+  
+   
+
     
     
     // 2.添加在下载列队的所有url
@@ -94,7 +97,7 @@
             self.downLoadload.titleLabel.text = nil;
             [self.downLoadload setTitle:nil forState:(UIControlStateNormal)];
             
-            [self.downLoadload setImage:[UIImage imageNamed:@"u148_end.png"] forState:UIControlStateNormal];
+            [self.downLoadload setImage:[UIImage imageNamed:@"download2"] forState:UIControlStateNormal];
             break;
         case DownloadStateRunning:
             NSLog(@"%ld" ,(long)downLoadInfo.task.task.state);

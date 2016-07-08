@@ -18,6 +18,8 @@
 @property (nonatomic, strong, readwrite) UIViewController *rootVC;
 @property (nonatomic, strong, readwrite) NSMutableArray *radioData;
 
+@property (nonatomic, assign, readwrite) BOOL isLoacation;
+
 - (IBAction)playButton:(UIButton *)sender;
 
 

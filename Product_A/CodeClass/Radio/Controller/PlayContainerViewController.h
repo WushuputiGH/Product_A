@@ -18,6 +18,9 @@
 @property (nonatomic, strong)MyPlayerManager *myPlayer;
 @property (nonatomic, strong, readwrite) NSString *name;
 
+// 判断是否是本地歌曲
+@property (nonatomic, assign)BOOL isLocation;
+
 
 
 - (void)initialize;

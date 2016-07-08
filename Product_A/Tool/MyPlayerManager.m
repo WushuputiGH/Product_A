@@ -46,6 +46,10 @@ static MyPlayerManager *defaultManager = nil;
     }
 }
 
+// 更新数据
+- (void)upDateMediaLists: (NSArray *)mediaLists{
+    _mediaLists = [mediaLists mutableCopy];
+}
 
 
 // 播放

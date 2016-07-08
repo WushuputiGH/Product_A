@@ -54,6 +54,11 @@
         _playContainerVC = [[PlayContainerViewController alloc] init];
     }
     
+    if (_isLoacation) {
+        _playContainerVC.isLocation = YES;
+    }
+    
+    
     if (self.radioData) {
         // 如果有歌曲, 就弹出播放列表
         // 获取当前的index

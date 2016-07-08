@@ -30,6 +30,7 @@
 @property (nonatomic, strong)NSURL *currentPlayingUrl;
 
 @property (nonatomic, strong)MyPlayerManager *myPlayer;
+@property (nonatomic, assign)NSInteger count;
 
 @end
 
@@ -73,6 +74,9 @@
     _radioDetailTableView.dataSource = self;
     _radioDetailTableView.delegate = self;
     [_radioDetailTableView registerClass:[RadioDetailTableViewCell class] forCellReuseIdentifier:@"radioDetailCell"];
+    _radioDetailTableView.mj_header = [MJRefreshNormalHeader headerWithRefreshingTarget:self refreshingAction:@selector(netRequestNew)];
+//    _radioDetailTableView.estimatedRowHeight = 80;
+ 
     
     [_theScrollView addSubview:_radioDetailTableView];
 
@@ -110,7 +114,7 @@
         make.top.equalTo(_userInfoView.mas_bottom);
         make.left.equalTo(_theScrollView.mas_left).offset(0);
         make.width.equalTo(_theScrollView.mas_width).offset(0);
-        make.height.equalTo(@(userInfoViewRect.origin.y + userInfoViewRect.size.height));
+        make.height.equalTo(@(userInfoViewRect.origin.y + userInfoViewRect.size.height - 44));
     }];
     
 }
@@ -138,18 +142,89 @@
 }
 
 
+
+- (void)netRequestNew{
+    
+    NSMutableDictionary *parDic = [kRadioDetailNewDic mutableCopy];
+    [parDic setValue:self.radioId forKey:@"radioid"];
+    [_netManager POST:kRadioDetailNew parameters:parDic progress:nil success:^(NSURLSessionDataTask * _Nonnull task, id  _Nullable responseObject) {
+        
+        dispatch_async(dispatch_get_main_queue(), ^{
+            NSDictionary *newDic = [NSJSONSerialization JSONObjectWithData:responseObject options:(NSJSONReadingMutableContainers) error:nil];
+            if (![newDic[@"result"] isEqualToNumber:@1]) {
+                return ;
+            }
+            // 首先判断数据是否已经存在, 如果没有存在, 就添加到最上面
+            // 获取新取得的数据中所有的电台信息
+            NSArray *newRadioArray = [newDic valueForKeyPath:@"data.list"];
+            // 获取已经存在的所有的电台id信息
+            NSArray *theOldRadioIdArray = [self.radioDetailModel valueForKeyPath:@"data.list.tingid"];
+            NSMutableArray *array = [NSMutableArray array];
+       
+            for (int i = 0; i < newRadioArray.count; i++) {
+                // 如果不存在, 添加到array中
+                NSString *tingid = [newRadioArray[i] valueForKey:@"tingid"];
+                if (![theOldRadioIdArray containsObject:tingid]) {
+                    [array addObject:newRadioArray[i]];
+                    _count ++;
+                }
+            }
+            
+            
+            [array addObjectsFromArray:[self.radioDetailModel valueForKeyPath:@"data.list"]];
+
+            [self.radioDetailModel setValue:array forKeyPath:@"data.list"];
+        
+
+            
+            [_radioDetailTableView reloadData];
+            [_radioDetailTableView.mj_header endRefreshing];
+            
+        });
+        
+        
+    } failure:^(NSURLSessionDataTask * _Nullable task, NSError * _Nonnull error) {
+    }];
+
+    
+}
+
+- (void)updateMainPlayAndPlayer{
+    
+    if (_count) {
+        // 刷新数据时候, 除了要本处的数据重新赋值, 还需要赋值播放管理器的东西
+        _playContainerVC.musicList = [[self.radioDetailModel valueForKeyPath:@"data.list"] mutableCopy];
+        
+        NSMutableArray *urlArray = [NSMutableArray array];
+        for (NSString *string in [self.radioDetailModel valueForKeyPath:@"data.list.musicUrl"]) {
+            NSURL *url = [NSURL URLWithString:string];
+            [urlArray addObject:url];
+        }
+        
+        [[MyPlayerManager defaultManager] upDateMediaLists: urlArray];
+        // 设置播放器的下标, 增加count
+        [MyPlayerManager defaultManager].index += _count;
+        
+        // 更改_playContainerVC的下标
+        _playContainerVC.index += _count;
+        _count = 0;
+    }
+    
+}
+
 -(void)setRadioDetailModel:(NSMutableDictionary *)radioDetailModel{
     if (!_radioDetailModel) {
         _radioDetailModel = [NSMutableDictionary dictionary];
     }
     
-    NSData *imageData = [NSData dataWithContentsOfURL:[NSURL URLWithString:[radioDetailModel valueForKeyPath:@"data.radioInfo.coverimg"]]];
+    _radioDetailModel = radioDetailModel;
+    NSData *imageData = [NSData dataWithContentsOfURL:[NSURL URLWithString:[_radioDetailModel valueForKeyPath:@"data.radioInfo.coverimg"]]];
     UIImage *image = [UIImage imageWithData:imageData];
     _theImageView.image = image;
     
-    [_userInfoView configureWithDic:radioDetailModel];
+    [_userInfoView configureWithDic:_radioDetailModel];
     
-    _radioDetailModel = radioDetailModel;
+    
 }
 
 
@@ -176,9 +251,9 @@
     NSURL *musicUrl = [NSURL URLWithString:musicUrlString];
  
     if ( _currentPlayingUrl && [musicUrl isEqual:_currentPlayingUrl] ){
-        buttonImage = [[UIImage imageNamed:@"music_icon_stop_highlighted"] imageWithRenderingMode:(UIImageRenderingModeAlwaysTemplate)];
+        buttonImage = [[UIImage imageNamed:@"pause"] imageWithRenderingMode:(UIImageRenderingModeAlwaysTemplate)];
     }else{
-        buttonImage = [[UIImage imageNamed:@"music_icon_play_highlighted"] imageWithRenderingMode:(UIImageRenderingModeAlwaysTemplate)];
+        buttonImage = [[UIImage imageNamed:@"start"] imageWithRenderingMode:(UIImageRenderingModeAlwaysTemplate)];
     }
     //设置button的tag值, 方便后面使用
     cell.playButton.tag = 100 + indexPath.row;
@@ -188,7 +263,7 @@
 }
 
 - (CGFloat)tableView:(UITableView *)tableView heightForRowAtIndexPath:(NSIndexPath *)indexPath{
-    return 80;
+    return 100;
 }
 
 
@@ -198,6 +273,7 @@
         _playContainerVC = [[PlayContainerViewController alloc] init];
     }
     
+    [self updateMainPlayAndPlayer];
      _playContainerVC.index = indexPath.row;
     _playContainerVC.musicList = [[self.radioDetailModel valueForKeyPath:@"data.list"] mutableCopy];
     _playContainerVC.name = [self.radioDetailModel valueForKeyPath:@"data.radioInfo.userinfo.uname"];
@@ -227,8 +303,7 @@
 
 #pragma mark --- 点击cell中播放button执行的方法-----
 - (void)playAction:(UIButton *)button{
-   
-        
+    
     
     // 获取对应的行
     NSInteger index = button.tag - 100;
@@ -246,6 +321,7 @@
     NSURL *playUrl = myPlayer.mediaLists[playingIndex];
 
     if ([musicUrl isEqual:playUrl]) {
+        [self updateMainPlayAndPlayer];
         if (myPlayer.playState == Play) {
             _currentPlayingUrl = nil;
             [myPlayer pause];
@@ -268,7 +344,7 @@
     myPlayer.mediaLists = musicList;
     self.currentPlayingUrl = musicUrl;
     [myPlayer play];
- 
+  
     [[NSNotificationCenter defaultCenter] postNotificationName:@"NOTICEADDPLAY" object:nil userInfo:@{@"index": @(index), @"radioDetailModel": [self.radioDetailModel valueForKeyPath:@"data"]}];
     [_radioDetailTableView reloadData];
 

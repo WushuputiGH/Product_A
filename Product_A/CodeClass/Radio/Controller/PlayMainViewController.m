@@ -16,13 +16,18 @@
 @interface PlayMainViewController ()
 
 @property (nonatomic, strong, readwrite)UIView *theView;
+@property (nonatomic, strong, readwrite)UIScrollView *theScrollerView;
 @property (nonatomic, strong, readwrite)UIImageView *imageView;
 @property (nonatomic, strong, readwrite)UILabel *titleLabel;
 @property (nonatomic, strong, readwrite)UIButton *likeButton;
-@property (nonatomic, strong, readwrite)UIButton *commmentButton;
+
 @property (nonatomic, strong, readwrite)UIButton *downLoadButton;
 @property (nonatomic ,strong)CABasicAnimation *animation;
 @property (nonatomic, strong) NSTimer *timer;
+
+@property (nonatomic, strong)UIView *theCommentView;
+
+@property (nonatomic, strong)UIWebView *theWebView;
 
 
 @end
@@ -32,6 +37,7 @@
 - (void)viewDidLoad {
     [super viewDidLoad];
     // Do any additional setup after loading the view.
+    self.view.backgroundColor = [UIColor whiteColor];
     
     [self initializeSubview];
     [self constaintSubview];
@@ -79,38 +85,51 @@
 
 
 - (void)initializeSubview{
+    _theScrollerView = [[UIScrollView alloc] init];
+    [self.view addSubview:_theScrollerView];
     
     _theView = [[UIView alloc] init];
     [self.view addSubview:_theView];
     
+    _theCommentView = [[UIView alloc] init];
+    [_theScrollerView addSubview:_theCommentView];
+    
+    _theWebView = [[UIWebView alloc] init];
+    [_theScrollerView addSubview:_theWebView];
+    
     _imageView = [[UIImageView alloc] init];
 //    _imageView.backgroundColor = [UIColor orangeColor];
 //    [_imageView sd_setImageWithURL:[NSURL URLWithString:_musicInfo[@"coverimg"]]];
-    [_theView addSubview:_imageView];
+    [_theCommentView addSubview:_imageView];
     _imageView.clipsToBounds = YES;
     
     
     _titleLabel = [[UILabel alloc] init];
+    _titleLabel.numberOfLines = 0;
   
-    [_theView addSubview:_titleLabel];
+    [_theCommentView addSubview:_titleLabel];
     
     _likeButton = [UIButton buttonWithType:(UIButtonTypeSystem)];
-    [_likeButton setImage:[UIImage imageNamed:@"u35.png"] forState:(UIControlStateNormal)];
-    [_theView addSubview:_likeButton];
+    [_likeButton setImage:[UIImage imageNamed:@"speach"] forState:(UIControlStateNormal)];
+    [_theCommentView addSubview:_likeButton];
     
     _commmentButton = [UIButton buttonWithType:UIButtonTypeSystem];
-    [_commmentButton setImage:[UIImage imageNamed:@"u40.png"] forState:UIControlStateNormal];
-    [_theView addSubview:_commmentButton];
+    [_commmentButton setImage:[UIImage imageNamed:@"speach"] forState:UIControlStateNormal];
+
+    [_theCommentView addSubview:_commmentButton];
     
     _downLoadButton = [UIButton buttonWithType:UIButtonTypeSystem];
-    [_downLoadButton setImage:[UIImage imageNamed:@"u148_end.png"] forState:UIControlStateNormal];
-    [_downLoadButton addTarget:self action:@selector(downloadAction:) forControlEvents:(UIControlEventTouchDown)];
+    [_downLoadButton setImage:[UIImage imageNamed:@"download2"] forState:UIControlStateNormal];
+    [_downLoadButton addTarget:self action:@selector(downloadAction:) forControlEvents:(UIControlEventTouchUpInside)];
+     [_downLoadButton.imageView setContentMode:1];
     
-    [_theView addSubview:_downLoadButton];
+    
+    [_theCommentView addSubview:_downLoadButton];
     
     _progressView = [[UISlider alloc] init];
     [_progressView addTarget:self action:@selector(sliderAction:) forControlEvents:UIControlEventValueChanged];
     [_theView addSubview:_progressView];
+    [_progressView setThumbImage:nil forState:(UIControlStateNormal)];
     
     _totalTimeLabel = [[UILabel alloc] init];
     [_theView addSubview:_totalTimeLabel];
@@ -122,57 +141,87 @@
 
 - (void)constaintSubview{
     
-    [_theView mas_makeConstraints:^(MASConstraintMaker *make) {
+    [_theScrollerView mas_makeConstraints:^(MASConstraintMaker *make) {
         make.top.equalTo(self.view).offset(0);
         make.left.width.equalTo(self.view);
         make.bottom.equalTo(self.view).offset(0);
     }];
     
-   
+    _theScrollerView.contentSize = CGSizeMake(2 * self.view.frame.size.width, 0);
+    _theScrollerView.pagingEnabled = YES;
+    
+    
+    _theCommentView.frame = CGRectMake(0, 0, self.view.width, self.view.height);
+    
+//    [_theCommentView mas_makeConstraints:^(MASConstraintMaker *make) {
+//        make.top.equalTo(self.view).offset(0);
+//        make.left.width.equalTo(self.view);
+//        make.bottom.equalTo(self.view).offset(0);
+//    }];
+//    
+    [_theWebView mas_makeConstraints:^(MASConstraintMaker *make) {
+        make.top.equalTo(self.view).offset(0);
+        make.width.equalTo(self.view);
+        make.left.equalTo(_theCommentView.mas_right);
+        make.bottom.equalTo(self.view).offset(0);
+    }];
+
+    _theWebView.backgroundColor = [UIColor redColor];
     
     [_imageView mas_makeConstraints:^(MASConstraintMaker *make) {
-        make.top.left.equalTo(_theView).offset(45);
-        make.right.equalTo(_theView).offset(-45);
+        make.top.left.equalTo(_theCommentView).offset(45);
+        make.right.equalTo(_theCommentView).offset(-45);
         make.height.equalTo(_imageView.mas_width);
     }];
     
     _imageView.layer.cornerRadius = (self.view.frame.size.width - 90) / 2;
     
     [_titleLabel mas_makeConstraints:^(MASConstraintMaker *make) {
-        make.top.equalTo(_imageView.mas_bottom).offset(62);
-        make.centerX.equalTo(_theView.mas_centerX);
+        make.top.equalTo(_imageView.mas_bottom).offset(30);
+        make.centerX.equalTo(_theCommentView.mas_centerX);
+        make.width.lessThanOrEqualTo(_theCommentView.mas_width).offset(-30);
     }];
 
-    [_likeButton mas_makeConstraints:^(MASConstraintMaker *make) {
-        make.left.equalTo(_theView).offset(100);
-        make.top.equalTo(_titleLabel).offset(30);
-        make.height.width.equalTo(@20);
-    }];
-    
-    [_commmentButton mas_makeConstraints:^(MASConstraintMaker *make) {
-        make.right.equalTo(_theView).offset(-100);
-        make.top.equalTo(_titleLabel).offset(30);
-        make.height.width.equalTo(@20);
-    }];
-    
     [_downLoadButton mas_makeConstraints:^(MASConstraintMaker *make) {
-        make.left.equalTo(_theView).offset(30);
-        make.centerY.equalTo(_titleLabel.mas_bottom).offset(50);
-        make.height.equalTo(@30);
+        make.centerX.equalTo(_theCommentView.mas_centerX).offset(-50);
+        make.top.equalTo(_titleLabel.mas_bottom).offset(30);
+        make.height.equalTo(@33);
         make.width.equalTo(@70);
     }];
     
+    [_commmentButton mas_makeConstraints:^(MASConstraintMaker *make) {
+        make.centerX.equalTo(_theCommentView.mas_centerX).offset(50);
+        make.top.equalTo(_downLoadButton);
+        make.height.width.equalTo(@33);
+    }];
+
+    
+    
+    [_theView mas_makeConstraints:^(MASConstraintMaker *make) {
+        make.left.width.equalTo(self.view);
+        make.top.equalTo(_commmentButton.mas_bottom).offset(10);
+        make.height.equalTo(self.view).multipliedBy(0.2);
+    }];
+//    _theView.backgroundColor = [UIColor orangeColor];
+    
+//    [_downLoadButton mas_makeConstraints:^(MASConstraintMaker *make) {
+//        make.left.equalTo(_theView).offset(30);
+//        make.centerY.equalTo(_theView.mas_centerY);
+//        make.height.equalTo(@30);
+//        make.width.equalTo(@70);
+//    }];
+    
     [_progressView mas_makeConstraints:^(MASConstraintMaker *make) {
-        make.left.equalTo(_likeButton.mas_left);
-        make.centerY.equalTo(_titleLabel.mas_bottom).offset(50);
-        make.right.equalTo(_commmentButton.mas_right);
-        make.height.equalTo(@70);
+        make.left.equalTo(_theView.mas_left);
+        make.centerY.equalTo(_theView.mas_centerY);
+        make.right.equalTo(_theView.mas_right);
+        make.height.equalTo(@30);
     }];
     
   
     [_totalTimeLabel mas_makeConstraints:^(MASConstraintMaker *make) {
-        make.centerY.equalTo(_titleLabel.mas_bottom).offset(50);
-        make.right.equalTo(_theView).offset(-50);
+        make.top.equalTo(_progressView.mas_bottom);
+        make.right.equalTo(_theView).offset(-10);
     }];
 }
 
@@ -181,9 +230,16 @@
     
     _musicInfo = [musicInfo mutableCopy];
     [_imageView sd_setImageWithURL:[NSURL URLWithString:_musicInfo[@"coverimg"]]];
-    _titleLabel.text = _musicInfo[@"title"];
-
+    _titleLabel.text = [_musicInfo valueForKeyPath:@"playInfo.title"];
     
+    NSString *html = [musicInfo valueForKeyPath:@"playInfo.webview_url"];
+    
+//    [self.theWebView loadHTMLString:html baseURL:[NSURL fileURLWithPath:[NSBundle mainBundle].bundlePath]];
+    
+    [self.theWebView setBackgroundColor:[UIColor clearColor]];
+    [self.theWebView setOpaque:NO];
+    NSURLRequest *request = [[NSURLRequest alloc] initWithURL:[NSURL URLWithString: html]];
+    [self.theWebView  loadRequest:request];
     // 移除动画, 重新添加动画
     [_imageView.layer removeAnimationForKey:@"myAnimation"];
     [self addAnimation];
@@ -249,7 +305,7 @@
         switch (downLoadInfo.task.downState) {
             case DownloadStateNone:
                 [_downLoadButton setTitle:nil forState:(UIControlStateNormal)];
-                [_downLoadButton setImage:[UIImage imageNamed:@"u148_end.png"] forState:UIControlStateNormal];
+                [_downLoadButton setImage:[UIImage imageNamed:@"download2"] forState:UIControlStateNormal];
                 break;
             case DownloadStateRunning:
                 _downLoadButton.titleLabel.text = [NSString stringWithFormat:@"%2ld%%", downLoadInfo.progress];
@@ -266,7 +322,7 @@
     }else{
         // 获取所有的观察者信息
         [_downLoadButton setTitle:nil forState:(UIControlStateNormal)];
-        [_downLoadButton setImage:[UIImage imageNamed:@"u148_end.png"] forState:UIControlStateNormal];
+        [_downLoadButton setImage:[UIImage imageNamed:@"download2"] forState:UIControlStateNormal];
     }
     
 }

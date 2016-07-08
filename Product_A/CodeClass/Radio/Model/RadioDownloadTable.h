@@ -22,6 +22,10 @@
 // 插入
 - (void)insertIntoTabel:(NSArray *)Info;
 
+// 删除
+- (void)deleteWithUrl:(NSString *)musicUrl;
+
+
 
 
 

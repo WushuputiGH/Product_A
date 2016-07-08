@@ -7,23 +7,26 @@
 //
 
 #import <UIKit/UIKit.h>
+#import "RegistView.h"
 
-#define kRegistUrl @"http://api2.pianke.me/user/reg"   //注册接口的地址
+
 @interface RegistViewController : UIViewController
-@property (strong, nonatomic) IBOutlet UIButton *userimgButton;
 
+@property (nonatomic, assign)NSInteger gender;
+@property (nonatomic, strong)UIImage *uploadImage;
+
+@property (strong, nonatomic) IBOutlet UIScrollView *theScrollerView;
+@property (strong, nonatomic) IBOutlet UIButton *backButton;
 - (IBAction)back:(UIButton *)sender;
-- (IBAction)userimg:(UIButton *)sender;
-- (IBAction)man:(UIButton *)sender;
+@property (nonatomic, strong, readwrite) RegistView *registView;
 
-- (IBAction)female:(UIButton *)sender;
-@property (strong, nonatomic) IBOutlet UIButton *manBurron;
+@property (nonatomic, copy, readwrite) void (^registSuccessed) (NSString *email);
 
-@property (strong, nonatomic) IBOutlet UITextField *nameTF;
-@property (strong, nonatomic) IBOutlet UITextField *emailTF;
-@property (strong, nonatomic) IBOutlet UIButton *femaleButton;
 
-@property (strong, nonatomic) IBOutlet UITextField *passwordTF;
-- (IBAction)regist:(UIButton *)sender;
+
+
+
+
+
 
 @end

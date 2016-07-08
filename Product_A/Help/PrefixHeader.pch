@@ -80,6 +80,9 @@
 #define kRadioDetail @"http://api2.pianke.me/ting/radio_detail"
 #define kRadioDetailDic @{@"auth": @"XMdnEiW0m3qxDCMVzGMTikDJxQ8aoNbKF8W1rUDRicWP23tBNQhpd6fw", @"client": @"1", @"deviceid": @"63A94D37-33F9-40FF-9EBB-481182338873", @"radioid": @"55af6aab53479c66758b45b1", @"version": @"3.0.4"}
 
+// 电台详情上拉加载更多
+#define kRadioDetailNew @"http://api2.pianke.me/ting/radio_detail_list"
+#define kRadioDetailNewDic @{@"auth": @"XMdnEiW0m3qxDCMVzGMTikDJxQ8aoNbKF8W1rUDRicWP23tBNQhpd6fw", @"client": @"1", @"deviceid": @"63A94D37-33F9-40FF-9EBB-481182338873", @"limit": @10, @"radioid": @"55af6aab53479c66758b45b1", @"start": @10, @"version": @"3.0.4"}
 
 // 良品接口
 #define kProductUrl @"http://api2.pianke.me/pub/shop"
@@ -99,5 +102,9 @@
 #define kColumensDetailContentFontSize 17
 
 #define kVoiceSzie 15
+
+
+// 头像
+#define kEazyIcon [UIImage imageNamed:@"easyicon.png"]
 
 #endif /* PrefixHeader_pch */

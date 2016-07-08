@@ -10,14 +10,14 @@
         <placeholder placeholderIdentifier="IBFilesOwner" id="-1" userLabel="File's Owner"/>
         <placeholder placeholderIdentifier="IBFirstResponder" id="-2" customClass="UIResponder"/>
         <view contentMode="scaleToFill" id="iN0-l3-epB" customClass="PlayTitleView">
-            <rect key="frame" x="0.0" y="0.0" width="747" height="51"/>
+            <rect key="frame" x="0.0" y="0.0" width="776" height="190"/>
             <autoresizingMask key="autoresizingMask" widthSizable="YES" heightSizable="YES"/>
             <subviews>
                 <stackView opaque="NO" contentMode="scaleToFill" distribution="equalSpacing" translatesAutoresizingMaskIntoConstraints="NO" id="cTj-3w-0dv">
-                    <rect key="frame" x="0.0" y="10" width="747" height="31"/>
+                    <rect key="frame" x="0.0" y="38" width="776" height="114"/>
                     <subviews>
-                        <button opaque="NO" contentMode="scaleToFill" misplaced="YES" contentHorizontalAlignment="center" contentVerticalAlignment="center" buttonType="roundedRect" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="wC9-kW-tQ7">
-                            <rect key="frame" x="0.0" y="0.0" width="31" height="31"/>
+                        <button opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="center" contentVerticalAlignment="center" buttonType="roundedRect" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="wC9-kW-tQ7">
+                            <rect key="frame" x="0.0" y="0.0" width="114" height="114"/>
                             <constraints>
                                 <constraint firstAttribute="width" secondItem="wC9-kW-tQ7" secondAttribute="height" multiplier="1:1" id="hek-H9-6EG"/>
                             </constraints>
@@ -27,7 +27,7 @@
                             </connections>
                         </button>
                         <button opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="center" contentVerticalAlignment="center" buttonType="roundedRect" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="Z3q-2Y-6Eb">
-                            <rect key="frame" x="358" y="0.0" width="31" height="31"/>
+                            <rect key="frame" x="221" y="0.0" width="114" height="114"/>
                             <constraints>
                                 <constraint firstAttribute="width" secondItem="Z3q-2Y-6Eb" secondAttribute="height" multiplier="1:1" id="i25-wh-Uz6"/>
                             </constraints>
@@ -36,12 +36,22 @@
                                 <action selector="colloction:" destination="iN0-l3-epB" eventType="touchUpInside" id="nWr-ag-H8Q"/>
                             </connections>
                         </button>
-                        <button opaque="NO" contentMode="scaleToFill" misplaced="YES" contentHorizontalAlignment="center" contentVerticalAlignment="center" buttonType="roundedRect" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="WZ2-4w-1lW" customClass="ShareButton">
-                            <rect key="frame" x="716" y="0.0" width="31" height="31"/>
+                        <button opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="center" contentVerticalAlignment="center" buttonType="roundedRect" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="WZ2-4w-1lW" customClass="ShareButton">
+                            <rect key="frame" x="441" y="0.0" width="114" height="114"/>
                             <constraints>
                                 <constraint firstAttribute="width" secondItem="WZ2-4w-1lW" secondAttribute="height" multiplier="1:1" id="B3R-hk-J45"/>
                             </constraints>
                             <state key="normal" image="Share.png"/>
+                        </button>
+                        <button opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="center" contentVerticalAlignment="center" buttonType="roundedRect" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="Oh3-sT-vQS">
+                            <rect key="frame" x="662" y="0.0" width="114" height="114"/>
+                            <constraints>
+                                <constraint firstAttribute="width" secondItem="Oh3-sT-vQS" secondAttribute="height" multiplier="1:1" id="ZcS-gX-hcS"/>
+                            </constraints>
+                            <state key="normal" image="list.png"/>
+                            <connections>
+                                <action selector="list:" destination="iN0-l3-epB" eventType="touchUpInside" id="5GM-4w-MIn"/>
+                            </connections>
                         </button>
                     </subviews>
                     <constraints>
@@ -51,7 +61,7 @@
                     </constraints>
                 </stackView>
                 <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="1" textAlignment="center" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="Xs4-ef-qpG">
-                    <rect key="frame" x="12" y="15" width="8" height="21"/>
+                    <rect key="frame" x="53" y="85" width="8" height="21"/>
                     <fontDescription key="fontDescription" type="system" pointSize="17"/>
                     <color key="textColor" red="0.0" green="0.0" blue="0.0" alpha="1" colorSpace="calibratedRGB"/>
                     <nil key="highlightedColor"/>
@@ -69,15 +79,17 @@
             <freeformSimulatedSizeMetrics key="simulatedDestinationMetrics"/>
             <connections>
                 <outlet property="colloctionButton" destination="Z3q-2Y-6Eb" id="Ylz-ds-nkJ"/>
+                <outlet property="listButton" destination="Oh3-sT-vQS" id="4II-SB-6wp"/>
                 <outlet property="playTypeButton" destination="wC9-kW-tQ7" id="uSw-av-SAc"/>
                 <outlet property="shareButton" destination="WZ2-4w-1lW" id="u05-nL-QPX"/>
                 <outlet property="theLabel" destination="Xs4-ef-qpG" id="ZTH-WJ-POm"/>
             </connections>
-            <point key="canvasLocation" x="376.5" y="-23.5"/>
+            <point key="canvasLocation" x="391" y="46"/>
         </view>
     </objects>
     <resources>
         <image name="Share.png" width="107" height="127"/>
+        <image name="list.png" width="128" height="128"/>
         <image name="rrow_Loop.png" width="128" height="128"/>
         <image name="star.png" width="128" height="128"/>
     </resources>
