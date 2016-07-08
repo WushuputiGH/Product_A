@@ -2,6 +2,25 @@
 <!DOCTYPE plist PUBLIC "-//Apple//DTD PLIST 1.0//EN" "http://www.apple.com/DTDs/PropertyList-1.0.dtd">
 <plist version="1.0">
 <dict>
+	<key>UIApplicationShortcutItems</key>
+	<array>
+		<dict>
+			<key>UIApplicationShortcutItemIconType</key>
+			<string>UIApplicationShortcutIconTypePause</string>
+			<key>UIApplicationShortcutItemTitle</key>
+			<string>下载全部暂停</string>
+			<key>UIApplicationShortcutItemType</key>
+			<string>Pause.DownLoadAll</string>
+		</dict>
+		<dict>
+			<key>UIApplicationShortcutItemIconType</key>
+			<string>UIApplicationShortcutIconTypeUpdate</string>
+			<key>UIApplicationShortcutItemTitle</key>
+			<string>下载全部开始</string>
+			<key>UIApplicationShortcutItemType</key>
+			<string>Start.DownLoadAll</string>
+		</dict>
+	</array>
 	<key>CFBundleDevelopmentRegion</key>
 	<string>en</string>
 	<key>CFBundleExecutable</key>

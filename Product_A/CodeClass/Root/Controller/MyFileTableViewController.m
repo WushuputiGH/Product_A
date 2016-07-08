@@ -17,6 +17,8 @@
 @property (nonatomic, strong)PlayContainerViewController *playContainerVC;
 @property (nonatomic, assign)NSInteger count;
 
+@property (nonatomic, strong)NSMutableArray *imageArray;
+
 @end
 
 @implementation MyFileTableViewController
@@ -34,6 +36,15 @@
     RadioDownloadTable *radioDownTable = [[RadioDownloadTable alloc] init];
     self.didDownloadingMusic = [[radioDownTable selectAll] mutableCopy];
     
+    self.imageArray = [NSMutableArray array];
+    for (NSArray *array in self.didDownloadingMusic) {
+        
+        NSData *data = [NSData dataWithContentsOfURL:[NSURL URLWithString:array[2]]];
+        UIImage *image = [UIImage imageWithData:data];
+        [self.imageArray addObject:image];
+    }
+    
+    
     // 添加监控, 检测下载数据变化时候执行
     [[NSNotificationCenter defaultCenter] addObserver:self selector:@selector(refreshDate) name:@"COMPLETEDOWNLOAD" object:nil];
     self.tableView.backgroundColor = PKCOLOR(40, 40, 40);
@@ -49,6 +60,14 @@
 - (void)refreshDate{
     RadioDownloadTable *radioDownTable = [[RadioDownloadTable alloc] init];
     self.didDownloadingMusic = [[radioDownTable selectAll] mutableCopy];
+    [self.imageArray removeAllObjects];
+    for (NSArray *array in self.didDownloadingMusic) {
+        
+        NSData *data = [NSData dataWithContentsOfURL:[NSURL URLWithString:array[2]]];
+        UIImage *image = [UIImage imageWithData:data];
+        [self.imageArray addObject:image];
+    }
+    
     [self.tableView reloadData];
 }
 
@@ -73,9 +92,9 @@
     }
     cell.textLabel.text = self.didDownloadingMusic[indexPath.row][0];
     
-    NSData *data = [NSData dataWithContentsOfURL:[NSURL URLWithString:self.didDownloadingMusic[indexPath.row][2]]];
-    UIImage *image = [UIImage imageWithData:data];
-    cell.imageView.image = image;
+//    NSData *data = [NSData dataWithContentsOfURL:[NSURL URLWithString:self.didDownloadingMusic[indexPath.row][2]]];
+//    UIImage *image = [UIImage imageWithData:data];
+    cell.imageView.image = self.imageArray[indexPath.row];
     
     cell.selectionStyle = UITableViewCellSelectionStyleNone;
     // 设置cell的字体
@@ -94,7 +113,6 @@
     UITableViewHeaderFooterView *header = [[UITableViewHeaderFooterView alloc] init];
     header.contentView.backgroundColor = PKCOLOR(40, 40, 40);
     header.textLabel.text = @"本地文件";
-
     return header;
 }
 
@@ -112,6 +130,7 @@
         RadioDownloadTable *radioDownTable = [[RadioDownloadTable alloc] init];
         [radioDownTable deleteWithUrl:self.didDownloadingMusic[indexPath.row][1]];
         [self.didDownloadingMusic removeObjectAtIndex:indexPath.row];
+        [self.imageArray removeObjectAtIndex:indexPath.row];
         [tableView deleteRowsAtIndexPaths:@[indexPath] withRowAnimation:UITableViewRowAnimationFade];
         
     } else if (editingStyle == UITableViewCellEditingStyleInsert) {

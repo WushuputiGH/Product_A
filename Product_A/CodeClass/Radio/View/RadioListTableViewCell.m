@@ -26,8 +26,12 @@
     self = [super initWithStyle:style reuseIdentifier:reuseIdentifier];
     if (self) {
         self.downLoadload = [UIButton buttonWithType:(UIButtonTypeSystem)];
+       
         _downLoadload = [UIButton buttonWithType:UIButtonTypeSystem];
-        [self.downLoadload setImage:[UIImage imageNamed:@"download2"] forState:UIControlStateNormal];
+        
+        UIImage *image = [[UIImage imageNamed:@"download2"] imageWithRenderingMode:(UIImageRenderingModeAlwaysOriginal)];
+        
+        [self.downLoadload setImage:image forState:UIControlStateNormal];
         [_downLoadload.imageView setContentMode:1];
         [self.contentView addSubview:self.downLoadload];
         [self.downLoadload addTarget:self action:@selector(downloadAction:) forControlEvents:(UIControlEventTouchUpInside)];

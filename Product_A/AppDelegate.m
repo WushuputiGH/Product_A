@@ -184,8 +184,36 @@
      }];
     
     
+}
+
+- (void)application:(UIApplication *)application performActionForShortcutItem:(UIApplicationShortcutItem *)shortcutItem completionHandler:(void (^)(BOOL))completionHandler{
+    
+    // 获取默认下载列队
+    DownLoadManager *dManager = [DownLoadManager defaultManager];
+
+    NSArray *downLoadlist = [DownLoadManager defaultManager].downLoadTaskInfoDict.allKeys;
+    
+    if([shortcutItem.type isEqualToString:@"Start.DownLoadAll"]){
+        for (NSString *musicUrlString in downLoadlist) {
+            DownLoadTaskInfo *downLoadInfo = [dManager.downLoadTaskInfoDict valueForKey:musicUrlString];
+            if (downLoadInfo.task.downState == DownloadStateSuspend ) {
+                [downLoadInfo.task resumeTask];
+            }
+        }
+    }
+    
+    
+    if([shortcutItem.type isEqualToString:@"Pause.DownLoadAll"]){
+        for (NSString *musicUrlString in downLoadlist) {
+            DownLoadTaskInfo *downLoadInfo = [dManager.downLoadTaskInfoDict valueForKey:musicUrlString];
+            if (downLoadInfo.task.downState == DownloadStateRunning ) {
+                [downLoadInfo.task suspend];
+            }
+        }
+    }
     
     
 }
+
 
 @end

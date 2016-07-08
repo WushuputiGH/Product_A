@@ -30,7 +30,8 @@
                         <constraint firstAttribute="width" constant="30" id="2Ct-5W-XZA"/>
                         <constraint firstAttribute="height" constant="30" id="fB2-f9-U41"/>
                     </constraints>
-                    <state key="normal" title="Button" image="music_icon_play_highlighted.png"/>
+                    <color key="tintColor" red="0.098039217289999994" green="0.098039217289999994" blue="0.098039217289999994" alpha="1" colorSpace="calibratedRGB"/>
+                    <state key="normal" title="Button" image="start.png"/>
                     <connections>
                         <action selector="playButton:" destination="iN0-l3-epB" eventType="touchUpInside" id="UYN-hI-85Z"/>
                     </connections>
@@ -73,6 +74,6 @@
     </objects>
     <resources>
         <image name="AppIcon40x40.png" width="40" height="40"/>
-        <image name="music_icon_play_highlighted.png" width="55" height="55"/>
+        <image name="start.png" width="128" height="128"/>
     </resources>
 </document>

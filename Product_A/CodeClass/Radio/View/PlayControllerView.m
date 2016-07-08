@@ -18,7 +18,7 @@
     if (self) {
 //        self.backgroundColor = [UIColor orangeColor];
         _lastButton = [UIButton buttonWithType:(UIButtonTypeSystem)];
-        [_lastButton setImage:[UIImage imageNamed:@"last"] forState:(UIControlStateNormal)];
+        [_lastButton setImage:[UIImage imageNamed:@"last3"] forState:(UIControlStateNormal)];
         [self addSubview:_lastButton];
         [_lastButton addTarget:self.delegate action:@selector(lastButton:) forControlEvents:(UIControlEventTouchUpInside)];
         _nextButton = [UIButton buttonWithType:(UIButtonTypeSystem)];

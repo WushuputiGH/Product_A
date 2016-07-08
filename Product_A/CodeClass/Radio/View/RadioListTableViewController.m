@@ -24,6 +24,9 @@
     
     // 创建定时器, 用于监控下载
     self.timer = [NSTimer scheduledTimerWithTimeInterval:0.3 target:self selector:@selector(downLoadTimer:) userInfo:nil repeats:1];
+    
+    self.tableView.backgroundColor = PKCOLOR(40, 40, 40);
+    self.tableView.estimatedRowHeight = 50;
  
 }
 
@@ -53,6 +56,11 @@
         cell.detailTextLabel.text = [NSString stringWithFormat:@"by: %@", self.name];
     }
     
+    cell.selectionStyle = UITableViewCellSelectionStyleNone;
+    // 设置cell的字体
+    cell.textLabel.font = [UIFont systemFontOfSize:15];
+    cell.textLabel.textColor = [UIColor whiteColor];
+    cell.backgroundColor = PKCOLOR(40, 40, 40);
     
     return cell;
 }

@@ -86,7 +86,10 @@
 }
 
 - (void)showMyFile{
-    self.myFileTableVC = [[MyFileTableViewController alloc] initWithStyle:(UITableViewStylePlain)];
+    if (!_myFileTableVC) {
+        self.myFileTableVC = [[MyFileTableViewController alloc] initWithStyle:(UITableViewStylePlain)];
+    }
+    
     // 设置tabelView的约束
     [self.rootView.view insertSubview:_myFileTableVC.view aboveSubview:self];
     [self.rootView addChildViewController:_myFileTableVC];

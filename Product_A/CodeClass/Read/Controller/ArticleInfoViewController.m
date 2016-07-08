@@ -46,15 +46,16 @@
     // 获取图片路径
     self.commentButton = [UIButton buttonWithType:UIButtonTypeSystem];
     self.commentButton.frame = CGRectMake(100, 30, 100, 30);
-    NSString *commentButtonImagePath = [[NSBundle mainBundle] pathForResource:@"u40.png" ofType:nil];
+    NSString *commentButtonImagePath = [[NSBundle mainBundle] pathForResource:@"speach.png" ofType:nil];
     UIImage *image = [[UIImage imageWithContentsOfFile:commentButtonImagePath] imageWithRenderingMode:UIImageRenderingModeAlwaysTemplate];
+    
     [self.commentButton setImage:image forState:(UIControlStateNormal)];
     self.commentButton.titleEdgeInsets = UIEdgeInsetsMake(0, 10, 0, 0);
     self.commentButton.tintColor = [UIColor darkGrayColor];
     [self.commentButton setTitleColor:[UIColor grayColor] forState:UIControlStateNormal];
     [self.view addSubview:self.commentButton];
     [self.commentButton addTarget:self action:@selector(commentButton:) forControlEvents:(UIControlEventTouchUpInside)];
-    
+    [self.commentButton.imageView setContentMode:1];
    
     self.likeButton = [UIButton buttonWithType:(UIButtonTypeSystem)];
     self.likeButton.frame = CGRectMake(210, 30, 100, 30);
@@ -63,6 +64,7 @@
     [self.likeButton setImage:image2 forState:(UIControlStateNormal)];
     self.likeButton.titleEdgeInsets = UIEdgeInsetsMake(0, 10, 0, 0);
     self.likeButton.tintColor = [UIColor darkGrayColor];
+    [self.commentButton.imageView setContentMode:1];
     [self.likeButton setTitleColor:[UIColor grayColor] forState:UIControlStateNormal];
     [self.view addSubview:self.likeButton];
 
